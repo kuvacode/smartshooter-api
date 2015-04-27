@@ -24,32 +24,33 @@
 
 import json
 import datetime
-import optparse
+import argparse
 import zmq
 
 def main():
-    parser = optparse.OptionParser("smartshooter-listen.py [options]")
-    parser.add_option("-p", "--publisher", type="string",
-                      default="tcp://127.0.0.1:54543",
-                      metavar="ENDPOINT",
-                      help="specify ZMQ address of Smart Shooter publisher")
-    parser.add_option("-q", "--quiet", action="store_true",
-                      default=False,
-                      help="enable quiet mode for reduced logging")
-    (options, args) = parser.parse_args()
+    parser = argparse.ArgumentParser("smartshooter-listen.py [options]")
+    parser.add_argument("-q", "--quiet",
+                        action="store_true",
+                        default=False,
+                        help="enable quiet mode for reduced logging")
+    parser.add_argument("-p", "--publisher",
+                        default="tcp://127.0.0.1:54543",
+                        metavar="ENDPOINT",
+                        help="specify ZMQ address of Smart Shooter publisher")
+    args = parser.parse_args()
 
     context = zmq.Context()
 
     sub_socket = context.socket(zmq.SUB)
     sub_socket.setsockopt(zmq.SUBSCRIBE, b"")
-    sub_socket.connect(options.publisher)
+    sub_socket.connect(args.publisher)
 
     while (True):
         raw = sub_socket.recv()
         str_msg = raw.decode("utf-8")
         json_msg = json.loads(str_msg)
         print("{0}: {1}".format(datetime.datetime.now(), json_msg["msg_id"]))
-        if not options.quiet:
+        if not args.quiet:
             print(str_msg)
 
 if __name__ == "__main__":

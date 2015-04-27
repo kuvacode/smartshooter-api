@@ -24,7 +24,7 @@
 
 import sys
 import json
-import optparse
+import argparse
 import zmq
 
 def send_shoot(socket):
@@ -40,17 +40,17 @@ def send_shoot(socket):
     return json_msg["Result"]
 
 def main():
-    parser = optparse.OptionParser("smartshooter-trigger.py [options]")
-    parser.add_option("-r", "--reqrep", type="string",
-                      default="tcp://127.0.0.1:54544",
-                      metavar="ENDPOINT",
-                      help="specify ZMQ address of Smart Shooter request/reply server")
-    (options, args) = parser.parse_args()
+    parser = argparse.ArgumentParser("smartshooter-trigger.py [options]")
+    parser.add_argument("-r", "--reqrep",
+                        default="tcp://127.0.0.1:54544",
+                        metavar="ENDPOINT",
+                        help="specify ZMQ address of Smart Shooter request/reply server")
+    args = parser.parse_args()
 
     context = zmq.Context()
 
     req_socket = context.socket(zmq.REQ)
-    req_socket.connect(options.reqrep)
+    req_socket.connect(args.reqrep)
 
     if not send_shoot(req_socket):
         print("Failed to send trigger message", file=sys.stderr)
