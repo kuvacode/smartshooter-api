@@ -27,12 +27,16 @@ import json
 import argparse
 import zmq
 
+msg_ref_num = 0
+
 def send_sequence_num(socket, sequence_num):
+    global msg_ref_num
     req = {}
     req["msg_type"] = "Request"
     req["msg_id"] = "SetSequenceNumMsg"
-    req["msg_ref_num"] = 0
+    req["msg_ref_num"] = msg_ref_num
     req['GridSequenceNum'] = sequence_num
+    msg_ref_num += 1
     socket.send_string(json.dumps(req))
     rep = socket.recv()
     str_msg = rep.decode("utf-8")
@@ -40,23 +44,30 @@ def send_sequence_num(socket, sequence_num):
     return json_msg["Result"]
 
 def send_batch_num(socket, batch_num):
+    global msg_ref_num
     req = {}
     req["msg_type"] = "Request"
     req["msg_id"] = "SetBatchNumMsg"
-    req["msg_ref_num"] = 0
+    req["msg_ref_num"] = msg_ref_num
     req['GridBatchNum'] = batch_num
+    msg_ref_num += 1
     socket.send_string(json.dumps(req))
     rep = socket.recv()
     str_msg = rep.decode("utf-8")
     json_msg = json.loads(str_msg)
     return json_msg["Result"]
 
-def send_unique_tag(socket, unique_tag):
+def send_options(socket, unique_tag, barcode_text):
+    global msg_ref_num
     req = {}
     req["msg_type"] = "Request"
     req["msg_id"] = "SetOptionsMsg"
-    req["msg_ref_num"] = 0
-    req['GridUniqueTag'] = unique_tag
+    req["msg_ref_num"] = msg_ref_num
+    msg_ref_num += 1
+    if unique_tag != None:
+        req['GridUniqueTag'] = unique_tag
+    if barcode_text != None:
+        req['GridBarcode'] = barcode_text
     socket.send_string(json.dumps(req))
     rep = socket.recv()
     str_msg = rep.decode("utf-8")
@@ -73,6 +84,8 @@ def main():
                         help="set the Batch number")
     parser.add_argument("-u", "--unique",
                         help="set the Unique Tag")
+    parser.add_argument("-z", "--barcode",
+                        help="set the Barcode text")
     parser.add_argument("-r", "--reqrep",
                         default="tcp://127.0.0.1:54544",
                         metavar="ENDPOINT",
@@ -94,8 +107,8 @@ def main():
             print("Failed to send batch number message", file=sys.stderr)
             exit(1)
 
-    if args.unique != None:
-        if not send_unique_tag(req_socket, args.unique):
+    if args.unique != None or args.barcode != None:
+        if not send_options(req_socket, args.unique, args.barcode):
             print("Failed to send options message", file=sys.stderr)
             exit(1)
 
