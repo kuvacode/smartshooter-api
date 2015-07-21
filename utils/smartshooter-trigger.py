@@ -40,7 +40,7 @@ def send_shoot(socket):
     return json_msg["Result"]
 
 def main():
-    parser = argparse.ArgumentParser("smartshooter-trigger.py [options]")
+    parser = argparse.ArgumentParser("smartshooter-trigger.py")
     parser.add_argument("-r", "--reqrep",
                         default="tcp://127.0.0.1:54544",
                         metavar="ENDPOINT",

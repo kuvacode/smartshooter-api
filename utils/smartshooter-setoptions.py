@@ -75,7 +75,7 @@ def send_options(socket, unique_tag, barcode_text):
     return json_msg["Result"]
 
 def main():
-    parser = argparse.ArgumentParser("smartshooter-setoptions.py [options]")
+    parser = argparse.ArgumentParser("smartshooter-setoptions.py")
     parser.add_argument("-s", "--sequence",
                         type=int,
                         help="set the Sequence number")

@@ -28,7 +28,7 @@ import argparse
 import zmq
 
 def main():
-    parser = argparse.ArgumentParser("smartshooter-listen.py [options]")
+    parser = argparse.ArgumentParser("smartshooter-listen.py")
     parser.add_argument("-q", "--quiet",
                         action="store_true",
                         default=False,

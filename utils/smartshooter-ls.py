@@ -47,7 +47,7 @@ def print_ls(msg):
                                        camera["CameraName"]))
 
 def main():
-    parser = argparse.ArgumentParser("smartshooter-ls.py [options]")
+    parser = argparse.ArgumentParser("smartshooter-ls.py")
     parser.add_argument("-p", "--publisher",
                         default="tcp://127.0.0.1:54543",
                         metavar="ENDPOINT",
