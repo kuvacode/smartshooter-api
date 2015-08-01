@@ -33,6 +33,10 @@ def main():
                         action="store_true",
                         default=False,
                         help="enable quiet mode for reduced logging")
+    parser.add_argument("-n", "--nopings",
+                        action="store_true",
+                        default=False,
+                        help="filter out ping messages")
     parser.add_argument("-p", "--publisher",
                         default="tcp://127.0.0.1:54543",
                         metavar="ENDPOINT",
@@ -49,6 +53,8 @@ def main():
         raw = sub_socket.recv()
         str_msg = raw.decode("utf-8")
         json_msg = json.loads(str_msg)
+        if args.nopings and json_msg["msg_id"] == "NetworkPingMsg":
+            continue
         print("{0}: {1}".format(datetime.datetime.now(), json_msg["msg_id"]))
         if not args.quiet:
             print(str_msg)
