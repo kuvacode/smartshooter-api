@@ -1,6 +1,9 @@
-This repository contains example code and utility scripts for using the External
-API that is exposed by Smart Shooter. More information about Smart Shooter can
-be found at:
+Smart Shooter External API
+==========================
+
+This repository contains documentation, example code and utility scripts for
+using the External API that is exposed by Smart Shooter. More information about
+Smart Shooter can be found at:
 
 * `<http://kuvacode.com>`_
 * `<http://kuvacode.com/smart-shooter/documentation/external-api>`_
@@ -10,8 +13,11 @@ language can be used. The API operates by communicating over a socket managed by
 `ZeroMQ <http://zeromq.org>`_, using `JSON <http://json.org>`_ as the message
 format.
 
+Further documentation about the API is contained in the external_api.rst file.
+
 The example scripts demonstrate how the API can be used from Python, but these
 can be used as a reference for other languages.
+
 
 Installing Python on Windows
 ----------------------------
