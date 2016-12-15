@@ -38,7 +38,7 @@ For example::
 
 Then to install pyzmq::
 
-    pip install pyzmq
+    pip install --user pyzmq
 
 Now to run one of the examples::
 
