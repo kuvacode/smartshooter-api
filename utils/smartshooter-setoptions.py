@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Copyright (c) 2015, Kuvacode Oy. All rights reserved.
+# Copyright (c) 2015-2016, Kuvacode Oy. All rights reserved.
 #
 # The MIT License (MIT)
 #
@@ -39,7 +39,7 @@ def send_sequence_num(socket, sequence_num):
     msg_ref_num += 1
     socket.send_string(json.dumps(req))
     rep = socket.recv()
-    str_msg = rep.decode("utf-8")
+    str_msg = rep.decode("utf-8-sig")
     json_msg = json.loads(str_msg)
     return json_msg["Result"]
 
@@ -53,7 +53,7 @@ def send_batch_num(socket, batch_num):
     msg_ref_num += 1
     socket.send_string(json.dumps(req))
     rep = socket.recv()
-    str_msg = rep.decode("utf-8")
+    str_msg = rep.decode("utf-8-sig")
     json_msg = json.loads(str_msg)
     return json_msg["Result"]
 
@@ -70,7 +70,7 @@ def send_options(socket, unique_tag, barcode_text):
         req['GridBarcode'] = barcode_text
     socket.send_string(json.dumps(req))
     rep = socket.recv()
-    str_msg = rep.decode("utf-8")
+    str_msg = rep.decode("utf-8-sig")
     json_msg = json.loads(str_msg)
     return json_msg["Result"]
 

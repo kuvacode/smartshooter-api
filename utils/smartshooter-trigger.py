@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Copyright (c) 2015, Kuvacode Oy. All rights reserved.
+# Copyright (c) 2015-2016, Kuvacode Oy. All rights reserved.
 #
 # The MIT License (MIT)
 #
@@ -35,7 +35,7 @@ def send_shoot(socket):
     req["CameraSelection"] = "All"
     socket.send_string(json.dumps(req))
     rep = socket.recv()
-    str_msg = rep.decode("utf-8")
+    str_msg = rep.decode("utf-8-sig")
     json_msg = json.loads(str_msg)
     return json_msg["Result"]
 

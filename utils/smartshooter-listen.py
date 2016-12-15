@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Copyright (c) 2015, Kuvacode Oy. All rights reserved.
+# Copyright (c) 2015-2016, Kuvacode Oy. All rights reserved.
 #
 # The MIT License (MIT)
 #
@@ -51,7 +51,7 @@ def main():
 
     while (True):
         raw = sub_socket.recv()
-        str_msg = raw.decode("utf-8")
+        str_msg = raw.decode("utf-8-sig")
         json_msg = json.loads(str_msg)
         if args.nopings and json_msg["msg_id"] == "NetworkPingMsg":
             continue

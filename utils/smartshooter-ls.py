@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Copyright (c) 2015, Kuvacode Oy. All rights reserved.
+# Copyright (c) 2015-2016, Kuvacode Oy. All rights reserved.
 #
 # The MIT License (MIT)
 #
@@ -34,7 +34,7 @@ def send_synchronise(socket):
     req["msg_ref_num"] = 0
     socket.send_string(json.dumps(req))
     rep = socket.recv()
-    str_msg = rep.decode("utf-8")
+    str_msg = rep.decode("utf-8-sig")
     json_msg = json.loads(str_msg)
     return json_msg["Result"]
 
@@ -73,7 +73,7 @@ def main():
 
     while (True):
         raw = sub_socket.recv()
-        str_msg = raw.decode("utf-8")
+        str_msg = raw.decode("utf-8-sig")
         json_msg = json.loads(str_msg)
         if json_msg["msg_id"] == "SynchroniseMsg":
             print_ls(json_msg)
