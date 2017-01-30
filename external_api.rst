@@ -7,8 +7,8 @@ External API Documentation
 Smart Shooter can be integrated with an external system by using the External
 API feature. This provides two key channels of communication:
 
-  - Publisher of event information
-  - Server for handling command requests
+- Publisher of event information
+- Server for handling command requests
 
 
 Transport
@@ -35,11 +35,11 @@ Listening to Events
 The event publisher will broadcast messages about important events that happen
 inside Smart Shooter. This includes:
 
-  - When a new photo is taken
-  - When a photo changes state (downloaded/deleted/renamed etc)
-  - When a new camera is detected
-  - When a camera changes state
-  - When a camera property changes state
+- When a new photo is taken
+- When a photo changes state (downloaded/deleted/renamed etc)
+- When a new camera is detected
+- When a camera changes state
+- When a camera property changes state
 
 
 Sending Requests
@@ -48,12 +48,12 @@ Sending Requests
 The request/reply server inside Smart Shooter can handle requests to do various
 actions such as:
 
-  - Connect/Disconnect camera
-  - Take photo
-  - Download/rename/delete photo
-  - Change camera property
-  - Auto focus camera
-  - Change sequence/batch number
+- Connect/Disconnect camera
+- Take photo
+- Download/rename/delete photo
+- Change camera property
+- Auto focus camera
+- Change sequence/batch number
 
 
 Messages
@@ -480,1063 +480,736 @@ type. The fields that are JSON objects, it lists the valid sub-fields that may
 be contained within that object.
 
 AutofocusMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the AutofocusMsg request
-  :Request fields:
-      - [CAMERA SELECTION FIELDS]
+  :Type:            object
+  :Description:     Contains fields for the AutofocusMsg request
+  :Request fields:  - "[CAMERA SELECTION FIELDS]"
 
 CameraAutofocusIsSupported
-  :Type:
-    boolean
-  :Description:
-    Indicates if camera supports auto focus
+  :Type:            boolean
+  :Description:     Indicates if camera supports auto focus
 
 CameraBatterylevel
-  :Type:
-    int32
-  :Description:
-    Indicates camera battery level in range 0 to 100
+  :Type:            int32
+  :Description:     Indicates camera battery level in range 0 to 100
 
 CameraBulbIsEnabled
-  :Type:
-    boolean
-  :Description:
-    Indicates whether buld shooting mode is enabled
+  :Type:            boolean
+  :Description:     Indicates whether buld shooting mode is enabled
 
 CameraBulbIsSupported
-  :Type:
-    boolean
-  :Description:
-    Indicates whether buld shooting mode is supported
+  :Type:            boolean
+  :Description:     Indicates whether buld shooting mode is supported
 
 CameraDateTimeOffset
-  :Type:
-    int64
-  :Description:
-    Contains offset from local time for when syncing date/time
+  :Type:            int64
+  :Description:     Contains offset from local time for when syncing date/time
 
 CameraIsFocused
-  :Type:
-    boolean
-  :Description:
-    Indicates of camera auto focus action was successful
+  :Type:            boolean
+  :Description:     Indicates of camera auto focus action was successful
 
 CameraKey
-  :Type:
-    string
-  :Description:
-    Unique identfier for a camera
+  :Type:            string
+  :Description:     Unique identfier for a camera
 
 CameraKeys
-  :Type:
-    string[]
-  :Description:
-    Array of unique camera identifiers
+  :Type:            string[]
+  :Description:     Array of unique camera identifiers
 
 CameraLiveviewDOFIsEnabled
-  :Type:
-    boolean
-  :Description:
-    Indicates whether camera liveview DOF preview is enabled
+  :Type:            boolean
+  :Description:     Indicates whether camera liveview DOF preview is enabled
 
 CameraLiveviewDOFIsSupported
-  :Type:
-    boolean
-  :Description:
-    Indicates if camera liveview supports DOF (depth of field) preview
+  :Type:            boolean
+  :Description:     Indicates if camera liveview supports DOF (depth of field) preview
 
 CameraLiveviewFPS
-  :Type:
-    int32
-  :Description:
-    Desired FPS of camera liveview stream
+  :Type:            int32
+  :Description:     Desired FPS of camera liveview stream
 
 CameraLiveviewFocus
-  :Type:
-    string
-  :Description:
-    Specifies camera liveview focus motor movement
-  :Valid range:
-      - "Near1"
-      - "Near2"
-      - "Near3"
-      - "Far1"
-      - "Far2"
-      - "Far3"
+  :Type:            string
+  :Description:     Specifies camera liveview focus motor movement
+  :Valid range:     - "Near1"
+                    - "Near2"
+                    - "Near3"
+                    - "Far1"
+                    - "Far2"
+                    - "Far3"
 
 CameraLiveviewImage
-  :Type:
-    data
-  :Description:
-    internal use
+  :Type:            data
+  :Description:     internal use
 
 CameraLiveviewIsEnabled
-  :Type:
-    boolean
-  :Description:
-    Indicates whether camera liveview is enabled
+  :Type:            boolean
+  :Description:     Indicates whether camera liveview is enabled
 
 CameraLiveviewIsSupported
-  :Type:
-    boolean
-  :Description:
-    Indicates if camera supports liveview
+  :Type:            boolean
+  :Description:     Indicates if camera supports liveview
 
 CameraLiveviewSensorHeight
-  :Type:
-    int32
-  :Description:
-    Height of camera's sensor in pixels
+  :Type:            int32
+  :Description:     Height of camera's sensor in pixels
 
 CameraLiveviewSensorRegionBottom
-  :Type:
-    float
-  :Description:
-    Bottom pixel of camera's active liveview region
+  :Type:            float
+  :Description:     Bottom pixel of camera's active liveview region
 
 CameraLiveviewSensorRegionLeft
-  :Type:
-    float
-  :Description:
-    Left pixel of camera's active liveview region
+  :Type:            float
+  :Description:     Left pixel of camera's active liveview region
 
 CameraLiveviewSensorRegionRight
-  :Type:
-    float
-  :Description:
-    Right pixel of camera's active liveview region
+  :Type:            float
+  :Description:     Right pixel of camera's active liveview region
 
 CameraLiveviewSensorRegionTop
-  :Type:
-    float
-  :Description:
-    Top pixel of camera's active liveview region
+  :Type:            float
+  :Description:     Top pixel of camera's active liveview region
 
 CameraLiveviewSensorWidth
-  :Type:
-    int32
-  :Description:
-    Width of camera's sensor in pixels
+  :Type:            int32
+  :Description:     Width of camera's sensor in pixels
 
 CameraLiveviewVideoFPS
-  :Type:
-    int32
-  :Description:
-    Desired FPS of camera liveview stream during video recording
+  :Type:            int32
+  :Description:     Desired FPS of camera liveview stream during video recording
 
 CameraLiveviewZoomIsEnabled
-  :Type:
-    boolean
-  :Description:
-    Indicates whether camera liveview zoom region is enabled
+  :Type:            boolean
+  :Description:     Indicates whether camera liveview zoom region is enabled
 
 CameraLiveviewZoomIsSupported
-  :Type:
-    boolean
-  :Description:
-    Indicates if camera liveview supports a zoom region
+  :Type:            boolean
+  :Description:     Indicates if camera liveview supports a zoom region
 
 CameraMake
-  :Type:
-    string
-  :Description:
-    Make of camera
+  :Type:            string
+  :Description:     Make of camera
 
 CameraMirrorLockupIsEnabled
-  :Type:
-    boolean
-  :Description:
-    Indicates whether mirror lockup is enabled
+  :Type:            boolean
+  :Description:     Indicates whether mirror lockup is enabled
 
 CameraMirrorLockupIsSupported
-  :Type:
-    boolean
-  :Description:
-    Indicates whether mirror lockup (MLU) is supported
+  :Type:            boolean
+  :Description:     Indicates whether mirror lockup (MLU) is supported
 
 CameraModel
-  :Type:
-    string
-  :Description:
-    Model of camera
+  :Type:            string
+  :Description:     Model of camera
 
 CameraName
-  :Type:
-    string
-  :Description:
-    Name of camera
+  :Type:            string
+  :Description:     Name of camera
 
 CameraNumAutofocus
-  :Type:
-    int32
-  :Description:
-    Number of camera auto focus attempts
+  :Type:            int32
+  :Description:     Number of camera auto focus attempts
 
 CameraNumCards
-  :Type:
-    int32
-  :Description:
-    Number of memory cards in camera
+  :Type:            int32
+  :Description:     Number of memory cards in camera
 
 CameraNumDownloadsComplete
-  :Type:
-    int32
-  :Description:
-    Number of photos downloaded from camera
+  :Type:            int32
+  :Description:     Number of photos downloaded from camera
 
 CameraNumDownloadsFailed
-  :Type:
-    int32
-  :Description:
-    Number of failed photo download attempts
+  :Type:            int32
+  :Description:     Number of failed photo download attempts
 
 CameraNumPhotosFailed
-  :Type:
-    int32
-  :Description:
-    Number of failed photo attempts
+  :Type:            int32
+  :Description:     Number of failed photo attempts
 
 CameraNumPhotosTaken
-  :Type:
-    int32
-  :Description:
-    Number of photos taken by camera
+  :Type:            int32
+  :Description:     Number of photos taken by camera
 
 CameraPowersource
-  :Type:
-    string
-  :Description:
-    Indicates camera power source
-  :Valid range:
-      - "AC"
-      - "Battery"
-      - "Unknown"
+  :Type:            string
+  :Description:     Indicates camera power source
+  :Valid range:     - "AC"
+                    - "Battery"
+                    - "Unknown"
 
 CameraPropertyIsWriteable
-  :Type:
-    boolean
-  :Description:
-    Indicates whether a camera property can be changed
+  :Type:            boolean
+  :Description:     Indicates whether a camera property can be changed
 
 CameraPropertyRange
-  :Type:
-    string[]
-  :Description:
-    Array of valid values for a camera property
+  :Type:            string[]
+  :Description:     Array of valid values for a camera property
 
 CameraPropertyType
-  :Type:
-    string
-  :Description:
-    Specifies a camera property
-  :Valid range:
-      - "Aperture"
-      - "ShutterSpeed"
-      - "ISO"
-      - "Exposure"
-      - "Quality"
-      - "ProgramMode"
-      - "MeteringMode"
-      - "FocusMode"
-      - "DriveMode"
-      - "WhiteBalance"
-      - "Storage"
-      - "MirrorLockup"
+  :Type:            string
+  :Description:     Specifies a camera property
+  :Valid range:     - "Aperture"
+                    - "ShutterSpeed"
+                    - "ISO"
+                    - "Exposure"
+                    - "Quality"
+                    - "ProgramMode"
+                    - "MeteringMode"
+                    - "FocusMode"
+                    - "DriveMode"
+                    - "WhiteBalance"
+                    - "Storage"
+                    - "MirrorLockup"
 
 CameraPropertyValue
-  :Type:
-    string
-  :Description:
-    Contains value for the camera property
+  :Type:            string
+  :Description:     Contains value for the camera property
 
 CameraSelection
-  :Type:
-    string
-  :Description:
-    Determines the camera selection
-  :Valid range:
-      - "All"
-      - "Single"
-      - "Multiple"
+  :Type:            string
+  :Description:     Determines the camera selection
+  :Valid range:     - "All"
+                    - "Single"
+                    - "Multiple"
 
 CameraSerialNumber
-  :Type:
-    string
-  :Description:
-    Serial number of camera
+  :Type:            string
+  :Description:     Serial number of camera
 
 CameraShutterButton
-  :Type:
-    string
-  :Description:
-    Virtual state of camera's shutter button
-  :Valid range:
-      - "Off"
-      - "Half"
-      - "Full"
+  :Type:            string
+  :Description:     Virtual state of camera's shutter button
+  :Valid range:     - "Off"
+                    - "Half"
+                    - "Full"
 
 CameraStatus
-  :Type:
-    string
-  :Description:
-    Status of camera
-  :Valid range:
-      - "Absent"
-      - "Lost"
-      - "Disconnected"
-      - "Ready"
-      - "Busy"
-      - "Error"
+  :Type:            string
+  :Description:     Status of camera
+  :Valid range:     - "Absent"
+                    - "Lost"
+                    - "Disconnected"
+                    - "Ready"
+                    - "Busy"
+                    - "Error"
 
 CameraUpdatedMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the CameraUpdatedMsg event
-  :Event fields:
-      - [CAMERA SELECTION FIELDS]
-      - CameraStatus
-      - CameraName
-      - CameraSerialNumber
-      - CameraMake
-      - CameraModel
-      - CameraNumCards
-      - GridBatchNum
-      - CameraDateTimeOffset
-      - CameraAutofocusIsSupported
-      - CameraIsFocused
-      - CameraLiveviewIsSupported
-      - CameraLiveviewZoomIsSupported
-      - CameraLiveviewDOFIsSupported
-      - CameraLiveviewIsEnabled
-      - CameraLiveviewZoomIsEnabled
-      - CameraLiveviewDOFIsEnabled
-      - CameraLiveviewSensorWidth
-      - CameraLiveviewSensorHeight
-      - CameraLiveviewSensorRegionLeft
-      - CameraLiveviewSensorRegionBottom
-      - CameraLiveviewSensorRegionRight
-      - CameraLiveviewSensorRegionTop
-      - CameraVideoIsSupported
-      - CameraVideoIsEnabled
-      - CameraBulbIsSupported
-      - CameraBulbIsEnabled
-      - CameraPowersource
-      - CameraBatterylevel
-      - CameraNumPhotosTaken
-      - CameraNumPhotosFailed
-      - CameraNumDownloadsComplete
-      - CameraNumDownloadsFailed
-      - CameraNumAutofocus
-      - NodeKey
+  :Type:            object
+  :Description:     Contains fields for the CameraUpdatedMsg event
+  :Event fields:    - "[CAMERA SELECTION FIELDS]"
+                    - "CameraStatus"
+                    - "CameraName"
+                    - "CameraSerialNumber"
+                    - "CameraMake"
+                    - "CameraModel"
+                    - "CameraNumCards"
+                    - "GridBatchNum"
+                    - "CameraDateTimeOffset"
+                    - "CameraAutofocusIsSupported"
+                    - "CameraIsFocused"
+                    - "CameraLiveviewIsSupported"
+                    - "CameraLiveviewZoomIsSupported"
+                    - "CameraLiveviewDOFIsSupported"
+                    - "CameraLiveviewIsEnabled"
+                    - "CameraLiveviewZoomIsEnabled"
+                    - "CameraLiveviewDOFIsEnabled"
+                    - "CameraLiveviewSensorWidth"
+                    - "CameraLiveviewSensorHeight"
+                    - "CameraLiveviewSensorRegionLeft"
+                    - "CameraLiveviewSensorRegionBottom"
+                    - "CameraLiveviewSensorRegionRight"
+                    - "CameraLiveviewSensorRegionTop"
+                    - "CameraVideoIsSupported"
+                    - "CameraVideoIsEnabled"
+                    - "CameraBulbIsSupported"
+                    - "CameraBulbIsEnabled"
+                    - "CameraPowersource"
+                    - "CameraBatterylevel"
+                    - "CameraNumPhotosTaken"
+                    - "CameraNumPhotosFailed"
+                    - "CameraNumDownloadsComplete"
+                    - "CameraNumDownloadsFailed"
+                    - "CameraNumAutofocus"
+                    - "NodeKey"
 
 CameraVideoIsEnabled
-  :Type:
-    boolean
-  :Description:
-    Indicates whether video is being recorded
+  :Type:            boolean
+  :Description:     Indicates whether video is being recorded
 
 CameraVideoIsSupported
-  :Type:
-    boolean
-  :Description:
-    Indicates whether video recording is supported
+  :Type:            boolean
+  :Description:     Indicates whether video recording is supported
 
 CheckClocksMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the CheckClocksMsg request
-  :Request fields:
+  :Type:            object
+  :Description:     Contains fields for the CheckClocksMsg request
 
 ConnectMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the ConnectMsg request
-  :Request fields:
-      - [CAMERA SELECTION FIELDS]
+  :Type:            object
+  :Description:     Contains fields for the ConnectMsg request
+  :Request fields:  - "[CAMERA SELECTION FIELDS]"
 
 DeleteMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the DeleteMsg request
-  :Request fields:
-      - [PHOTO SELECTION FIELDS]
+  :Type:            object
+  :Description:     Contains fields for the DeleteMsg request
+  :Request fields:  - "[PHOTO SELECTION FIELDS]"
 
 DetectCamerasMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the DetectCamerasMsg request
-  :Request fields:
+  :Type:            object
+  :Description:     Contains fields for the DetectCamerasMsg request
 
 DisconnectMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the DisconnectMsg request
-  :Request fields:
-      - [CAMERA SELECTION FIELDS]
+  :Type:            object
+  :Description:     Contains fields for the DisconnectMsg request
+  :Request fields:  - "[CAMERA SELECTION FIELDS]"
 
 DownloadMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the DownloadMsg request
-  :Request fields:
-      - [PHOTO SELECTION FIELDS]
+  :Type:            object
+  :Description:     Contains fields for the DownloadMsg request
+  :Request fields:  - "[PHOTO SELECTION FIELDS]"
 
 Enable
-  :Type:
-    boolean
-  :Description:
-    Generic indicator for enabling/disabling some state
+  :Type:            boolean
+  :Description:     Generic indicator for enabling/disabling some state
 
 EnableLiveviewDOFMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the EnableLiveviewDOFMsg request
-  :Request fields:
-      - [CAMERA SELECTION FIELDS]
-      - Enable
+  :Type:            object
+  :Description:     Contains fields for the EnableLiveviewDOFMsg request
+  :Request fields:  - "[CAMERA SELECTION FIELDS]"
+                    - "Enable"
 
 EnableLiveviewMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the EnableLiveviewMsg request
-  :Request fields:
-      - [CAMERA SELECTION FIELDS]
-      - Enable
+  :Type:            object
+  :Description:     Contains fields for the EnableLiveviewMsg request
+  :Request fields:  - "[CAMERA SELECTION FIELDS]"
+                    - "Enable"
 
 EnableLiveviewRecordMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the EnableLiveviewRecordMsg request
-  :Request fields:
-      - [CAMERA SELECTION FIELDS]
-      - Enable
+  :Type:            object
+  :Description:     Contains fields for the EnableLiveviewRecordMsg request
+  :Request fields:  - "[CAMERA SELECTION FIELDS]"
+                    - "Enable"
 
 EnableLiveviewZoomMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the EnableLiveviewZoomMsg request
-  :Request fields:
-      - [CAMERA SELECTION FIELDS]
-      - Enable
+  :Type:            object
+  :Description:     Contains fields for the EnableLiveviewZoomMsg request
+  :Request fields:  - "[CAMERA SELECTION FIELDS]"
+                    - "Enable"
 
 EnableVideoMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the EnableVideoMsg request
-  :Request fields:
-      - [CAMERA SELECTION FIELDS]
-      - Enable
+  :Type:            object
+  :Description:     Contains fields for the EnableVideoMsg request
+  :Request fields:  - "[CAMERA SELECTION FIELDS]"
+                    - "Enable"
 
 FormatAllMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the FormatAllMsg request
-  :Request fields:
+  :Type:            object
+  :Description:     Contains fields for the FormatAllMsg request
 
 GridAutoConnect
-  :Type:
-    boolean
-  :Description:
-    Contains the value for the 'Auto Connect' option
+  :Type:            boolean
+  :Description:     Contains the value for the 'Auto Connect' option
 
 GridAutoSynchroniseTime
-  :Type:
-    boolean
-  :Description:
-    Contains the value for the 'Auto Synchronise Time' option
+  :Type:            boolean
+  :Description:     Contains the value for the 'Auto Synchronise Time' option
 
 GridBarcode
-  :Type:
-    string
-  :Description:
-    Contains the [Z] barcode text
+  :Type:            string
+  :Description:     Contains the [Z] barcode text
 
 GridBatchNum
-  :Type:
-    int32
-  :Description:
-    Contains the [B] batch number
+  :Type:            int32
+  :Description:     Contains the [B] batch number
 
 GridDefaultFocusMode
-  :Type:
-    string
-  :Description:
-    Contains the default camera focus mode
-  :Valid range:
-      - "Not set"
-      - "AF Single"
-      - "AF Continuous"
-      - "AF Auto"
-      - "MF"
+  :Type:            string
+  :Description:     Contains the default camera focus mode
+  :Valid range:     - "Not set"
+                    - "AF Single"
+                    - "AF Continuous"
+                    - "AF Auto"
+                    - "MF"
 
 GridDefaultStorage
-  :Type:
-    string
-  :Description:
-    Contains the default camera storage mode
-  :Valid range:
-      - "Disk"
-      - "Card"
-      - "Both"
-      - "JPEG"
+  :Type:            string
+  :Description:     Contains the default camera storage mode
+  :Valid range:     - "Disk"
+                    - "Card"
+                    - "Both"
+                    - "JPEG"
 
 GridFilenameExpression
-  :Type:
-    string
-  :Description:
-    Contains the filename expression option
+  :Type:            string
+  :Description:     Contains the filename expression option
 
 GridFilenameValidation
-  :Type:
-    string
-  :Description:
-    internal use
+  :Type:            string
+  :Description:     internal use
 
 GridGenerateFilename
-  :Type:
-    boolean
-  :Description:
-    Contains the value for the 'Generate Filename' option
+  :Type:            boolean
+  :Description:     Contains the value for the 'Generate Filename' option
 
 GridLiveviewDatalimit
-  :Type:
-    int32
-  :Description:
-    Contains the liveview recording data limit
+  :Type:            int32
+  :Description:     Contains the liveview recording data limit
 
 GridScanBatchNum
-  :Type:
-    boolean
-  :Description:
-    Contains value for the 'Scan Batch Number' option
+  :Type:            boolean
+  :Description:     Contains value for the 'Scan Batch Number' option
 
 GridScanSequenceNum
-  :Type:
-    boolean
-  :Description:
-    Contains the value for the 'Scan Sequence Number' option
+  :Type:            boolean
+  :Description:     Contains the value for the 'Scan Sequence Number' option
 
 GridSequenceNum
-  :Type:
-    int32
-  :Description:
-    Contains the [S] sequence number
+  :Type:            int32
+  :Description:     Contains the [S] sequence number
 
 GridUniqueTag
-  :Type:
-    string
-  :Description:
-    Contains the [U] unique tag
+  :Type:            string
+  :Description:     Contains the [U] unique tag
 
 IdentifyMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the IdentifyMsg request
-  :Request fields:
-      - [CAMERA SELECTION FIELDS]
+  :Type:            object
+  :Description:     Contains fields for the IdentifyMsg request
+  :Request fields:  - "[CAMERA SELECTION FIELDS]"
 
 License
-  :Type:
-    string
-  :Description:
-    internal use
+  :Type:            string
+  :Description:     internal use
 
 LicenseMsg
-  :Type:
-    object
-  :Description:
-    internal use
+  :Type:            object
+  :Description:     internal use
 
 LiveviewFPSMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the LiveviewFPSMsg request
-  :Request fields:
-      - [CAMERA SELECTION FIELDS]
-      - CameraLiveviewFPS
-      - CameraLiveviewVideoFPS
+  :Type:            object
+  :Description:     Contains fields for the LiveviewFPSMsg request
+  :Request fields:  - "[CAMERA SELECTION FIELDS]"
+                    - "CameraLiveviewFPS"
+                    - "CameraLiveviewVideoFPS"
 
 LiveviewFocusMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the LiveviewFocusMsg request
-  :Request fields:
-      - [CAMERA SELECTION FIELDS]
-      - CameraLiveviewFocus
+  :Type:            object
+  :Description:     Contains fields for the LiveviewFocusMsg request
+  :Request fields:  - "[CAMERA SELECTION FIELDS]"
+                    - "CameraLiveviewFocus"
 
 LiveviewPositionMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the LiveviewPositionMsg request
-  :Request fields:
-      - [CAMERA SELECTION FIELDS]
-      - CameraLiveviewPositionX
-      - CameraLiveviewPositionY
+  :Type:            object
+  :Description:     Contains fields for the LiveviewPositionMsg request
+  :Request fields:  - "[CAMERA SELECTION FIELDS]"
+                    - "CameraLiveviewPositionX"
+                    - "CameraLiveviewPositionY"
 
 LiveviewUpdatedMsg
-  :Type:
-    object
-  :Description:
-    internal use
+  :Type:            object
+  :Description:     internal use
 
 NetworkAddress
-  :Type:
-    string
-  :Description:
-    internal use
+  :Type:            string
+  :Description:     internal use
 
 NetworkDiscoveryMsg
-  :Type:
-    object
-  :Description:
-    internal use
+  :Type:            object
+  :Description:     internal use
 
 NetworkEndpoint
-  :Type:
-    string
-  :Description:
-    internal use
+  :Type:            string
+  :Description:     internal use
 
 NetworkPingMsg
-  :Type:
-    object
-  :Description:
-    internal use
+  :Type:            object
+  :Description:     internal use
 
 NetworkPort
-  :Type:
-    int32
-  :Description:
-    internal use
+  :Type:            int32
+  :Description:     internal use
 
 NetworkTimestamp
-  :Type:
-    uint64
-  :Description:
-    internal use
+  :Type:            uint64
+  :Description:     internal use
 
 NetworkVersion
-  :Type:
-    string
-  :Description:
-    internal use
+  :Type:            string
+  :Description:     internal use
 
 NodeEndpoint
-  :Type:
-    string
-  :Description:
-    internal use
+  :Type:            string
+  :Description:     internal use
 
 NodeEndpointMsg
-  :Type:
-    object
-  :Description:
-    internal use
+  :Type:            object
+  :Description:     internal use
 
 NodeIsLiveviewConsumer
-  :Type:
-    boolean
-  :Description:
-    internal use
+  :Type:            boolean
+  :Description:     internal use
 
 NodeIsMaster
-  :Type:
-    boolean
-  :Description:
-    internal use
+  :Type:            boolean
+  :Description:     internal use
 
 NodeKey
-  :Type:
-    string
-  :Description:
-    internal use
+  :Type:            string
+  :Description:     internal use
 
 NodeName
-  :Type:
-    string
-  :Description:
-    internal use
+  :Type:            string
+  :Description:     internal use
 
 NodeSyncLocal
-  :Type:
-    boolean
-  :Description:
-    internal use
+  :Type:            boolean
+  :Description:     internal use
 
 NodeSyncVersion
-  :Type:
-    int32
-  :Description:
-    internal use
+  :Type:            int32
+  :Description:     internal use
 
 NodeTransferMode
-  :Type:
-    float
-  :Description:
-    internal use
+  :Type:            float
+  :Description:     internal use
 
 NodeUpdatedMsg
-  :Type:
-    object
-  :Description:
-    internal use
+  :Type:            object
+  :Description:     internal use
 
 NodeVersion
-  :Type:
-    string
-  :Description:
-    internal use
+  :Type:            string
+  :Description:     internal use
 
 PhotoBarcode
-  :Type:
-    string
-  :Description:
-    Contains barcode text scanned from photo
+  :Type:            string
+  :Description:     Contains barcode text scanned from photo
 
 PhotoComputedName
-  :Type:
-    string
-  :Description:
-    Photo name generated by Smart Shooter
+  :Type:            string
+  :Description:     Photo name generated by Smart Shooter
 
 PhotoDateCaptured
-  :Type:
-    string
-  :Description:
-    Data/time that photo was captured by camera
+  :Type:            string
+  :Description:     Data/time that photo was captured by camera
 
 PhotoFilesize
-  :Type:
-    uint64
-  :Description:
-    Size of photo file
+  :Type:            uint64
+  :Description:     Size of photo file
 
 PhotoFormat
-  :Type:
-    string
-  :Description:
-    Format of photo image file
-  :Valid range:
-      - "JPEG"
-      - "PNG"
-      - "Raw"
-      - "TGA"
-      - "TIFF"
-      - "Unknown"
+  :Type:            string
+  :Description:     Format of photo image file
+  :Valid range:     - "JPEG"
+                    - "PNG"
+                    - "Raw"
+                    - "TGA"
+                    - "TIFF"
+                    - "Unknown"
 
 PhotoHeight
-  :Type:
-    int32
-  :Description:
-    Height of photo
+  :Type:            int32
+  :Description:     Height of photo
 
 PhotoIsImage
-  :Type:
-    boolean
-  :Description:
-    Indicates whether photo is image or not (possible video file)
+  :Type:            boolean
+  :Description:     Indicates whether photo is image or not (possible video file)
 
 PhotoIsScanned
-  :Type:
-    boolean
-  :Description:
-    Indicates if barcode has been scanned from photo
+  :Type:            boolean
+  :Description:     Indicates if barcode has been scanned from photo
 
 PhotoKey
-  :Type:
-    string
-  :Description:
-    Unique identifier for a photo
+  :Type:            string
+  :Description:     Unique identifier for a photo
 
 PhotoKeys
-  :Type:
-    string[]
-  :Description:
-    Array of unique photo identifiers
+  :Type:            string[]
+  :Description:     Array of unique photo identifiers
 
 PhotoLocation
-  :Type:
-    string
-  :Description:
-    Location of photo file
-  :Valid range:
-      - "Orphaned"
-      - "Deleted"
-      - "Hidden"
-      - "Camera"
-      - "Local Disk"
+  :Type:            string
+  :Description:     Location of photo file
+  :Valid range:     - "Orphaned"
+                    - "Deleted"
+                    - "Hidden"
+                    - "Camera"
+                    - "Local Disk"
 
 PhotoOriginalName
-  :Type:
-    string
-  :Description:
-    Original name of photo on camera
+  :Type:            string
+  :Description:     Original name of photo on camera
 
 PhotoSHA1
-  :Type:
-    string
-  :Description:
-    SHA1 of photo data contents
+  :Type:            string
+  :Description:     SHA1 of photo data contents
 
 PhotoSelection
-  :Type:
-    string
-  :Description:
-    Determines the photo selection
+  :Type:            string
+  :Description:     Determines the photo selection
 
 PhotoUUID
-  :Type:
-    string
-  :Description:
-    Internal UUID of photo
+  :Type:            string
+  :Description:     Internal UUID of photo
 
 PhotoUpdatedMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the PhotoUpdatedMsg event
-  :Event fields:
-      - [PHOTO SELECTION FIELDS]
-      - PhotoLocation
-      - PhotoUUID
-      - PhotoOriginalName
-      - PhotoComputedName
-      - PhotoDateCaptured
-      - PhotoFormat
-      - PhotoWidth
-      - PhotoHeight
-      - PhotoFilesize
-      - PhotoIsImage
-      - PhotoIsScanned
-      - PhotoSHA1
-      - PhotoBarcode
-      - GridSequenceNum
-      - GridBatchNum
-      - CameraKey
-      - NodeKey
+  :Type:            object
+  :Description:     Contains fields for the PhotoUpdatedMsg event
+  :Event fields:    - "[PHOTO SELECTION FIELDS]"
+                    - "PhotoLocation"
+                    - "PhotoUUID"
+                    - "PhotoOriginalName"
+                    - "PhotoComputedName"
+                    - "PhotoDateCaptured"
+                    - "PhotoFormat"
+                    - "PhotoWidth"
+                    - "PhotoHeight"
+                    - "PhotoFilesize"
+                    - "PhotoIsImage"
+                    - "PhotoIsScanned"
+                    - "PhotoSHA1"
+                    - "PhotoBarcode"
+                    - "GridSequenceNum"
+                    - "GridBatchNum"
+                    - "CameraKey"
+                    - "NodeKey"
 
 PhotoWidth
-  :Type:
-    int32
-  :Description:
-    Width of photo
+  :Type:            int32
+  :Description:     Width of photo
 
 PropertyInfoMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the PropertyInfoMsg object
-  :Event fields:
-      - CameraPropertyType
-      - CameraPropertyValue
-      - CameraPropertyIsWriteable
-      - CameraPropertyRange
+  :Type:            object
+  :Description:     Contains fields for the PropertyInfoMsg object
+  :Event fields:    - "CameraPropertyType"
+                    - "CameraPropertyValue"
+                    - "CameraPropertyIsWriteable"
+                    - "CameraPropertyRange"
 
 PropertyUpdatedMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the PropertyUpdatedMsg event
-  :Event fields:
-      - [CAMERA SELECTION FIELDS]
-      - PropertyInfoMsg[]
+  :Type:            object
+  :Description:     Contains fields for the PropertyUpdatedMsg event
+  :Event fields:    - "[CAMERA SELECTION FIELDS]"
+                    - "PropertyInfoMsg[]"
 
 RemoveNodeMsg
-  :Type:
-    object
-  :Description:
-    internal use
+  :Type:            object
+  :Description:     internal use
 
 RenameCameraMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the RenameCameraMsg request
-  :Request fields:
-      - [CAMERA SELECTION FIELDS]
-      - CameraName
+  :Type:            object
+  :Description:     Contains fields for the RenameCameraMsg request
+  :Request fields:  - "[CAMERA SELECTION FIELDS]"
+                    - "CameraName"
 
 RenameNodeMsg
-  :Type:
-    object
-  :Description:
-    internal use
+  :Type:            object
+  :Description:     internal use
 
 RenamePhotoMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the RenamePhotoMsg request
-  :Request fields:
-      - [PHOTO SELECTION FIELDS]
-      - PhotoComputedName
+  :Type:            object
+  :Description:     Contains fields for the RenamePhotoMsg request
+  :Request fields:  - "[PHOTO SELECTION FIELDS]"
+                    - "PhotoComputedName"
 
 ReshootMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the ReshootMsg request
-  :Request fields:
-      - [PHOTO SELECTION FIELDS]
+  :Type:            object
+  :Description:     Contains fields for the ReshootMsg request
+  :Request fields:  - "[PHOTO SELECTION FIELDS]"
 
 Result
-  :Type:
-    boolean
-  :Description:
-    Generic result field indicating success or failure
+  :Type:            boolean
+  :Description:     Generic result field indicating success or failure
 
 SetBatchNumMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the SetBatchNumMsg request
-  :Request fields:
-      - GridBatchNum
+  :Type:            object
+  :Description:     Contains fields for the SetBatchNumMsg request
+  :Request fields:  - "GridBatchNum"
 
 SetOptionsMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for SetOptionsMsg request
-  :Request fields:
-      - GridFilenameExpression
-      - GridFilenameValidation
-      - GridUniqueTag
-      - GridBarcode
-      - GridDefaultStorage
-      - GridDefaultFocusMode
-      - GridGenerateFilename
-      - GridAutoConnect
-      - GridAutoSynchroniseTime
-      - GridScanSequenceNum
-      - GridScanBatchNum
-      - GridLiveviewDatalimit
+  :Type:            object
+  :Description:     Contains fields for SetOptionsMsg request
+  :Request fields:  - "GridFilenameExpression"
+                    - "GridFilenameValidation"
+                    - "GridUniqueTag"
+                    - "GridBarcode"
+                    - "GridDefaultStorage"
+                    - "GridDefaultFocusMode"
+                    - "GridGenerateFilename"
+                    - "GridAutoConnect"
+                    - "GridAutoSynchroniseTime"
+                    - "GridScanSequenceNum"
+                    - "GridScanBatchNum"
+                    - "GridLiveviewDatalimit"
 
 SetPropertyMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the SetPropertyMsg request
-  :Request fields:
-      - [CAMERA SELECTION FIELDS]
-      - CameraPropertyType
-      - CameraPropertyValue
+  :Type:            object
+  :Description:     Contains fields for the SetPropertyMsg request
+  :Request fields:  - "[CAMERA SELECTION FIELDS]"
+                    - "CameraPropertyType"
+                    - "CameraPropertyValue"
 
 SetSequenceNumMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for SetSequenceNumMsg request
-  :Request fields:
-      - GridSequenceNum
+  :Type:            object
+  :Description:     Contains fields for SetSequenceNumMsg request
+  :Request fields:  - "GridSequenceNum"
 
 SetShutterButtonMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the SetShutterButtonMsg request
-  :Request fields:
-      - [CAMERA SELECTION FIELDS]
-      - CameraShutterButton
+  :Type:            object
+  :Description:     Contains fields for the SetShutterButtonMsg request
+  :Request fields:  - "[CAMERA SELECTION FIELDS]"
+                    - "CameraShutterButton"
 
 ShootMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the ShootMsg request
-  :Request fields:
-      - [CAMERA SELECTION FIELDS]
+  :Type:            object
+  :Description:     Contains fields for the ShootMsg request
+  :Request fields:  - "[CAMERA SELECTION FIELDS]"
 
 SyncBatchNumMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the SyncBatchNumMsg request
-  :Request fields:
+  :Type:            object
+  :Description:     Contains fields for the SyncBatchNumMsg request
 
 SyncClocksMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the SyncClocksMsg request
-  :Request fields:
-      - CameraDateTimeOffset
+  :Type:            object
+  :Description:     Contains fields for the SyncClocksMsg request
+  :Request fields:  - "CameraDateTimeOffset"
 
 SynchroniseMsg
-  :Type:
-    object
-  :Description:
-    Contains fields for the SynchroniseMsg request
-  :Request fields:
-  :Response fields:
-      - NodeUpdatedEventMsg
-      - SetOptionsMsg
-      - LicenseMsg
-      - CameraUpdatedMsg[]
-      - PhotoUpdatedMsg[]
-      - PropertyUpdatedMsg[]
+  :Type:            object
+  :Description:     Contains fields for the SynchroniseMsg request
+  :Response fields: - "NodeUpdatedEventMsg"
+                    - "SetOptionsMsg"
+                    - "LicenseMsg"
+                    - "CameraUpdatedMsg[]"
+                    - "PhotoUpdatedMsg[]"
+                    - "PropertyUpdatedMsg[]"
 
 TransferData
-  :Type:
-    data
-  :Description:
-    internal use
+  :Type:            data
+  :Description:     internal use
 
 TransferOffset
-  :Type:
-    uint32
-  :Description:
-    internal use
+  :Type:            uint32
+  :Description:     internal use
 
 TransferPhotoMsg
-  :Type:
-    object
-  :Description:
-    internal use
+  :Type:            object
+  :Description:     internal use
 
 TransferSize
-  :Type:
-    uint32
-  :Description:
-    internal use
+  :Type:            uint32
+  :Description:     internal use
 
 msg_id
-  :Type:
-    string
-  :Description:
-    Indicates the message contents
+  :Type:            string
+  :Description:     Indicates the message contents
 
 msg_ref_num
-  :Type:
-    int32
-  :Description:
-    Message reference number
+  :Type:            int32
+  :Description:     Message reference number
 
 msg_type
-  :Type:
-    string
-  :Description:
-    Indicates whether message is request/response or event
-  :Valid range:
-      - "Request"
-      - "Response"
-      - "Event"
+  :Type:            string
+  :Description:     Indicates whether message is request/response or event
+  :Valid range:     - "Request"
+                    - "Response"
+                    - "Event"
