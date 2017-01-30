@@ -258,6 +258,8 @@ List of Fields
 +----------------------------------+--------------------------------------------------------------------+
 | CameraDateTimeOffset             | Contains offset from local time for when syncing date/time         |
 +----------------------------------+--------------------------------------------------------------------+
+| CameraDownloadRate               | Transfer rate for last photo download in mbytes/sec                |
++----------------------------------+--------------------------------------------------------------------+
 | CameraIsFocused                  | Indicates of camera auto focus action was successful               |
 +----------------------------------+--------------------------------------------------------------------+
 | CameraKey                        | Unique identfier for a camera                                      |
@@ -504,6 +506,10 @@ CameraDateTimeOffset
   :Type:            int64
   :Description:     Contains offset from local time for when syncing date/time
 
+CameraDownloadRate
+  :Type:            float
+  :Description:     Transfer rate for last photo download in mbytes/sec
+
 CameraIsFocused
   :Type:            boolean
   :Description:     Indicates of camera auto focus action was successful
@@ -725,6 +731,7 @@ CameraUpdatedMsg
                     - "CameraBulbIsEnabled"
                     - "CameraPowersource"
                     - "CameraBatterylevel"
+                    - "CameraDownloadRate"
                     - "CameraNumPhotosTaken"
                     - "CameraNumPhotosFailed"
                     - "CameraNumDownloadsComplete"
