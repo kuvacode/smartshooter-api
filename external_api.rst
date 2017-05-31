@@ -412,6 +412,8 @@ List of Fields
 +----------------------------------+--------------------------------------------------------------------+
 | PhotoFormat                      | Format of photo image file                                         |
 +----------------------------------+--------------------------------------------------------------------+
+| PhotoHash                        | Hash of photo data contents                                        |
++----------------------------------+--------------------------------------------------------------------+
 | PhotoHeight                      | Height of photo                                                    |
 +----------------------------------+--------------------------------------------------------------------+
 | PhotoIsImage                     | Indicates whether photo is image or not (possible video file)      |
@@ -425,8 +427,6 @@ List of Fields
 | PhotoLocation                    | Location of photo file                                             |
 +----------------------------------+--------------------------------------------------------------------+
 | PhotoOriginalName                | Original name of photo on camera                                   |
-+----------------------------------+--------------------------------------------------------------------+
-| PhotoSHA1                        | SHA1 of photo data contents                                        |
 +----------------------------------+--------------------------------------------------------------------+
 | PhotoSelection                   | Determines the photo selection                                     |
 +----------------------------------+--------------------------------------------------------------------+
@@ -1013,6 +1013,10 @@ PhotoFormat
                     - "TIFF"
                     - "Unknown"
 
+PhotoHash
+  :Type:            string
+  :Description:     Hash of photo data contents
+
 PhotoHeight
   :Type:            int32
   :Description:     Height of photo
@@ -1046,10 +1050,6 @@ PhotoOriginalName
   :Type:            string
   :Description:     Original name of photo on camera
 
-PhotoSHA1
-  :Type:            string
-  :Description:     SHA1 of photo data contents
-
 PhotoSelection
   :Type:            string
   :Description:     Determines the photo selection
@@ -1073,7 +1073,7 @@ PhotoUpdatedMsg
                     - "PhotoFilesize"
                     - "PhotoIsImage"
                     - "PhotoIsScanned"
-                    - "PhotoSHA1"
+                    - "PhotoHash"
                     - "PhotoBarcode"
                     - "GridSequenceNum"
                     - "GridBatchNum"
