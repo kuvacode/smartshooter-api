@@ -156,6 +156,8 @@ The following table lists all the valid request/response messages.
 +-------------------------+--------------------------------------------------------------------------+
 | SetBatchNumMsg          | Set the [B] batch number used when generating filenames                  |
 +-------------------------+--------------------------------------------------------------------------+
+| SetCameraGroupMsg       | Set group for camera                                                     |
++-------------------------+--------------------------------------------------------------------------+
 | SetOptionsMsg           | Set Smart Shooter options                                                |
 +-------------------------+--------------------------------------------------------------------------+
 | SetPropertyMsg          | Set camera property on specified camera                                  |
@@ -259,6 +261,8 @@ List of Fields
 | CameraDateTimeOffset             | Contains offset from local time for when syncing date/time         |
 +----------------------------------+--------------------------------------------------------------------+
 | CameraDownloadRate               | Transfer rate for last photo download in mbytes/sec                |
++----------------------------------+--------------------------------------------------------------------+
+| CameraGroup                      | Group that camera belongs to                                       |
 +----------------------------------+--------------------------------------------------------------------+
 | CameraIsFocused                  | Indicates of camera auto focus action was successful               |
 +----------------------------------+--------------------------------------------------------------------+
@@ -450,6 +454,8 @@ List of Fields
 +----------------------------------+--------------------------------------------------------------------+
 | SetBatchNumMsg                   | Contains fields for the SetBatchNumMsg request                     |
 +----------------------------------+--------------------------------------------------------------------+
+| SetCameraGroupMsg                | Contains fields for the SetCameraGroupMsg request                  |
++----------------------------------+--------------------------------------------------------------------+
 | SetOptionsMsg                    | Contains fields for SetOptionsMsg request                          |
 +----------------------------------+--------------------------------------------------------------------+
 | SetPropertyMsg                   | Contains fields for the SetPropertyMsg request                     |
@@ -509,6 +515,10 @@ CameraDateTimeOffset
 CameraDownloadRate
   :Type:            float
   :Description:     Transfer rate for last photo download in mbytes/sec
+
+CameraGroup
+  :Type:            string
+  :Description:     Group that camera belongs to
 
 CameraIsFocused
   :Type:            boolean
@@ -705,6 +715,7 @@ CameraUpdatedMsg
   :Event fields:    - "[CAMERA SELECTION FIELDS]"
                     - "CameraStatus"
                     - "CameraName"
+                    - "CameraGroup"
                     - "CameraSerialNumber"
                     - "CameraMake"
                     - "CameraModel"
@@ -1131,6 +1142,12 @@ SetBatchNumMsg
   :Type:            object
   :Description:     Contains fields for the SetBatchNumMsg request
   :Request fields:  - "GridBatchNum"
+
+SetCameraGroupMsg
+  :Type:            object
+  :Description:     Contains fields for the SetCameraGroupMsg request
+  :Request fields:  - "[CAMERA SELECTION FIELDS]"
+                    - "CameraGroup"
 
 SetOptionsMsg
   :Type:            object

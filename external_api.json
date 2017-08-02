@@ -81,7 +81,9 @@
         { "msg_id": "RemoveNodeMsg", "msg_type": "request",
           "description": "internal use" },
         { "msg_id": "SyncBatchNumMsg", "msg_type": "request",
-          "description": "Force batch numbers back in sync for all cameras" }
+          "description": "Force batch numbers back in sync for all cameras" },
+        { "msg_id": "SetCameraGroupMsg", "msg_type": "request",
+          "description": "Set group for camera" }
     ],
     "fields": [
         { "name": "msg_type", "type": "string",
@@ -258,6 +260,7 @@
             "[CAMERA SELECTION FIELDS]",
             "CameraStatus",
             "CameraName",
+            "CameraGroup",
             "CameraSerialNumber",
             "CameraMake",
             "CameraModel",
@@ -625,6 +628,14 @@
           "request_fields": [
           ] },
         { "name": "NodeTransferMode", "type": "float",
-          "description": "internal use" }
+          "description": "internal use" },
+        { "name": "CameraGroup", "type": "string",
+          "description": "Group that camera belongs to" },
+        { "name": "SetCameraGroupMsg", "type": "object",
+          "description": "Contains fields for the SetCameraGroupMsg request",
+          "request_fields": [
+            "[CAMERA SELECTION FIELDS]",
+            "CameraGroup"
+          ] }
     ]
 }
