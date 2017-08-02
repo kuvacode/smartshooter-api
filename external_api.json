@@ -83,7 +83,9 @@
         { "msg_id": "SyncBatchNumMsg", "msg_type": "request",
           "description": "Force batch numbers back in sync for all cameras" },
         { "msg_id": "SetCameraGroupMsg", "msg_type": "request",
-          "description": "Set group for camera" }
+          "description": "Set group for camera" },
+        { "msg_id": "RelayCustomTextMsg", "msg_type": "event",
+          "description": "Send custom text to all External API listeners" }
     ],
     "fields": [
         { "name": "msg_type", "type": "string",
@@ -636,6 +638,13 @@
           "request_fields": [
             "[CAMERA SELECTION FIELDS]",
             "CameraGroup"
+          ] },
+        { "name": "CustomText", "type": "string",
+          "description": "Field that can contain arbitrary text" },
+        { "name": "RelayCustomTextMsg", "type": "object",
+          "description": "Contains fields for the RelayCustomTextMsg event",
+          "request_fields": [
+            "CustomText"
           ] }
     ]
 }

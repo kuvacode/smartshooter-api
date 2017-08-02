@@ -81,19 +81,21 @@ Event Messages
 
 The following table lists all the valid event messages.
 
-+--------------------+------------------------------------+
-| msg_id             | Description                        |
-+====================+====================================+
-| CameraUpdatedMsg   | Information about camera status    |
-+--------------------+------------------------------------+
-| LiveviewUpdatedMsg | internal use                       |
-+--------------------+------------------------------------+
-| NodeUpdatedMsg     | Information about GRID node status |
-+--------------------+------------------------------------+
-| PhotoUpdatedMsg    | Information about photo status     |
-+--------------------+------------------------------------+
-| PropertyUpdatedMsg | Information about camera property  |
-+--------------------+------------------------------------+
++--------------------+------------------------------------------------+
+| msg_id             | Description                                    |
++====================+================================================+
+| CameraUpdatedMsg   | Information about camera status                |
++--------------------+------------------------------------------------+
+| LiveviewUpdatedMsg | internal use                                   |
++--------------------+------------------------------------------------+
+| NodeUpdatedMsg     | Information about GRID node status             |
++--------------------+------------------------------------------------+
+| PhotoUpdatedMsg    | Information about photo status                 |
++--------------------+------------------------------------------------+
+| PropertyUpdatedMsg | Information about camera property              |
++--------------------+------------------------------------------------+
+| RelayCustomTextMsg | Send custom text to all External API listeners |
++--------------------+------------------------------------------------+
 
 
 Request/Response Messages
@@ -350,6 +352,8 @@ List of Fields
 +----------------------------------+--------------------------------------------------------------------+
 | ConnectMsg                       | Contains fields for the ConnectMsg request                         |
 +----------------------------------+--------------------------------------------------------------------+
+| CustomText                       | Field that can contain arbitrary text                              |
++----------------------------------+--------------------------------------------------------------------+
 | DeleteMsg                        | Contains fields for the DeleteMsg request                          |
 +----------------------------------+--------------------------------------------------------------------+
 | DetectCamerasMsg                 | Contains fields for the DetectCamerasMsg request                   |
@@ -443,6 +447,8 @@ List of Fields
 | PropertyInfoMsg                  | Contains fields for the PropertyInfoMsg object                     |
 +----------------------------------+--------------------------------------------------------------------+
 | PropertyUpdatedMsg               | Contains fields for the PropertyUpdatedMsg event                   |
++----------------------------------+--------------------------------------------------------------------+
+| RelayCustomTextMsg               | Contains fields for the RelayCustomTextMsg event                   |
 +----------------------------------+--------------------------------------------------------------------+
 | RenameCameraMsg                  | Contains fields for the RenameCameraMsg request                    |
 +----------------------------------+--------------------------------------------------------------------+
@@ -766,6 +772,10 @@ ConnectMsg
   :Type:            object
   :Description:     Contains fields for the ConnectMsg request
   :Request fields:  - "[CAMERA SELECTION FIELDS]"
+
+CustomText
+  :Type:            string
+  :Description:     Field that can contain arbitrary text
 
 DeleteMsg
   :Type:            object
@@ -1108,6 +1118,11 @@ PropertyUpdatedMsg
   :Description:     Contains fields for the PropertyUpdatedMsg event
   :Event fields:    - "[CAMERA SELECTION FIELDS]"
                     - "PropertyInfoMsg[]"
+
+RelayCustomTextMsg
+  :Type:            object
+  :Description:     Contains fields for the RelayCustomTextMsg event
+  :Request fields:  - "CustomText"
 
 RemoveNodeMsg
   :Type:            object
