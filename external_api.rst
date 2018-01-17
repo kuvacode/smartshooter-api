@@ -2,7 +2,7 @@
 External API Documentation
 ==========================
 
-:Version: v3.24
+:Version: v3.35
 
 Copyright 2016-2018, Kuvacode Oy. All rights reserved.
 
@@ -699,6 +699,7 @@ CameraSelection
   :Description:     Determines the camera selection
   :Valid range:     - "All"
                     - "Single"
+                    - "Group"
                     - "Multiple"
 
 CameraSerialNumber
@@ -1081,6 +1082,9 @@ PhotoOriginalName
 PhotoSelection
   :Type:            string
   :Description:     Determines the photo selection
+  :Valid range:     - "All"
+                    - "Single"
+                    - "Multiple"
 
 PhotoUUID
   :Type:            string

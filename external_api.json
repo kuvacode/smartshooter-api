@@ -399,6 +399,7 @@
           "range": [
             "All",
             "Single",
+            "Group",
             "Multiple"
           ] },
         { "name": "CameraKey", "type": "string",
@@ -428,7 +429,12 @@
         { "name": "CameraNumCards", "type": "int32",
           "description": "Number of memory cards in camera" },
         { "name": "PhotoSelection", "type": "string",
-          "description": "Determines the photo selection" },
+          "description": "Determines the photo selection",
+          "range": [
+            "All",
+            "Single",
+            "Multiple"
+          ] },
         { "name": "PhotoKey", "type": "string",
           "description": "Unique identifier for a photo" },
         { "name": "PhotoKeys", "type": "string[]",
