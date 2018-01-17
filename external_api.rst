@@ -239,7 +239,7 @@ Group
   Selects all the cameras from a specific group. The group is then identified
   by the ``CameraGroup`` field.
 
-Mulitple
+Multiple
   Selects a set of specific cameras. The set of cameras is then identified by
   the ``CameraKeys`` field.
 
