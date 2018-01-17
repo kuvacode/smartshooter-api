@@ -232,6 +232,10 @@ Single
   Selects a single specific camera. The camera is then identified by the
   ``CameraKey`` field.
 
+Group
+  Selects all the cameras from a specific group. The group is then identified
+  by the ``CameraGroup`` field.
+
 Mulitple
   Selects a set of specific cameras. The set of cameras is then identified by
   the ``CameraKeys`` field.
@@ -1252,3 +1256,4 @@ msg_type
   :Valid range:     - "Request"
                     - "Response"
                     - "Event"
+
