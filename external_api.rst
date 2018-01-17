@@ -4,6 +4,9 @@ External API Documentation
 
 :Version: v3.24
 
+Copyright 2016-2018, Kuvacode Oy. All rights reserved.
+
+
 Smart Shooter can be integrated with an external system by using the External
 API feature. This provides two key channels of communication:
 
