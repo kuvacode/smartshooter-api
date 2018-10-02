@@ -30,7 +30,7 @@ import zmq
 def send_synchronise(socket):
     req = {}
     req["msg_type"] = "Request"
-    req["msg_id"] = "SynchroniseMsg"
+    req["msg_id"] = "Synchronise"
     req["msg_ref_num"] = 0
     socket.send_string(json.dumps(req))
     rep = socket.recv()
@@ -39,7 +39,7 @@ def send_synchronise(socket):
     return json_msg["Result"]
 
 def print_ls(msg):
-    cameras = msg["CameraUpdatedMsg"]
+    cameras = msg["CameraInfo"]
     for camera in cameras:
         print("{0} {1} {2} {3}".format(camera["CameraSerialNumber"],
                                        camera["CameraMake"],
@@ -75,7 +75,7 @@ def main():
         raw = sub_socket.recv()
         str_msg = raw.decode("utf-8-sig")
         json_msg = json.loads(str_msg)
-        if json_msg["msg_id"] == "SynchroniseMsg":
+        if json_msg["msg_id"] == "Synchronise":
             print_ls(json_msg)
             return
 
