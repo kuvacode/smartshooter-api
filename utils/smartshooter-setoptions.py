@@ -57,7 +57,7 @@ def send_batch_num(socket, batch_num):
     json_msg = json.loads(str_msg)
     return json_msg["Result"]
 
-def send_options(socket, unique_tag, barcode_text):
+def send_options(socket, unique_tag, barcode_text, photo_path):
     global msg_ref_num
     req = {}
     req["msg_type"] = "Request"
@@ -68,6 +68,8 @@ def send_options(socket, unique_tag, barcode_text):
         req['GridUniqueTag'] = unique_tag
     if barcode_text != None:
         req['GridBarcode'] = barcode_text
+    if photo_path != None:
+        req['GridPhotoPath'] = photo_path
     socket.send_string(json.dumps(req))
     rep = socket.recv()
     str_msg = rep.decode("utf-8-sig")
@@ -86,6 +88,8 @@ def main():
                         help="set the Unique Tag")
     parser.add_argument("-z", "--barcode",
                         help="set the Barcode text")
+    parser.add_argument("-d", "--download",
+                        help="set the Photo download directory")
     parser.add_argument("-r", "--reqrep",
                         default="tcp://127.0.0.1:54544",
                         metavar="ENDPOINT",
@@ -107,8 +111,8 @@ def main():
             print("Failed to send batch number message", file=sys.stderr)
             exit(1)
 
-    if args.unique != None or args.barcode != None:
-        if not send_options(req_socket, args.unique, args.barcode):
+    if args.unique != None or args.barcode != None or args.download != None:
+        if not send_options(req_socket, args.unique, args.barcode, args.download):
             print("Failed to send options message", file=sys.stderr)
             exit(1)
 

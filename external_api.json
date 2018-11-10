@@ -123,7 +123,8 @@
             "GridAutoSynchroniseTime",
             "GridScanSequenceNum",
             "GridScanBatchNum",
-            "GridLiveviewDatalimit"
+            "GridLiveviewDatalimit",
+            "GridPhotoPath"
           ] },
         { "name": "SetSequenceNumMsg", "type": "object",
           "description": "Contains fields for SetSequenceNumMsg request",
@@ -394,6 +395,8 @@
           "description": "Contains value for the 'Scan Batch Number' option" },
         { "name": "GridLiveviewDatalimit", "type": "int32",
           "description": "Contains the liveview recording data limit" },
+        { "name": "GridPhotoPath", "type": "string",
+          "description": "Contains value for the 'Photo Download Directory' option" },
         { "name": "CameraSelection", "type": "string",
           "description": "Determines the camera selection",
           "range": [

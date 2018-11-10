@@ -2,7 +2,7 @@
 External API Documentation
 ==========================
 
-:Version: v3.35
+:Version: v3.38
 
 Copyright 2016-2018, Kuvacode Oy. All rights reserved.
 
@@ -400,6 +400,8 @@ List of Fields
 | GridGenerateFilename             | Contains the value for the 'Generate Filename' option              |
 +----------------------------------+--------------------------------------------------------------------+
 | GridLiveviewDatalimit            | Contains the liveview recording data limit                         |
++----------------------------------+--------------------------------------------------------------------+
+| GridPhotoPath                    | Contains value for the 'Photo Download Directory' option           |
 +----------------------------------+--------------------------------------------------------------------+
 | GridScanBatchNum                 | Contains value for the 'Scan Batch Number' option                  |
 +----------------------------------+--------------------------------------------------------------------+
@@ -891,6 +893,10 @@ GridLiveviewDatalimit
   :Type:            int32
   :Description:     Contains the liveview recording data limit
 
+GridPhotoPath
+  :Type:            string
+  :Description:     Contains value for the 'Photo Download Directory' option
+
 GridScanBatchNum
   :Type:            boolean
   :Description:     Contains value for the 'Scan Batch Number' option
@@ -1190,6 +1196,7 @@ SetOptionsMsg
                     - "GridScanSequenceNum"
                     - "GridScanBatchNum"
                     - "GridLiveviewDatalimit"
+                    - "GridPhotoPath"
 
 SetPropertyMsg
   :Type:            object
