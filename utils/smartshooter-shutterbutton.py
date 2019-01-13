@@ -30,7 +30,7 @@ import zmq
 def send_shutterbutton(socket, state):
     req = {}
     req["msg_type"] = "Request"
-    req["msg_id"] = "SetShutterButtonMsg"
+    req["msg_id"] = "SetShutterButton"
     req["msg_ref_num"] = 0
     req["CameraSelection"] = "All"
     req["CameraShutterButton"] = state

@@ -33,7 +33,7 @@ def send_sequence_num(socket, sequence_num):
     global msg_ref_num
     req = {}
     req["msg_type"] = "Request"
-    req["msg_id"] = "SetSequenceNumMsg"
+    req["msg_id"] = "SetSequenceNum"
     req["msg_ref_num"] = msg_ref_num
     req['GridSequenceNum'] = sequence_num
     msg_ref_num += 1
@@ -47,7 +47,7 @@ def send_batch_num(socket, batch_num):
     global msg_ref_num
     req = {}
     req["msg_type"] = "Request"
-    req["msg_id"] = "SetBatchNumMsg"
+    req["msg_id"] = "SetBatchNum"
     req["msg_ref_num"] = msg_ref_num
     req['GridBatchNum'] = batch_num
     msg_ref_num += 1
@@ -61,7 +61,7 @@ def send_options(socket, unique_tag, barcode_text, photo_path):
     global msg_ref_num
     req = {}
     req["msg_type"] = "Request"
-    req["msg_id"] = "SetOptionsMsg"
+    req["msg_id"] = "SetOptions"
     req["msg_ref_num"] = msg_ref_num
     msg_ref_num += 1
     if unique_tag != None:

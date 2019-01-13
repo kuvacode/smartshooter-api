@@ -30,7 +30,7 @@ import zmq
 def send_shoot(socket):
     req = {}
     req["msg_type"] = "Request"
-    req["msg_id"] = "ShootMsg"
+    req["msg_id"] = "Shoot"
     req["msg_ref_num"] = 0
     req["CameraSelection"] = "All"
     socket.send_string(json.dumps(req))

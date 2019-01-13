@@ -30,7 +30,7 @@ import zmq
 def send_relaycustomtext(socket, text):
     req = {}
     req["msg_type"] = "Event"
-    req["msg_id"] = "RelayCustomTextMsg"
+    req["msg_id"] = "RelayCustomText"
     req["msg_ref_num"] = 0
     req["CustomText"] = text
     socket.send_string(json.dumps(req))

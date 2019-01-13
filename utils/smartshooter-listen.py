@@ -53,7 +53,7 @@ def main():
         raw = sub_socket.recv()
         str_msg = raw.decode("utf-8-sig")
         json_msg = json.loads(str_msg)
-        if args.nopings and json_msg["msg_id"] == "NetworkPingMsg":
+        if args.nopings and json_msg["msg_id"] == "NetworkPing":
             continue
         print("{0}: {1}".format(datetime.datetime.now(), json_msg["msg_id"]))
         if not args.quiet:
