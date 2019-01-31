@@ -312,6 +312,7 @@
             "PhotoComputedName",
             "PhotoDateCaptured",
             "PhotoFormat",
+            "PhotoOrientation",
             "PhotoWidth",
             "PhotoHeight",
             "PhotoFilesize",
@@ -469,6 +470,19 @@
             "Raw",
             "TGA",
             "TIFF",
+            "Unknown"
+          ] },
+        { "name": "PhotoOrientation", "type": "string",
+          "description": "Orientation of photo",
+          "range": [
+            "None",
+            "Rotate270",
+            "Rotate180",
+            "Rotate90",
+            "FlipY",
+            "InverseTranspose",
+            "FlipX",
+            "Transpose",
             "Unknown"
           ] },
         { "name": "PhotoWidth", "type": "int32",
