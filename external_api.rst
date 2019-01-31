@@ -2,7 +2,7 @@
 External API Documentation
 ==========================
 
-:Version: v3.38
+:Version: v4.0
 
 Copyright 2016-2018, Kuvacode Oy. All rights reserved.
 
@@ -84,21 +84,21 @@ Event Messages
 
 The following table lists all the valid event messages.
 
-+--------------------+------------------------------------------------+
-| msg_id             | Description                                    |
-+====================+================================================+
-| CameraUpdatedMsg   | Information about camera status                |
-+--------------------+------------------------------------------------+
-| LiveviewUpdatedMsg | internal use                                   |
-+--------------------+------------------------------------------------+
-| NodeUpdatedMsg     | Information about GRID node status             |
-+--------------------+------------------------------------------------+
-| PhotoUpdatedMsg    | Information about photo status                 |
-+--------------------+------------------------------------------------+
-| PropertyUpdatedMsg | Information about camera property              |
-+--------------------+------------------------------------------------+
-| RelayCustomTextMsg | Send custom text to all External API listeners |
-+--------------------+------------------------------------------------+
++-----------------+------------------------------------------------+
+| msg_id          | Description                                    |
++=================+================================================+
+| CameraUpdated   | Information about camera status                |
++-----------------+------------------------------------------------+
+| LiveviewUpdated | internal use                                   |
++-----------------+------------------------------------------------+
+| NodeUpdated     | Information about GRID node status             |
++-----------------+------------------------------------------------+
+| PhotoUpdated    | Information about photo status                 |
++-----------------+------------------------------------------------+
+| PropertyUpdated | Information about camera property              |
++-----------------+------------------------------------------------+
+| RelayCustomText | Send custom text to all External API listeners |
++-----------------+------------------------------------------------+
 
 
 Request/Response Messages
@@ -106,81 +106,81 @@ Request/Response Messages
 
 The following table lists all the valid request/response messages.
 
-+-------------------------+--------------------------------------------------------------------------+
-| msg_id                  | Description                                                              |
-+=========================+==========================================================================+
-| AutofocusMsg            | Do auto focus with specified camera                                      |
-+-------------------------+--------------------------------------------------------------------------+
-| CheckClocksMsg          | Retrieve current date/time from all cameras                              |
-+-------------------------+--------------------------------------------------------------------------+
-| ConnectMsg              | Connect specified camera                                                 |
-+-------------------------+--------------------------------------------------------------------------+
-| DeleteMsg               | Delete specified photo from computer                                     |
-+-------------------------+--------------------------------------------------------------------------+
-| DetectCamerasMsg        | Request Smart Shooter to detect connected cameras                        |
-+-------------------------+--------------------------------------------------------------------------+
-| DisconnectMsg           | Disconnect specified camera                                              |
-+-------------------------+--------------------------------------------------------------------------+
-| DownloadMsg             | Download specified photo from camera to computer                         |
-+-------------------------+--------------------------------------------------------------------------+
-| EnableLiveviewDOFMsg    | Enable/disable liveview DOF (depth of field) preview on specified camera |
-+-------------------------+--------------------------------------------------------------------------+
-| EnableLiveviewMsg       | Enable/disable liveview on specified camera                              |
-+-------------------------+--------------------------------------------------------------------------+
-| EnableLiveviewRecordMsg | Enable/disable recording of liveview images on specified camera          |
-+-------------------------+--------------------------------------------------------------------------+
-| EnableLiveviewZoomMsg   | Enable/disable liveview zoom region on specified camera                  |
-+-------------------------+--------------------------------------------------------------------------+
-| EnableVideoMsg          | Start/stop video recording on specified camera                           |
-+-------------------------+--------------------------------------------------------------------------+
-| FormatAllMsg            | Format memory cards on all cameras                                       |
-+-------------------------+--------------------------------------------------------------------------+
-| IdentifyMsg             | Request specified camera identifies itself                               |
-+-------------------------+--------------------------------------------------------------------------+
-| LicenseMsg              | internal use                                                             |
-+-------------------------+--------------------------------------------------------------------------+
-| LiveviewFPSMsg          | Set desired liveview FPS for specified camera                            |
-+-------------------------+--------------------------------------------------------------------------+
-| LiveviewFocusMsg        | Drive liveview focus motor for specified camera                          |
-+-------------------------+--------------------------------------------------------------------------+
-| LiveviewPositionMsg     | Change liveview zoom region for specified camera                         |
-+-------------------------+--------------------------------------------------------------------------+
-| NetworkPingMsg          | internal use                                                             |
-+-------------------------+--------------------------------------------------------------------------+
-| NodeEndpointMsg         | internal use                                                             |
-+-------------------------+--------------------------------------------------------------------------+
-| RemoveNodeMsg           | internal use                                                             |
-+-------------------------+--------------------------------------------------------------------------+
-| RenameCameraMsg         | Set name for camera                                                      |
-+-------------------------+--------------------------------------------------------------------------+
-| RenameNodeMsg           | Set name for GRID node                                                   |
-+-------------------------+--------------------------------------------------------------------------+
-| RenamePhotoMsg          | Set filename for photo                                                   |
-+-------------------------+--------------------------------------------------------------------------+
-| ReshootMsg              | Reshoot photo using same filename on specified camera                    |
-+-------------------------+--------------------------------------------------------------------------+
-| SetBatchNumMsg          | Set the [B] batch number used when generating filenames                  |
-+-------------------------+--------------------------------------------------------------------------+
-| SetCameraGroupMsg       | Set group for camera                                                     |
-+-------------------------+--------------------------------------------------------------------------+
-| SetOptionsMsg           | Set Smart Shooter options                                                |
-+-------------------------+--------------------------------------------------------------------------+
-| SetPropertyMsg          | Set camera property on specified camera                                  |
-+-------------------------+--------------------------------------------------------------------------+
-| SetSequenceNumMsg       | Set the [S] sequence number used when generating filenames               |
-+-------------------------+--------------------------------------------------------------------------+
-| SetShutterButtonMsg     | Set shutter button state for specified camera                            |
-+-------------------------+--------------------------------------------------------------------------+
-| ShootMsg                | Take photo with specified camera                                         |
-+-------------------------+--------------------------------------------------------------------------+
-| SyncBatchNumMsg         | Force batch numbers back in sync for all cameras                         |
-+-------------------------+--------------------------------------------------------------------------+
-| SyncClocksMsg           | Synchronise clocks on all cameras                                        |
-+-------------------------+--------------------------------------------------------------------------+
-| SynchroniseMsg          | Request latest information about cameras/photos                          |
-+-------------------------+--------------------------------------------------------------------------+
-| TransferPhotoMsg        | internal use                                                             |
-+-------------------------+--------------------------------------------------------------------------+
++----------------------+--------------------------------------------------------------------------+
+| msg_id               | Description                                                              |
++======================+==========================================================================+
+| Autofocus            | Do auto focus with specified camera                                      |
++----------------------+--------------------------------------------------------------------------+
+| CheckClocks          | Retrieve current date/time from all cameras                              |
++----------------------+--------------------------------------------------------------------------+
+| Connect              | Connect specified camera                                                 |
++----------------------+--------------------------------------------------------------------------+
+| Delete               | Delete specified photo from computer                                     |
++----------------------+--------------------------------------------------------------------------+
+| DetectCameras        | Request Smart Shooter to detect connected cameras                        |
++----------------------+--------------------------------------------------------------------------+
+| Disconnect           | Disconnect specified camera                                              |
++----------------------+--------------------------------------------------------------------------+
+| Download             | Download specified photo from camera to computer                         |
++----------------------+--------------------------------------------------------------------------+
+| EnableLiveview       | Enable/disable liveview on specified camera                              |
++----------------------+--------------------------------------------------------------------------+
+| EnableLiveviewDOF    | Enable/disable liveview DOF (depth of field) preview on specified camera |
++----------------------+--------------------------------------------------------------------------+
+| EnableLiveviewRecord | Enable/disable recording of liveview images on specified camera          |
++----------------------+--------------------------------------------------------------------------+
+| EnableLiveviewZoom   | Enable/disable liveview zoom region on specified camera                  |
++----------------------+--------------------------------------------------------------------------+
+| EnableVideo          | Start/stop video recording on specified camera                           |
++----------------------+--------------------------------------------------------------------------+
+| FormatAll            | Format memory cards on all cameras                                       |
++----------------------+--------------------------------------------------------------------------+
+| Identify             | Request specified camera identifies itself                               |
++----------------------+--------------------------------------------------------------------------+
+| License              | internal use                                                             |
++----------------------+--------------------------------------------------------------------------+
+| LiveviewFPS          | Set desired liveview FPS for specified camera                            |
++----------------------+--------------------------------------------------------------------------+
+| LiveviewFocus        | Drive liveview focus motor for specified camera                          |
++----------------------+--------------------------------------------------------------------------+
+| LiveviewPosition     | Change liveview zoom region for specified camera                         |
++----------------------+--------------------------------------------------------------------------+
+| NetworkPing          | internal use                                                             |
++----------------------+--------------------------------------------------------------------------+
+| NodeEndpoint         | internal use                                                             |
++----------------------+--------------------------------------------------------------------------+
+| RemoveNode           | internal use                                                             |
++----------------------+--------------------------------------------------------------------------+
+| RenameCamera         | Set name for camera                                                      |
++----------------------+--------------------------------------------------------------------------+
+| RenameNode           | Set name for GRID node                                                   |
++----------------------+--------------------------------------------------------------------------+
+| RenamePhoto          | Set filename for photo                                                   |
++----------------------+--------------------------------------------------------------------------+
+| Reshoot              | Reshoot photo using same filename on specified camera                    |
++----------------------+--------------------------------------------------------------------------+
+| SetBatchNum          | Set the [B] batch number used when generating filenames                  |
++----------------------+--------------------------------------------------------------------------+
+| SetCameraGroup       | Set group for camera                                                     |
++----------------------+--------------------------------------------------------------------------+
+| SetOptions           | Set Smart Shooter options                                                |
++----------------------+--------------------------------------------------------------------------+
+| SetProperty          | Set camera property on specified camera                                  |
++----------------------+--------------------------------------------------------------------------+
+| SetSequenceNum       | Set the [S] sequence number used when generating filenames               |
++----------------------+--------------------------------------------------------------------------+
+| SetShutterButton     | Set shutter button state for specified camera                            |
++----------------------+--------------------------------------------------------------------------+
+| Shoot                | Take photo with specified camera                                         |
++----------------------+--------------------------------------------------------------------------+
+| SyncBatchNum         | Force batch numbers back in sync for all cameras                         |
++----------------------+--------------------------------------------------------------------------+
+| SyncClocks           | Synchronise clocks on all cameras                                        |
++----------------------+--------------------------------------------------------------------------+
+| Synchronise          | Request latest information about cameras/photos                          |
++----------------------+--------------------------------------------------------------------------+
+| TransferPhoto        | internal use                                                             |
++----------------------+--------------------------------------------------------------------------+
 
 
 Fields
@@ -257,7 +257,7 @@ List of Fields
 +----------------------------------+--------------------------------------------------------------------+
 | Name                             | Description                                                        |
 +==================================+====================================================================+
-| AutofocusMsg                     | Contains fields for the AutofocusMsg request                       |
+| Autofocus                        | Contains fields for the Autofocus request                          |
 +----------------------------------+--------------------------------------------------------------------+
 | CameraAutofocusIsSupported       | Indicates if camera supports auto focus                            |
 +----------------------------------+--------------------------------------------------------------------+
@@ -349,39 +349,39 @@ List of Fields
 +----------------------------------+--------------------------------------------------------------------+
 | CameraStatus                     | Status of camera                                                   |
 +----------------------------------+--------------------------------------------------------------------+
-| CameraUpdatedMsg                 | Contains fields for the CameraUpdatedMsg event                     |
+| CameraUpdated                    | Contains fields for the CameraUpdated event                        |
 +----------------------------------+--------------------------------------------------------------------+
 | CameraVideoIsEnabled             | Indicates whether video is being recorded                          |
 +----------------------------------+--------------------------------------------------------------------+
 | CameraVideoIsSupported           | Indicates whether video recording is supported                     |
 +----------------------------------+--------------------------------------------------------------------+
-| CheckClocksMsg                   | Contains fields for the CheckClocksMsg request                     |
+| CheckClocks                      | Contains fields for the CheckClocks request                        |
 +----------------------------------+--------------------------------------------------------------------+
-| ConnectMsg                       | Contains fields for the ConnectMsg request                         |
+| Connect                          | Contains fields for the Connect request                            |
 +----------------------------------+--------------------------------------------------------------------+
 | CustomText                       | Field that can contain arbitrary text                              |
 +----------------------------------+--------------------------------------------------------------------+
-| DeleteMsg                        | Contains fields for the DeleteMsg request                          |
+| Delete                           | Contains fields for the Delete request                             |
 +----------------------------------+--------------------------------------------------------------------+
-| DetectCamerasMsg                 | Contains fields for the DetectCamerasMsg request                   |
+| DetectCameras                    | Contains fields for the DetectCameras request                      |
 +----------------------------------+--------------------------------------------------------------------+
-| DisconnectMsg                    | Contains fields for the DisconnectMsg request                      |
+| Disconnect                       | Contains fields for the Disconnect request                         |
 +----------------------------------+--------------------------------------------------------------------+
-| DownloadMsg                      | Contains fields for the DownloadMsg request                        |
+| Download                         | Contains fields for the Download request                           |
 +----------------------------------+--------------------------------------------------------------------+
 | Enable                           | Generic indicator for enabling/disabling some state                |
 +----------------------------------+--------------------------------------------------------------------+
-| EnableLiveviewDOFMsg             | Contains fields for the EnableLiveviewDOFMsg request               |
+| EnableLiveview                   | Contains fields for the EnableLiveview request                     |
 +----------------------------------+--------------------------------------------------------------------+
-| EnableLiveviewMsg                | Contains fields for the EnableLiveviewMsg request                  |
+| EnableLiveviewDOF                | Contains fields for the EnableLiveviewDOF request                  |
 +----------------------------------+--------------------------------------------------------------------+
-| EnableLiveviewRecordMsg          | Contains fields for the EnableLiveviewRecordMsg request            |
+| EnableLiveviewRecord             | Contains fields for the EnableLiveviewRecord request               |
 +----------------------------------+--------------------------------------------------------------------+
-| EnableLiveviewZoomMsg            | Contains fields for the EnableLiveviewZoomMsg request              |
+| EnableLiveviewZoom               | Contains fields for the EnableLiveviewZoom request                 |
 +----------------------------------+--------------------------------------------------------------------+
-| EnableVideoMsg                   | Contains fields for the EnableVideoMsg request                     |
+| EnableVideo                      | Contains fields for the EnableVideo request                        |
 +----------------------------------+--------------------------------------------------------------------+
-| FormatAllMsg                     | Contains fields for the FormatAllMsg request                       |
+| FormatAll                        | Contains fields for the FormatAll request                          |
 +----------------------------------+--------------------------------------------------------------------+
 | GridAutoConnect                  | Contains the value for the 'Auto Connect' option                   |
 +----------------------------------+--------------------------------------------------------------------+
@@ -411,13 +411,13 @@ List of Fields
 +----------------------------------+--------------------------------------------------------------------+
 | GridUniqueTag                    | Contains the [U] unique tag                                        |
 +----------------------------------+--------------------------------------------------------------------+
-| IdentifyMsg                      | Contains fields for the IdentifyMsg request                        |
+| Identify                         | Contains fields for the Identify request                           |
 +----------------------------------+--------------------------------------------------------------------+
-| LiveviewFPSMsg                   | Contains fields for the LiveviewFPSMsg request                     |
+| LiveviewFPS                      | Contains fields for the LiveviewFPS request                        |
 +----------------------------------+--------------------------------------------------------------------+
-| LiveviewFocusMsg                 | Contains fields for the LiveviewFocusMsg request                   |
+| LiveviewFocus                    | Contains fields for the LiveviewFocus request                      |
 +----------------------------------+--------------------------------------------------------------------+
-| LiveviewPositionMsg              | Contains fields for the LiveviewPositionMsg request                |
+| LiveviewPosition                 | Contains fields for the LiveviewPosition request                   |
 +----------------------------------+--------------------------------------------------------------------+
 | PhotoBarcode                     | Contains barcode text scanned from photo                           |
 +----------------------------------+--------------------------------------------------------------------+
@@ -443,55 +443,59 @@ List of Fields
 +----------------------------------+--------------------------------------------------------------------+
 | PhotoLocation                    | Location of photo file                                             |
 +----------------------------------+--------------------------------------------------------------------+
+| PhotoOrientation                 | Orientation of photo                                               |
++----------------------------------+--------------------------------------------------------------------+
 | PhotoOriginalName                | Original name of photo on camera                                   |
 +----------------------------------+--------------------------------------------------------------------+
 | PhotoSelection                   | Determines the photo selection                                     |
 +----------------------------------+--------------------------------------------------------------------+
 | PhotoUUID                        | Internal UUID of photo                                             |
 +----------------------------------+--------------------------------------------------------------------+
-| PhotoUpdatedMsg                  | Contains fields for the PhotoUpdatedMsg event                      |
+| PhotoUpdated                     | Contains fields for the PhotoUpdated event                         |
 +----------------------------------+--------------------------------------------------------------------+
 | PhotoWidth                       | Width of photo                                                     |
 +----------------------------------+--------------------------------------------------------------------+
-| PropertyInfoMsg                  | Contains fields for the PropertyInfoMsg object                     |
+| PropertyInfo                     | Contains fields for the PropertyInfo object                        |
 +----------------------------------+--------------------------------------------------------------------+
-| PropertyUpdatedMsg               | Contains fields for the PropertyUpdatedMsg event                   |
+| PropertyUpdated                  | Contains fields for the PropertyUpdated event                      |
 +----------------------------------+--------------------------------------------------------------------+
-| RelayCustomTextMsg               | Contains fields for the RelayCustomTextMsg event                   |
+| RelayCustomText                  | Contains fields for the RelayCustomText event                      |
 +----------------------------------+--------------------------------------------------------------------+
-| RenameCameraMsg                  | Contains fields for the RenameCameraMsg request                    |
+| RenameCamera                     | Contains fields for the RenameCamera request                       |
 +----------------------------------+--------------------------------------------------------------------+
-| RenamePhotoMsg                   | Contains fields for the RenamePhotoMsg request                     |
+| RenamePhoto                      | Contains fields for the RenamePhoto request                        |
 +----------------------------------+--------------------------------------------------------------------+
-| ReshootMsg                       | Contains fields for the ReshootMsg request                         |
+| Reshoot                          | Contains fields for the Reshoot request                            |
 +----------------------------------+--------------------------------------------------------------------+
-| Result                           | Generic result field indicating success or failure                 |
+| SetBatchNum                      | Contains fields for the SetBatchNum request                        |
 +----------------------------------+--------------------------------------------------------------------+
-| SetBatchNumMsg                   | Contains fields for the SetBatchNumMsg request                     |
+| SetCameraGroup                   | Contains fields for the SetCameraGroup request                     |
 +----------------------------------+--------------------------------------------------------------------+
-| SetCameraGroupMsg                | Contains fields for the SetCameraGroupMsg request                  |
+| SetOptions                       | Contains fields for SetOptions request                             |
 +----------------------------------+--------------------------------------------------------------------+
-| SetOptionsMsg                    | Contains fields for SetOptionsMsg request                          |
+| SetProperty                      | Contains fields for the SetProperty request                        |
 +----------------------------------+--------------------------------------------------------------------+
-| SetPropertyMsg                   | Contains fields for the SetPropertyMsg request                     |
+| SetSequenceNum                   | Contains fields for SetSequenceNum request                         |
 +----------------------------------+--------------------------------------------------------------------+
-| SetSequenceNumMsg                | Contains fields for SetSequenceNumMsg request                      |
+| SetShutterButton                 | Contains fields for the SetShutterButton request                   |
 +----------------------------------+--------------------------------------------------------------------+
-| SetShutterButtonMsg              | Contains fields for the SetShutterButtonMsg request                |
+| Shoot                            | Contains fields for the Shoot request                              |
 +----------------------------------+--------------------------------------------------------------------+
-| ShootMsg                         | Contains fields for the ShootMsg request                           |
+| SyncBatchNum                     | Contains fields for the SyncBatchNum request                       |
 +----------------------------------+--------------------------------------------------------------------+
-| SyncBatchNumMsg                  | Contains fields for the SyncBatchNumMsg request                    |
+| SyncClocks                       | Contains fields for the SyncClocks request                         |
 +----------------------------------+--------------------------------------------------------------------+
-| SyncClocksMsg                    | Contains fields for the SyncClocksMsg request                      |
+| Synchronise                      | Contains fields for the Synchronise request                        |
 +----------------------------------+--------------------------------------------------------------------+
-| SynchroniseMsg                   | Contains fields for the SynchroniseMsg request                     |
+| msg_id                           | Identifier string for message type                                 |
 +----------------------------------+--------------------------------------------------------------------+
-| msg_id                           | Indicates the message contents                                     |
+| msg_result                       | Generic result field indicating success or failure                 |
 +----------------------------------+--------------------------------------------------------------------+
-| msg_ref_num                      | Message reference number                                           |
+| msg_seq_num                      | Message sequence number                                            |
 +----------------------------------+--------------------------------------------------------------------+
 | msg_type                         | Indicates whether message is request/response or event             |
++----------------------------------+--------------------------------------------------------------------+
+| msg_user_id                      | Custom user ID number                                              |
 +----------------------------------+--------------------------------------------------------------------+
 
 
@@ -502,9 +506,9 @@ The following sections defines all the valid fields, along with associated data
 type. The fields that are JSON objects, it lists the valid sub-fields that may
 be contained within that object.
 
-AutofocusMsg
+Autofocus
   :Type:            object
-  :Description:     Contains fields for the AutofocusMsg request
+  :Description:     Contains fields for the Autofocus request
   :Request fields:  - "[CAMERA SELECTION FIELDS]"
 
 CameraAutofocusIsSupported
@@ -725,9 +729,9 @@ CameraStatus
                     - "Busy"
                     - "Error"
 
-CameraUpdatedMsg
+CameraUpdated
   :Type:            object
-  :Description:     Contains fields for the CameraUpdatedMsg event
+  :Description:     Contains fields for the CameraUpdated event
   :Event fields:    - "[CAMERA SELECTION FIELDS]"
                     - "CameraStatus"
                     - "CameraName"
@@ -774,75 +778,75 @@ CameraVideoIsSupported
   :Type:            boolean
   :Description:     Indicates whether video recording is supported
 
-CheckClocksMsg
+CheckClocks
   :Type:            object
-  :Description:     Contains fields for the CheckClocksMsg request
+  :Description:     Contains fields for the CheckClocks request
 
-ConnectMsg
+Connect
   :Type:            object
-  :Description:     Contains fields for the ConnectMsg request
+  :Description:     Contains fields for the Connect request
   :Request fields:  - "[CAMERA SELECTION FIELDS]"
 
 CustomText
   :Type:            string
   :Description:     Field that can contain arbitrary text
 
-DeleteMsg
+Delete
   :Type:            object
-  :Description:     Contains fields for the DeleteMsg request
+  :Description:     Contains fields for the Delete request
   :Request fields:  - "[PHOTO SELECTION FIELDS]"
 
-DetectCamerasMsg
+DetectCameras
   :Type:            object
-  :Description:     Contains fields for the DetectCamerasMsg request
+  :Description:     Contains fields for the DetectCameras request
 
-DisconnectMsg
+Disconnect
   :Type:            object
-  :Description:     Contains fields for the DisconnectMsg request
+  :Description:     Contains fields for the Disconnect request
   :Request fields:  - "[CAMERA SELECTION FIELDS]"
 
-DownloadMsg
+Download
   :Type:            object
-  :Description:     Contains fields for the DownloadMsg request
+  :Description:     Contains fields for the Download request
   :Request fields:  - "[PHOTO SELECTION FIELDS]"
 
 Enable
   :Type:            boolean
   :Description:     Generic indicator for enabling/disabling some state
 
-EnableLiveviewDOFMsg
+EnableLiveview
   :Type:            object
-  :Description:     Contains fields for the EnableLiveviewDOFMsg request
+  :Description:     Contains fields for the EnableLiveview request
   :Request fields:  - "[CAMERA SELECTION FIELDS]"
                     - "Enable"
 
-EnableLiveviewMsg
+EnableLiveviewDOF
   :Type:            object
-  :Description:     Contains fields for the EnableLiveviewMsg request
+  :Description:     Contains fields for the EnableLiveviewDOF request
   :Request fields:  - "[CAMERA SELECTION FIELDS]"
                     - "Enable"
 
-EnableLiveviewRecordMsg
+EnableLiveviewRecord
   :Type:            object
-  :Description:     Contains fields for the EnableLiveviewRecordMsg request
+  :Description:     Contains fields for the EnableLiveviewRecord request
   :Request fields:  - "[CAMERA SELECTION FIELDS]"
                     - "Enable"
 
-EnableLiveviewZoomMsg
+EnableLiveviewZoom
   :Type:            object
-  :Description:     Contains fields for the EnableLiveviewZoomMsg request
+  :Description:     Contains fields for the EnableLiveviewZoom request
   :Request fields:  - "[CAMERA SELECTION FIELDS]"
                     - "Enable"
 
-EnableVideoMsg
+EnableVideo
   :Type:            object
-  :Description:     Contains fields for the EnableVideoMsg request
+  :Description:     Contains fields for the EnableVideo request
   :Request fields:  - "[CAMERA SELECTION FIELDS]"
                     - "Enable"
 
-FormatAllMsg
+FormatAll
   :Type:            object
-  :Description:     Contains fields for the FormatAllMsg request
+  :Description:     Contains fields for the FormatAll request
 
 GridAutoConnect
   :Type:            boolean
@@ -913,40 +917,40 @@ GridUniqueTag
   :Type:            string
   :Description:     Contains the [U] unique tag
 
-IdentifyMsg
+Identify
   :Type:            object
-  :Description:     Contains fields for the IdentifyMsg request
+  :Description:     Contains fields for the Identify request
   :Request fields:  - "[CAMERA SELECTION FIELDS]"
+
+License
+  :Type:            object
+  :Description:     internal use
 
 License
   :Type:            string
   :Description:     internal use
 
-LicenseMsg
+LiveviewFPS
   :Type:            object
-  :Description:     internal use
-
-LiveviewFPSMsg
-  :Type:            object
-  :Description:     Contains fields for the LiveviewFPSMsg request
+  :Description:     Contains fields for the LiveviewFPS request
   :Request fields:  - "[CAMERA SELECTION FIELDS]"
                     - "CameraLiveviewFPS"
                     - "CameraLiveviewVideoFPS"
 
-LiveviewFocusMsg
+LiveviewFocus
   :Type:            object
-  :Description:     Contains fields for the LiveviewFocusMsg request
+  :Description:     Contains fields for the LiveviewFocus request
   :Request fields:  - "[CAMERA SELECTION FIELDS]"
                     - "CameraLiveviewFocus"
 
-LiveviewPositionMsg
+LiveviewPosition
   :Type:            object
-  :Description:     Contains fields for the LiveviewPositionMsg request
+  :Description:     Contains fields for the LiveviewPosition request
   :Request fields:  - "[CAMERA SELECTION FIELDS]"
                     - "CameraLiveviewPositionX"
                     - "CameraLiveviewPositionY"
 
-LiveviewUpdatedMsg
+LiveviewUpdated
   :Type:            object
   :Description:     internal use
 
@@ -954,7 +958,7 @@ NetworkAddress
   :Type:            string
   :Description:     internal use
 
-NetworkDiscoveryMsg
+NetworkDiscovery
   :Type:            object
   :Description:     internal use
 
@@ -962,7 +966,7 @@ NetworkEndpoint
   :Type:            string
   :Description:     internal use
 
-NetworkPingMsg
+NetworkPing
   :Type:            object
   :Description:     internal use
 
@@ -982,7 +986,7 @@ NodeEndpoint
   :Type:            string
   :Description:     internal use
 
-NodeEndpointMsg
+NodeEndpoint
   :Type:            object
   :Description:     internal use
 
@@ -1014,7 +1018,7 @@ NodeTransferMode
   :Type:            float
   :Description:     internal use
 
-NodeUpdatedMsg
+NodeUpdated
   :Type:            object
   :Description:     internal use
 
@@ -1081,6 +1085,19 @@ PhotoLocation
                     - "Camera"
                     - "Local Disk"
 
+PhotoOrientation
+  :Type:            string
+  :Description:     Orientation of photo
+  :Valid range:     - "None"
+                    - "Rotate270"
+                    - "Rotate180"
+                    - "Rotate90"
+                    - "FlipY"
+                    - "InverseTranspose"
+                    - "FlipX"
+                    - "Transpose"
+                    - "Unknown"
+
 PhotoOriginalName
   :Type:            string
   :Description:     Original name of photo on camera
@@ -1096,9 +1113,9 @@ PhotoUUID
   :Type:            string
   :Description:     Internal UUID of photo
 
-PhotoUpdatedMsg
+PhotoUpdated
   :Type:            object
-  :Description:     Contains fields for the PhotoUpdatedMsg event
+  :Description:     Contains fields for the PhotoUpdated event
   :Event fields:    - "[PHOTO SELECTION FIELDS]"
                     - "PhotoLocation"
                     - "PhotoUUID"
@@ -1106,6 +1123,7 @@ PhotoUpdatedMsg
                     - "PhotoComputedName"
                     - "PhotoDateCaptured"
                     - "PhotoFormat"
+                    - "PhotoOrientation"
                     - "PhotoWidth"
                     - "PhotoHeight"
                     - "PhotoFilesize"
@@ -1122,68 +1140,64 @@ PhotoWidth
   :Type:            int32
   :Description:     Width of photo
 
-PropertyInfoMsg
+PropertyInfo
   :Type:            object
-  :Description:     Contains fields for the PropertyInfoMsg object
+  :Description:     Contains fields for the PropertyInfo object
   :Event fields:    - "CameraPropertyType"
                     - "CameraPropertyValue"
                     - "CameraPropertyIsWriteable"
                     - "CameraPropertyRange"
 
-PropertyUpdatedMsg
+PropertyUpdated
   :Type:            object
-  :Description:     Contains fields for the PropertyUpdatedMsg event
+  :Description:     Contains fields for the PropertyUpdated event
   :Event fields:    - "[CAMERA SELECTION FIELDS]"
-                    - "PropertyInfoMsg[]"
+                    - "PropertyInfo[]"
 
-RelayCustomTextMsg
+RelayCustomText
   :Type:            object
-  :Description:     Contains fields for the RelayCustomTextMsg event
+  :Description:     Contains fields for the RelayCustomText event
   :Request fields:  - "CustomText"
 
-RemoveNodeMsg
+RemoveNode
   :Type:            object
   :Description:     internal use
 
-RenameCameraMsg
+RenameCamera
   :Type:            object
-  :Description:     Contains fields for the RenameCameraMsg request
+  :Description:     Contains fields for the RenameCamera request
   :Request fields:  - "[CAMERA SELECTION FIELDS]"
                     - "CameraName"
 
-RenameNodeMsg
+RenameNode
   :Type:            object
   :Description:     internal use
 
-RenamePhotoMsg
+RenamePhoto
   :Type:            object
-  :Description:     Contains fields for the RenamePhotoMsg request
+  :Description:     Contains fields for the RenamePhoto request
   :Request fields:  - "[PHOTO SELECTION FIELDS]"
                     - "PhotoComputedName"
 
-ReshootMsg
+Reshoot
   :Type:            object
-  :Description:     Contains fields for the ReshootMsg request
+  :Description:     Contains fields for the Reshoot request
   :Request fields:  - "[PHOTO SELECTION FIELDS]"
 
-Result
-  :Type:            boolean
-  :Description:     Generic result field indicating success or failure
-
-SetBatchNumMsg
+SetBatchNum
   :Type:            object
-  :Description:     Contains fields for the SetBatchNumMsg request
+  :Description:     Contains fields for the SetBatchNum request
   :Request fields:  - "GridBatchNum"
 
-SetCameraGroupMsg
+SetCameraGroup
   :Type:            object
-  :Description:     Contains fields for the SetCameraGroupMsg request
+  :Description:     Contains fields for the SetCameraGroup request
   :Request fields:  - "[CAMERA SELECTION FIELDS]"
                     - "CameraGroup"
 
-SetOptionsMsg
+SetOptions
   :Type:            object
-  :Description:     Contains fields for SetOptionsMsg request
+  :Description:     Contains fields for SetOptions request
   :Request fields:  - "GridFilenameExpression"
                     - "GridFilenameValidation"
                     - "GridUniqueTag"
@@ -1198,47 +1212,47 @@ SetOptionsMsg
                     - "GridLiveviewDatalimit"
                     - "GridPhotoPath"
 
-SetPropertyMsg
+SetProperty
   :Type:            object
-  :Description:     Contains fields for the SetPropertyMsg request
+  :Description:     Contains fields for the SetProperty request
   :Request fields:  - "[CAMERA SELECTION FIELDS]"
                     - "CameraPropertyType"
                     - "CameraPropertyValue"
 
-SetSequenceNumMsg
+SetSequenceNum
   :Type:            object
-  :Description:     Contains fields for SetSequenceNumMsg request
+  :Description:     Contains fields for SetSequenceNum request
   :Request fields:  - "GridSequenceNum"
 
-SetShutterButtonMsg
+SetShutterButton
   :Type:            object
-  :Description:     Contains fields for the SetShutterButtonMsg request
+  :Description:     Contains fields for the SetShutterButton request
   :Request fields:  - "[CAMERA SELECTION FIELDS]"
                     - "CameraShutterButton"
 
-ShootMsg
+Shoot
   :Type:            object
-  :Description:     Contains fields for the ShootMsg request
+  :Description:     Contains fields for the Shoot request
   :Request fields:  - "[CAMERA SELECTION FIELDS]"
 
-SyncBatchNumMsg
+SyncBatchNum
   :Type:            object
-  :Description:     Contains fields for the SyncBatchNumMsg request
+  :Description:     Contains fields for the SyncBatchNum request
 
-SyncClocksMsg
+SyncClocks
   :Type:            object
-  :Description:     Contains fields for the SyncClocksMsg request
+  :Description:     Contains fields for the SyncClocks request
   :Request fields:  - "CameraDateTimeOffset"
 
-SynchroniseMsg
+Synchronise
   :Type:            object
-  :Description:     Contains fields for the SynchroniseMsg request
-  :Response fields: - "NodeUpdatedEventMsg"
-                    - "SetOptionsMsg"
-                    - "LicenseMsg"
-                    - "CameraUpdatedMsg[]"
-                    - "PhotoUpdatedMsg[]"
-                    - "PropertyUpdatedMsg[]"
+  :Description:     Contains fields for the Synchronise request
+  :Response fields: - "NodeUpdatedEvent"
+                    - "SetOptions"
+                    - "License"
+                    - "CameraUpdated[]"
+                    - "PhotoUpdated[]"
+                    - "PropertyUpdated[]"
 
 TransferData
   :Type:            data
@@ -1248,7 +1262,7 @@ TransferOffset
   :Type:            uint32
   :Description:     internal use
 
-TransferPhotoMsg
+TransferPhoto
   :Type:            object
   :Description:     internal use
 
@@ -1258,11 +1272,15 @@ TransferSize
 
 msg_id
   :Type:            string
-  :Description:     Indicates the message contents
+  :Description:     Identifier string for message type
 
-msg_ref_num
-  :Type:            int32
-  :Description:     Message reference number
+msg_result
+  :Type:            boolean
+  :Description:     Generic result field indicating success or failure
+
+msg_seq_num
+  :Type:            uint32
+  :Description:     Message sequence number
 
 msg_type
   :Type:            string
@@ -1270,4 +1288,8 @@ msg_type
   :Valid range:     - "Request"
                     - "Response"
                     - "Event"
+
+msg_user_id
+  :Type:            uint32
+  :Description:     Custom user ID number
 
