@@ -22,18 +22,29 @@
 # DEALINGS IN THE SOFTWARE.
 
 import json
+from .selection import CameraSelection
 
 class MSGBuilder:
     def __init__(self):
-        self.ref_num = 0
+        self.__seq_num = 0
 
     def __create_msg(self, msg_id):
         msg = {}
         msg["msg_type"] = "Request"
         msg["msg_id"] = msg_id
-        msg["msg_ref_num"] = self.ref_num
-        self.ref_num += 1
+        msg["msg_seq_num"] = self.__seq_num
+        self.__seq_num += 1
         return msg
+
+    def __add_selection(self, msg, selection):
+        mode = selection.get_mode()
+        msg["CameraSelection"] = mode
+        if mode == "Single":
+            msg["CameraKey"] = selection.get_key()
+        elif mode == "Group":
+            msg["CameraGroup"] = selection.get_group()
+        elif mode == "Multiple":
+            msg["CameraKeys"] = selection.get_keys()
 
     def build_SetConfig(self, key, value):
         msg = self.__create_msg("SetConfig")
@@ -45,7 +56,24 @@ class MSGBuilder:
         msg = self.__create_msg("Synchronise")
         return json.dumps(msg)
 
-    def build_Shoot(self):
+    def build_Connect(self, selection):
+        msg = self.__create_msg("Connect")
+        self.__add_selection(msg, selection);
+        return json.dumps(msg)
+
+    def build_Disconnect(self, selection):
+        msg = self.__create_msg("Disconnect")
+        self.__add_selection(msg, selection);
+        return json.dumps(msg)
+
+    def build_Shoot(self, selection):
         msg = self.__create_msg("Shoot")
-        msg["CameraSelection"] = "All"
+        self.__add_selection(msg, selection);
+        return json.dumps(msg)
+
+    def build_SetProperty(self, selection, prop, value):
+        msg = self.__create_msg("SetProperty")
+        self.__add_selection(msg, selection);
+        msg["CameraPropertyType"] = prop.name
+        msg["CameraPropertyValue"] = value
         return json.dumps(msg)

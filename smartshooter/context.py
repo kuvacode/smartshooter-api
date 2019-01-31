@@ -26,6 +26,8 @@ import sys
 import json
 import time
 from .msgbuilder import MSGBuilder
+from .statetracker import StateTracker
+from .selection import CameraSelection
 
 def is_embedded():
     exe = os.path.basename(sys.executable)
@@ -48,42 +50,44 @@ class EmbeddedSocket:
 
 class ZMQSocket:
     def __init__(self):
-        self.ctx = zmq.Context()
-        self.req_socket = self.ctx.socket(zmq.REQ)
-        self.sub_socket = self.ctx.socket(zmq.SUB)
-        self.sub_socket.setsockopt(zmq.SUBSCRIBE, b"")
-        self.req_socket.connect("tcp://127.0.0.1:54544")
-        self.sub_socket.connect("tcp://127.0.0.1:54543")
+        self.__ctx = zmq.Context()
+        self.__req_socket = self.__ctx.socket(zmq.REQ)
+        self.__sub_socket = self.__ctx.socket(zmq.SUB)
+        self.__sub_socket.setsockopt(zmq.SUBSCRIBE, b"")
+        self.__req_socket.connect("tcp://127.0.0.1:54544")
+        self.__sub_socket.connect("tcp://127.0.0.1:54543")
     def send_request(self, msg):
-        self.req_socket.send_string(msg)
+        self.__req_socket.send_string(msg)
     def recv_reply(self):
-        return self.req_socket.recv_string()
+        return self.__req_socket.recv_string()
     def recv_event(self):
-        return self.sub_socket.recv().decode("utf-8");
+        return self.__sub_socket.recv().decode("utf-8");
 
 class Context:
     def __init__(self):
-        self.is_synchronised = False
-        self.is_embedded = is_embedded()
-        self.msgbuilder = MSGBuilder()
-        if self.is_embedded:
-            self.socket = EmbeddedSocket()
+        self.__is_embedded = is_embedded()
+        self.__msgbuilder = MSGBuilder()
+        self.__tracker = StateTracker()
+        self.__selection = CameraSelection()
+        if self.__is_embedded:
+            self.__socket = EmbeddedSocket()
         else:
-            self.socket = ZMQSocket()
+            self.__socket = ZMQSocket()
+        self.synchronise()
 
     def __transact(self, msg):
         self.check_status()
-        self.socket.send_request(msg)
-        jstr = self.socket.recv_reply()
+        self.__socket.send_request(msg)
+        jstr = self.__socket.recv_reply()
         reply = json.loads(jstr)
+        self.__tracker.process_reply(reply)
         return reply
 
     def __read_event(self):
         self.check_status()
-        jstr = self.socket.recv_event()
+        jstr = self.__socket.recv_event()
         event = json.loads(jstr)
-        if event["msg_id"] == "Synchronise":
-            self.is_synchronised = True
+        self.__tracker.process_event(event)
 
     def check_status(self):
         ok = apphooks.check_status()
@@ -107,16 +111,50 @@ class Context:
         self.wait_until(target)
 
     def set_config(self, key, value):
-        msg = self.msgbuilder.build_SetConfig(key, value)
+        msg = self.__msgbuilder.build_SetConfig(key, value)
         self.__transact(msg)
 
     def synchronise(self):
-        self.is_synchronised = False
-        msg = self.msgbuilder.build_Synchronise()
+        self.__tracker.invalidate()
+        msg = self.__msgbuilder.build_Synchronise()
         self.__transact(msg)
-        while not self.is_synchronised:
-            self.__read_event()
+
+    def get_camera_list(self):
+        return self.__tracker.get_camera_list()
+
+    def get_photo_list(self):
+        return self.__tracker.get_photo_list()
+
+    def select_camera(self, key):
+        self.__selection.select_camera(key)
+
+    def select_cameras(self, keys):
+        self.__selection.select_cameras(keys)
+
+    def select_all_cameras(self):
+        self.__selection.select_all_cameras()
+
+    def select_camera_group(self, group):
+        self.__selection.select_camera_group(group)
+
+    def connect(self):
+        msg = self.__msgbuilder.build_Connect(self.__selection)
+        self.__transact(msg)
+
+    def disconnect(self):
+        msg = self.__msgbuilder.build_Disconnect(self.__selection)
+        self.__transact(msg)
 
     def shoot(self):
-        msg = self.msgbuilder.build_Shoot()
+        msg = self.__msgbuilder.build_Shoot(self.__selection)
         self.__transact(msg)
+
+    def set_property(self, prop, value):
+        msg = self.__msgbuilder.build_SetProperty(self.__selection, prop, value)
+        self.__transact(msg)
+
+    def get_property(self, prop):
+        return self.__tracker.get_property(self.__selection, prop)
+
+    def get_property_range(self, prop):
+        return self.__tracker.get_property_range(self.__selection, prop)
