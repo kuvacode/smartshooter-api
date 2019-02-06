@@ -169,7 +169,8 @@
         { "name": "Shoot", "type": "object",
           "description": "Contains fields for the Shoot request",
           "request_fields": [
-            "[CAMERA SELECTION FIELDS]"
+            "[CAMERA SELECTION FIELDS]",
+            "BulbTimer"
           ] },
         { "name": "Autofocus", "type": "object",
           "description": "Contains fields for the Autofocus request",
@@ -664,6 +665,8 @@
             "[CAMERA SELECTION FIELDS]",
             "CameraGroup"
           ] },
+        { "name": "BulbInterval", "type": "int64",
+          "description": "Bulb timer interval for bulb mode capture" },
         { "name": "CustomText", "type": "string",
           "description": "Field that can contain arbitrary text" },
         { "name": "RelayCustomText", "type": "object",
