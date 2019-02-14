@@ -58,22 +58,24 @@ class MSGBuilder:
 
     def build_Connect(self, selection):
         msg = self.__create_msg("Connect")
-        self.__add_selection(msg, selection);
+        self.__add_selection(msg, selection)
         return json.dumps(msg)
 
     def build_Disconnect(self, selection):
         msg = self.__create_msg("Disconnect")
-        self.__add_selection(msg, selection);
+        self.__add_selection(msg, selection)
         return json.dumps(msg)
 
-    def build_Shoot(self, selection):
+    def build_Shoot(self, selection, bulb_ms):
         msg = self.__create_msg("Shoot")
-        self.__add_selection(msg, selection);
+        self.__add_selection(msg, selection)
+        if bulb_ms:
+            msg["BulbTimer"] = bulb_ms
         return json.dumps(msg)
 
     def build_SetProperty(self, selection, prop, value):
         msg = self.__create_msg("SetProperty")
-        self.__add_selection(msg, selection);
+        self.__add_selection(msg, selection)
         msg["CameraPropertyType"] = prop.name
         msg["CameraPropertyValue"] = value
         return json.dumps(msg)

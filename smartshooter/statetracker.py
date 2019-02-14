@@ -71,6 +71,12 @@ class StateTracker:
     def get_photo_list(self):
         return self.__photos.keys()
 
+    def get_camera_info(self, key):
+        return self.__cameras[key]
+
+    def get_photo_info(self, key):
+        return self.__photos[key]
+
     def is_camera_connected(self, key):
         camera = self.__cameras[key]
         status = camera["CameraStatus"]

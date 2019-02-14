@@ -42,7 +42,7 @@ class EmbeddedSocket:
     def __init__(self):
         pass
     def send_request(self, msg):
-        apphooks.send_request(msg);
+        apphooks.send_request(msg)
     def recv_reply(self):
         return apphooks.recv_reply()
     def recv_event(self):
@@ -61,7 +61,7 @@ class ZMQSocket:
     def recv_reply(self):
         return self.__req_socket.recv_string()
     def recv_event(self):
-        return self.__sub_socket.recv().decode("utf-8");
+        return self.__sub_socket.recv().decode("utf-8")
 
 class Context:
     def __init__(self):
@@ -125,6 +125,12 @@ class Context:
     def get_photo_list(self):
         return self.__tracker.get_photo_list()
 
+    def get_camera_info(self, key):
+        return self.__tracker.get_camera_info(key)
+
+    def get_photo_info(self, key):
+        return self.__tracker.get_photo_info(key)
+
     def select_camera(self, key):
         self.__selection.select_camera(key)
 
@@ -145,8 +151,8 @@ class Context:
         msg = self.__msgbuilder.build_Disconnect(self.__selection)
         self.__transact(msg)
 
-    def shoot(self):
-        msg = self.__msgbuilder.build_Shoot(self.__selection)
+    def shoot(self, bulb_ms=None):
+        msg = self.__msgbuilder.build_Shoot(self.__selection, bulb_ms)
         self.__transact(msg)
 
     def set_property(self, prop, value):

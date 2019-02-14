@@ -53,7 +53,7 @@ class CameraSelection:
         self.__group = group
 
     def get_mode(self):
-        return self.__mode;
+        return self.__mode
 
     def get_key():
         return self.__key
