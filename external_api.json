@@ -677,7 +677,7 @@
             "[CAMERA SELECTION FIELDS]",
             "CameraGroup"
           ] },
-        { "name": "BulbInterval", "type": "int64",
+        { "name": "BulbTimer", "type": "int64",
           "description": "Bulb timer interval for bulb mode capture" },
         { "name": "CustomText", "type": "string",
           "description": "Field that can contain arbitrary text" },
