@@ -353,6 +353,8 @@ List of Fields
 +----------------------------------+---------------------------------------------------------------------+
 | CameraUpdated                    | Contains fields for the CameraUpdated event                         |
 +----------------------------------+---------------------------------------------------------------------+
+| CameraVideoElapsedTime           | Elapsed time of video recording in milliseconds                     |
++----------------------------------+---------------------------------------------------------------------+
 | CameraVideoIsEnabled             | Indicates whether video is being recorded                           |
 +----------------------------------+---------------------------------------------------------------------+
 | CameraVideoIsSupported           | Indicates whether video recording is supported                      |
@@ -772,6 +774,7 @@ CameraUpdated
                     - "CameraLiveviewSensorRegionTop"
                     - "CameraVideoIsSupported"
                     - "CameraVideoIsEnabled"
+                    - "CameraVideoElapsedTime"
                     - "CameraBulbIsSupported"
                     - "CameraBulbIsEnabled"
                     - "CameraPowersource"
@@ -783,6 +786,10 @@ CameraUpdated
                     - "CameraNumDownloadsFailed"
                     - "CameraNumAutofocus"
                     - "NodeKey"
+
+CameraVideoElapsedTime
+  :Type:            int64
+  :Description:     Elapsed time of video recording in milliseconds
 
 CameraVideoIsEnabled
   :Type:            boolean
