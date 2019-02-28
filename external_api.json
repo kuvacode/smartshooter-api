@@ -183,7 +183,7 @@
           "description": "Contains fields for the LiveviewFocus request",
           "request_fields": [
             "[CAMERA SELECTION FIELDS]",
-            "CameraLiveviewFocus"
+            "CameraLiveviewFocusStep"
           ] },
         { "name": "LiveviewPosition", "type": "object",
           "description": "Contains fields for the LiveviewPosition request",
@@ -545,7 +545,7 @@
           "description": "Indicates whether camera live view zoom region is enabled" },
         { "name": "CameraLiveviewDOFIsEnabled", "type": "boolean",
           "description": "Indicates whether camera live view DOF preview is enabled" },
-        { "name": "CameraLiveviewFocus", "type": "string",
+        { "name": "CameraLiveviewFocusStep", "type": "string",
           "description": "Specifies camera live view focus motor movement",
           "range": [
             "Near1",
