@@ -66,11 +66,13 @@ class MSGBuilder:
         self.__add_selection(msg, selection)
         return json.dumps(msg)
 
-    def build_Shoot(self, selection, bulb_ms):
+    def build_Shoot(self, selection, bulb_timer, photo_origin):
         msg = self.__create_msg("Shoot")
         self.__add_selection(msg, selection)
-        if bulb_ms:
-            msg["BulbTimer"] = bulb_ms
+        if bulb_timer:
+            msg["BulbTimer"] = bulb_timer
+        if photo_origin:
+            msg["PhotoOrigin"] = photo_origin
         return json.dumps(msg)
 
     def build_SetProperty(self, selection, prop, value):

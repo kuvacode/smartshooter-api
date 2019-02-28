@@ -151,8 +151,8 @@ class Context:
         msg = self.__msgbuilder.build_Disconnect(self.__selection)
         self.__transact(msg)
 
-    def shoot(self, bulb_ms=None):
-        msg = self.__msgbuilder.build_Shoot(self.__selection, bulb_ms)
+    def shoot(self, bulb_timer=None, photo_origin="api"):
+        msg = self.__msgbuilder.build_Shoot(self.__selection, bulb_timer, photo_origin)
         self.__transact(msg)
 
     def set_property(self, prop, value):
