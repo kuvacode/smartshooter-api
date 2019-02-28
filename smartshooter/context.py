@@ -159,6 +159,10 @@ class Context:
         msg = self.__msgbuilder.build_SetProperty(self.__selection, prop, value)
         self.__transact(msg)
 
+    def move_focus(self, focus_step):
+        msg = self.__msgbuilder.build_LiveviewFocus(self.__selection, focus_step)
+        self.__transact(msg)
+
     def get_property(self, prop):
         return self.__tracker.get_property(self.__selection, prop)
 

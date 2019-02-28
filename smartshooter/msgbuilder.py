@@ -81,3 +81,9 @@ class MSGBuilder:
         msg["CameraPropertyType"] = prop.name
         msg["CameraPropertyValue"] = value
         return json.dumps(msg)
+
+    def build_LiveviewFocus(self, selection, focus_step):
+        msg = self.__create_msg("LiveviewFocus")
+        self.__add_selection(msg, selection)
+        msg["CameraLiveviewFocusStep"] = focus_step
+        return json.dumps(msg)
