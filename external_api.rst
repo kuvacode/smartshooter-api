@@ -257,7 +257,13 @@ List of Fields
 +----------------------------------+---------------------------------------------------------------------+
 | Name                             | Description                                                         |
 +==================================+=====================================================================+
+| AutoConnect                      | Contains the value for the 'Auto Connect' option                    |
++----------------------------------+---------------------------------------------------------------------+
+| AutoSynchroniseTime              | Contains the value for the 'Auto Synchronise Time' option           |
++----------------------------------+---------------------------------------------------------------------+
 | Autofocus                        | Contains fields for the Autofocus request                           |
++----------------------------------+---------------------------------------------------------------------+
+| Barcode                          | Contains the [Z] barcode text                                       |
 +----------------------------------+---------------------------------------------------------------------+
 | BulbTimer                        | Bulb timer interval for bulb mode capture                           |
 +----------------------------------+---------------------------------------------------------------------+
@@ -287,7 +293,7 @@ List of Fields
 +----------------------------------+---------------------------------------------------------------------+
 | CameraLiveviewFPS                | Desired FPS of camera live view stream                              |
 +----------------------------------+---------------------------------------------------------------------+
-| CameraLiveviewFocus              | Specifies camera live view focus motor movement                     |
+| CameraLiveviewFocusStep          | Specifies camera live view focus motor movement                     |
 +----------------------------------+---------------------------------------------------------------------+
 | CameraLiveviewIsEnabled          | Indicates whether camera live view is enabled                       |
 +----------------------------------+---------------------------------------------------------------------+
@@ -365,6 +371,10 @@ List of Fields
 +----------------------------------+---------------------------------------------------------------------+
 | CustomText                       | Field that can contain arbitrary text                               |
 +----------------------------------+---------------------------------------------------------------------+
+| DefaultFocusMode                 | Contains the default camera focus mode                              |
++----------------------------------+---------------------------------------------------------------------+
+| DefaultStorage                   | Contains the default camera storage mode                            |
++----------------------------------+---------------------------------------------------------------------+
 | Delete                           | Contains fields for the Delete request                              |
 +----------------------------------+---------------------------------------------------------------------+
 | DetectCameras                    | Contains fields for the DetectCameras request                       |
@@ -372,6 +382,8 @@ List of Fields
 | Disconnect                       | Contains fields for the Disconnect request                          |
 +----------------------------------+---------------------------------------------------------------------+
 | Download                         | Contains fields for the Download request                            |
++----------------------------------+---------------------------------------------------------------------+
+| DownloadPath                     | Contains value for the 'Photo Download Directory' option            |
 +----------------------------------+---------------------------------------------------------------------+
 | Enable                           | Generic indicator for enabling/disabling some state                 |
 +----------------------------------+---------------------------------------------------------------------+
@@ -385,35 +397,11 @@ List of Fields
 +----------------------------------+---------------------------------------------------------------------+
 | EnableVideo                      | Contains fields for the EnableVideo request                         |
 +----------------------------------+---------------------------------------------------------------------+
+| FallbackPath                     | Contains value for the fallback photo download path                 |
++----------------------------------+---------------------------------------------------------------------+
+| FilenameExpression               | Contains the filename expression option                             |
++----------------------------------+---------------------------------------------------------------------+
 | FormatAll                        | Contains fields for the FormatAll request                           |
-+----------------------------------+---------------------------------------------------------------------+
-| GridAutoConnect                  | Contains the value for the 'Auto Connect' option                    |
-+----------------------------------+---------------------------------------------------------------------+
-| GridAutoSynchroniseTime          | Contains the value for the 'Auto Synchronise Time' option           |
-+----------------------------------+---------------------------------------------------------------------+
-| GridBarcode                      | Contains the [Z] barcode text                                       |
-+----------------------------------+---------------------------------------------------------------------+
-| GridBatchNum                     | Contains the [B] batch number                                       |
-+----------------------------------+---------------------------------------------------------------------+
-| GridDefaultFocusMode             | Contains the default camera focus mode                              |
-+----------------------------------+---------------------------------------------------------------------+
-| GridDefaultStorage               | Contains the default camera storage mode                            |
-+----------------------------------+---------------------------------------------------------------------+
-| GridFilenameExpression           | Contains the filename expression option                             |
-+----------------------------------+---------------------------------------------------------------------+
-| GridGenerateFilename             | Contains the value for the 'Generate Filename' option               |
-+----------------------------------+---------------------------------------------------------------------+
-| GridLiveviewDatalimit            | Contains the live view recording data limit                         |
-+----------------------------------+---------------------------------------------------------------------+
-| GridPhotoPath                    | Contains value for the 'Photo Download Directory' option            |
-+----------------------------------+---------------------------------------------------------------------+
-| GridScanBatchNum                 | Contains value for the 'Scan Batch Number' option                   |
-+----------------------------------+---------------------------------------------------------------------+
-| GridScanSequenceNum              | Contains the value for the 'Scan Sequence Number' option            |
-+----------------------------------+---------------------------------------------------------------------+
-| GridSequenceNum                  | Contains the [S] sequence number                                    |
-+----------------------------------+---------------------------------------------------------------------+
-| GridUniqueTag                    | Contains the [U] unique tag                                         |
 +----------------------------------+---------------------------------------------------------------------+
 | Identify                         | Contains fields for the Identify request                            |
 +----------------------------------+---------------------------------------------------------------------+
@@ -426,6 +414,8 @@ List of Fields
 | PhotoAperture                    | Lens aperture of photo                                              |
 +----------------------------------+---------------------------------------------------------------------+
 | PhotoBarcode                     | Contains barcode text scanned from photo                            |
++----------------------------------+---------------------------------------------------------------------+
+| PhotoBatchNum                    | Contains the [B] batch number                                       |
 +----------------------------------+---------------------------------------------------------------------+
 | PhotoComputedName                | Photo name generated by Smart Shooter                               |
 +----------------------------------+---------------------------------------------------------------------+
@@ -455,9 +445,13 @@ List of Fields
 +----------------------------------+---------------------------------------------------------------------+
 | PhotoOrientation                 | Orientation of photo                                                |
 +----------------------------------+---------------------------------------------------------------------+
+| PhotoOrigin                      | Identifier for origin of photo                                      |
++----------------------------------+---------------------------------------------------------------------+
 | PhotoOriginalName                | Original name of photo on camera                                    |
 +----------------------------------+---------------------------------------------------------------------+
 | PhotoSelection                   | Determines the photo selection                                      |
++----------------------------------+---------------------------------------------------------------------+
+| PhotoSequenceNum                 | Contains the [S] sequence number                                    |
 +----------------------------------+---------------------------------------------------------------------+
 | PhotoShutterSpeed                | Camera shutter speed of photo                                       |
 +----------------------------------+---------------------------------------------------------------------+
@@ -499,6 +493,8 @@ List of Fields
 +----------------------------------+---------------------------------------------------------------------+
 | Synchronise                      | Contains fields for the Synchronise request                         |
 +----------------------------------+---------------------------------------------------------------------+
+| UniqueTag                        | Contains the [U] unique tag                                         |
++----------------------------------+---------------------------------------------------------------------+
 | msg_id                           | Identifier string for message type                                  |
 +----------------------------------+---------------------------------------------------------------------+
 | msg_result                       | Generic result field indicating success or failure                  |
@@ -518,10 +514,22 @@ The following sections defines all the valid fields, along with associated data
 type. The fields that are JSON objects, it lists the valid sub-fields that may
 be contained within that object.
 
+AutoConnect
+  :Type:            boolean
+  :Description:     Contains the value for the 'Auto Connect' option
+
+AutoSynchroniseTime
+  :Type:            boolean
+  :Description:     Contains the value for the 'Auto Synchronise Time' option
+
 Autofocus
   :Type:            object
   :Description:     Contains fields for the Autofocus request
   :Request fields:  - "[CAMERA SELECTION FIELDS]"
+
+Barcode
+  :Type:            string
+  :Description:     Contains the [Z] barcode text
 
 BulbTimer
   :Type:            int64
@@ -579,7 +587,7 @@ CameraLiveviewFPS
   :Type:            int32
   :Description:     Desired FPS of camera live view stream
 
-CameraLiveviewFocus
+CameraLiveviewFocusStep
   :Type:            string
   :Description:     Specifies camera live view focus motor movement
   :Valid range:     - "Near1"
@@ -756,7 +764,7 @@ CameraUpdated
                     - "CameraMake"
                     - "CameraModel"
                     - "CameraNumCards"
-                    - "GridBatchNum"
+                    - "PhotoBatchNum"
                     - "CameraDateTimeOffset"
                     - "CameraAutofocusIsSupported"
                     - "CameraIsFocused"
@@ -812,6 +820,22 @@ CustomText
   :Type:            string
   :Description:     Field that can contain arbitrary text
 
+DefaultFocusMode
+  :Type:            string
+  :Description:     Contains the default camera focus mode
+  :Valid range:     - "Not set"
+                    - "AF Single"
+                    - "AF Continuous"
+                    - "AF Auto"
+                    - "MF"
+
+DefaultStorage
+  :Type:            string
+  :Description:     Contains the default camera storage mode
+  :Valid range:     - "Disk"
+                    - "Card"
+                    - "Both"
+
 Delete
   :Type:            object
   :Description:     Contains fields for the Delete request
@@ -830,6 +854,10 @@ Download
   :Type:            object
   :Description:     Contains fields for the Download request
   :Request fields:  - "[PHOTO SELECTION FIELDS]"
+
+DownloadPath
+  :Type:            string
+  :Description:     Contains value for the 'Photo Download Directory' option
 
 Enable
   :Type:            boolean
@@ -865,77 +893,17 @@ EnableVideo
   :Request fields:  - "[CAMERA SELECTION FIELDS]"
                     - "Enable"
 
-FormatAll
-  :Type:            object
-  :Description:     Contains fields for the FormatAll request
-
-GridAutoConnect
-  :Type:            boolean
-  :Description:     Contains the value for the 'Auto Connect' option
-
-GridAutoSynchroniseTime
-  :Type:            boolean
-  :Description:     Contains the value for the 'Auto Synchronise Time' option
-
-GridBarcode
+FallbackPath
   :Type:            string
-  :Description:     Contains the [Z] barcode text
+  :Description:     Contains value for the fallback photo download path
 
-GridBatchNum
-  :Type:            int32
-  :Description:     Contains the [B] batch number
-
-GridDefaultFocusMode
-  :Type:            string
-  :Description:     Contains the default camera focus mode
-  :Valid range:     - "Not set"
-                    - "AF Single"
-                    - "AF Continuous"
-                    - "AF Auto"
-                    - "MF"
-
-GridDefaultStorage
-  :Type:            string
-  :Description:     Contains the default camera storage mode
-  :Valid range:     - "Disk"
-                    - "Card"
-                    - "Both"
-
-GridFilenameExpression
+FilenameExpression
   :Type:            string
   :Description:     Contains the filename expression option
 
-GridFilenameValidation
-  :Type:            string
-  :Description:     internal use
-
-GridGenerateFilename
-  :Type:            boolean
-  :Description:     Contains the value for the 'Generate Filename' option
-
-GridLiveviewDatalimit
-  :Type:            int32
-  :Description:     Contains the live view recording data limit
-
-GridPhotoPath
-  :Type:            string
-  :Description:     Contains value for the 'Photo Download Directory' option
-
-GridScanBatchNum
-  :Type:            boolean
-  :Description:     Contains value for the 'Scan Batch Number' option
-
-GridScanSequenceNum
-  :Type:            boolean
-  :Description:     Contains the value for the 'Scan Sequence Number' option
-
-GridSequenceNum
-  :Type:            int32
-  :Description:     Contains the [S] sequence number
-
-GridUniqueTag
-  :Type:            string
-  :Description:     Contains the [U] unique tag
+FormatAll
+  :Type:            object
+  :Description:     Contains fields for the FormatAll request
 
 Identify
   :Type:            object
@@ -961,7 +929,7 @@ LiveviewFocus
   :Type:            object
   :Description:     Contains fields for the LiveviewFocus request
   :Request fields:  - "[CAMERA SELECTION FIELDS]"
-                    - "CameraLiveviewFocus"
+                    - "CameraLiveviewFocusStep"
 
 LiveviewPosition
   :Type:            object
@@ -1054,6 +1022,10 @@ PhotoBarcode
   :Type:            string
   :Description:     Contains barcode text scanned from photo
 
+PhotoBatchNum
+  :Type:            int32
+  :Description:     Contains the [B] batch number
+
 PhotoComputedName
   :Type:            string
   :Description:     Photo name generated by Smart Shooter
@@ -1130,6 +1102,10 @@ PhotoOrientation
                     - "Transpose"
                     - "Unknown"
 
+PhotoOrigin
+  :Type:            string
+  :Description:     Identifier for origin of photo
+
 PhotoOriginalName
   :Type:            string
   :Description:     Original name of photo on camera
@@ -1140,6 +1116,10 @@ PhotoSelection
   :Valid range:     - "All"
                     - "Single"
                     - "Multiple"
+
+PhotoSequenceNum
+  :Type:            int32
+  :Description:     Contains the [S] sequence number
 
 PhotoShutterSpeed
   :Type:            string
@@ -1158,6 +1138,7 @@ PhotoUpdated
                     - "PhotoOriginalName"
                     - "PhotoComputedName"
                     - "PhotoDateCaptured"
+                    - "PhotoOrigin"
                     - "PhotoFormat"
                     - "PhotoOrientation"
                     - "PhotoWidth"
@@ -1171,8 +1152,8 @@ PhotoUpdated
                     - "PhotoIsScanned"
                     - "PhotoHash"
                     - "PhotoBarcode"
-                    - "GridSequenceNum"
-                    - "GridBatchNum"
+                    - "PhotoSequenceNum"
+                    - "PhotoBatchNum"
                     - "CameraKey"
                     - "NodeKey"
 
@@ -1227,7 +1208,7 @@ Reshoot
 SetBatchNum
   :Type:            object
   :Description:     Contains fields for the SetBatchNum request
-  :Request fields:  - "GridBatchNum"
+  :Request fields:  - "PhotoBatchNum"
 
 SetCameraGroup
   :Type:            object
@@ -1238,19 +1219,15 @@ SetCameraGroup
 SetOptions
   :Type:            object
   :Description:     Contains fields for SetOptions request
-  :Request fields:  - "GridFilenameExpression"
-                    - "GridFilenameValidation"
-                    - "GridUniqueTag"
-                    - "GridBarcode"
-                    - "GridDefaultStorage"
-                    - "GridDefaultFocusMode"
-                    - "GridGenerateFilename"
-                    - "GridAutoConnect"
-                    - "GridAutoSynchroniseTime"
-                    - "GridScanSequenceNum"
-                    - "GridScanBatchNum"
-                    - "GridLiveviewDatalimit"
-                    - "GridPhotoPath"
+  :Request fields:  - "FilenameExpression"
+                    - "UniqueTag"
+                    - "Barcode"
+                    - "DefaultStorage"
+                    - "DefaultFocusMode"
+                    - "AutoConnect"
+                    - "AutoSynchroniseTime"
+                    - "DownloadPath"
+                    - "FallbackPath"
 
 SetProperty
   :Type:            object
@@ -1262,7 +1239,7 @@ SetProperty
 SetSequenceNum
   :Type:            object
   :Description:     Contains fields for SetSequenceNum request
-  :Request fields:  - "GridSequenceNum"
+  :Request fields:  - "PhotoSequenceNum"
 
 SetShutterButton
   :Type:            object
@@ -1275,6 +1252,7 @@ Shoot
   :Description:     Contains fields for the Shoot request
   :Request fields:  - "[CAMERA SELECTION FIELDS]"
                     - "BulbTimer"
+                    - "PhotoOrigin"
 
 SyncBatchNum
   :Type:            object
@@ -1310,6 +1288,10 @@ TransferPhoto
 TransferSize
   :Type:            uint32
   :Description:     internal use
+
+UniqueTag
+  :Type:            string
+  :Description:     Contains the [U] unique tag
 
 msg_id
   :Type:            string
