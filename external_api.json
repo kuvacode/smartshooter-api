@@ -376,8 +376,7 @@
           "range": [
             "Disk",
             "Card",
-            "Both",
-            "JPEG"
+            "Both"
           ] },
         { "name": "DefaultFocusMode", "type": "string",
           "description": "Contains the default camera focus mode",

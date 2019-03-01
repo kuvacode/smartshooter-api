@@ -900,7 +900,6 @@ GridDefaultStorage
   :Valid range:     - "Disk"
                     - "Card"
                     - "Both"
-                    - "JPEG"
 
 GridFilenameExpression
   :Type:            string
