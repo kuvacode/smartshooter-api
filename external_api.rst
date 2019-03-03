@@ -473,6 +473,10 @@ List of Fields
 +----------------------------------+---------------------------------------------------------------------+
 | Reshoot                          | Contains fields for the Reshoot request                             |
 +----------------------------------+---------------------------------------------------------------------+
+| SessionName                      | Contains the [N] session name                                       |
++----------------------------------+---------------------------------------------------------------------+
+| SessionNum                       | Contains the [I] session number                                     |
++----------------------------------+---------------------------------------------------------------------+
 | SetBatchNum                      | Contains fields for the SetBatchNum request                         |
 +----------------------------------+---------------------------------------------------------------------+
 | SetCameraGroup                   | Contains fields for the SetCameraGroup request                      |
@@ -1205,6 +1209,14 @@ Reshoot
   :Description:     Contains fields for the Reshoot request
   :Request fields:  - "[PHOTO SELECTION FIELDS]"
 
+SessionName
+  :Type:            string
+  :Description:     Contains the [N] session name
+
+SessionNum
+  :Type:            int32
+  :Description:     Contains the [I] session number
+
 SetBatchNum
   :Type:            object
   :Description:     Contains fields for the SetBatchNum request
@@ -1220,6 +1232,8 @@ SetOptions
   :Type:            object
   :Description:     Contains fields for SetOptions request
   :Request fields:  - "FilenameExpression"
+                    - "SessionName"
+                    - "SessionNum"
                     - "UniqueTag"
                     - "Barcode"
                     - "DefaultStorage"
