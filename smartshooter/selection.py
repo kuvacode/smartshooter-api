@@ -55,11 +55,11 @@ class CameraSelection:
     def get_mode(self):
         return self.__mode
 
-    def get_key():
+    def get_key(self):
         return self.__key
 
-    def get_keys():
+    def get_keys(self):
         return self.__keys
 
-    def get_group():
+    def get_group(self):
         return self.__group

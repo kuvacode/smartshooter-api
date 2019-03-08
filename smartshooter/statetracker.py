@@ -40,6 +40,9 @@ class StateTracker:
         cameras = msg["CameraInfo"]
         for camera in cameras:
             self.__read_CameraUpdated(camera)
+        photos = msg["PhotoInfo"]
+        for photo in photos:
+            self.__read_PhotoUpdated(photo)
 
     def __read_CameraUpdated(self, msg):
         key = msg["CameraKey"]
@@ -57,6 +60,14 @@ class StateTracker:
                         obj["CameraPropertyInfo"][proptype] = dict()
                     obj["CameraPropertyInfo"][proptype].update(propinfo)
 
+    def __read_PhotoUpdated(self, msg):
+        key = msg["PhotoKey"]
+        if key not in self.__photos:
+            self.__photos[key] = dict()
+        obj = self.__photos[key]
+        for key, value in msg.items():
+            obj[key] = value
+
     def process_reply(self, msg):
         if msg["msg_id"] == "Synchronise":
             self.__read_Synchronise(msg)
@@ -66,10 +77,10 @@ class StateTracker:
             self.__read_CameraUpdated(msg)
 
     def get_camera_list(self):
-        return self.__cameras.keys()
+        return list(self.__cameras)
 
     def get_photo_list(self):
-        return self.__photos.keys()
+        return list(self.__photos)
 
     def get_camera_info(self, key):
         return self.__cameras[key]
