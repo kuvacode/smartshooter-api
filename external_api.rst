@@ -299,6 +299,8 @@ List of Fields
 +----------------------------------+---------------------------------------------------------------------+
 | CameraLiveviewIsSupported        | Indicates if camera supports live view                              |
 +----------------------------------+---------------------------------------------------------------------+
+| CameraLiveviewNumFrames          | The number of liveview frames since liveview was enabled            |
++----------------------------------+---------------------------------------------------------------------+
 | CameraLiveviewSensorHeight       | Height of camera's sensor in pixels                                 |
 +----------------------------------+---------------------------------------------------------------------+
 | CameraLiveviewSensorRegionBottom | Bottom pixel of camera's active live view region                    |
@@ -613,6 +615,10 @@ CameraLiveviewIsSupported
   :Type:            boolean
   :Description:     Indicates if camera supports live view
 
+CameraLiveviewNumFrames
+  :Type:            uint32
+  :Description:     The number of liveview frames since liveview was enabled
+
 CameraLiveviewSensorHeight
   :Type:            int32
   :Description:     Height of camera's sensor in pixels
@@ -778,6 +784,7 @@ CameraUpdated
                     - "CameraLiveviewIsEnabled"
                     - "CameraLiveviewZoomIsEnabled"
                     - "CameraLiveviewDOFIsEnabled"
+                    - "CameraLiveviewNumFrames"
                     - "CameraLiveviewSensorWidth"
                     - "CameraLiveviewSensorHeight"
                     - "CameraLiveviewSensorRegionLeft"

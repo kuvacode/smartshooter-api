@@ -280,6 +280,7 @@
             "CameraLiveviewIsEnabled",
             "CameraLiveviewZoomIsEnabled",
             "CameraLiveviewDOFIsEnabled",
+            "CameraLiveviewNumFrames",
             "CameraLiveviewSensorWidth",
             "CameraLiveviewSensorHeight",
             "CameraLiveviewSensorRegionLeft",
@@ -550,6 +551,8 @@
           "description": "Indicates whether camera live view zoom region is enabled" },
         { "name": "CameraLiveviewDOFIsEnabled", "type": "boolean",
           "description": "Indicates whether camera live view DOF preview is enabled" },
+        { "name": "CameraLiveviewNumFrames", "type": "uint32",
+          "description": "The number of liveview frames since liveview was enabled" },
         { "name": "CameraLiveviewFocusStep", "type": "string",
           "description": "Specifies camera live view focus motor movement",
           "range": [

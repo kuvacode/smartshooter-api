@@ -114,6 +114,28 @@ class Context:
         target = time.time() + secs
         self.wait_until(target)
 
+    def wait_for_liveview(self):
+        cameras = []
+        markers = []
+        for camera in self.get_selected_cameras():
+            info = self.get_camera_info(camera)
+            status = info["CameraStatus"]
+            if status in ["Ready", "Busy"] and info["CameraLiveviewIsEnabled"]:
+                cameras.append(camera)
+                markers.append(info["CameraLiveviewNumFrames"] + 10)
+        num_pending = len(cameras)
+        while num_pending > 0:
+            self.__read_event()
+            for i in range(len(cameras)):
+                camera = cameras[i]
+                marker = markers[i]
+                info = self.get_camera_info(camera)
+                status = info["CameraStatus"]
+                if status not in ["Ready", "Busy"] or not info["CameraLiveviewIsEnabled"]:
+                    num_pending -= 1
+                elif status == "Ready" and info["CameraLiveviewNumFrames"] > marker:
+                    num_pending -= 1
+
     def set_config(self, key, value):
         msg = self.__msgbuilder.build_SetConfig(key, value)
         self.__transact(msg)
