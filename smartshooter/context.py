@@ -200,6 +200,10 @@ class Context:
         msg = self.__msgbuilder.build_SetProperty(self.__camera_selection, prop, value)
         self.__transact(msg)
 
+    def enable_liveview(self, enable):
+        msg = self.__msgbuilder.build_EnableLiveview(self.__camera_selection, enable)
+        self.__transact(msg)
+
     def move_focus(self, focus_step):
         msg = self.__msgbuilder.build_LiveviewFocus(self.__camera_selection, focus_step)
         self.__transact(msg)
@@ -209,3 +213,19 @@ class Context:
 
     def get_property_range(self, prop):
         return self.__tracker.get_property_range(self.__camera_selection, prop)
+
+    def is_camera_connected(self):
+        for camera in self.get_selected_cameras():
+            info = self.get_camera_info(camera)
+            status = info["CameraStatus"]
+            if status not in ["Ready", "Busy"]:
+                return False
+        return True
+
+    def is_liveview_enabled(self):
+        for camera in self.get_selected_cameras():
+            info = self.get_camera_info(camera)
+            status = info["CameraStatus"]
+            if status not in ["Ready", "Busy"] or not info["CameraLiveviewIsEnabled"]:
+                return False
+        return True

@@ -117,7 +117,7 @@ class StateTracker:
             return [selection.get_keys()]
         return []
 
-    def is_camera_connected(self, key):
+    def __is_camera_connected(self, key):
         camera = self.__cameras[key]
         status = camera["CameraStatus"]
         return status in ["Ready", "Busy"]
@@ -126,17 +126,17 @@ class StateTracker:
         mode = selection.get_mode()
         if mode == CameraSelectionMode.All:
             for key in self.__cameras:
-                if self.is_camera_connected(key):
+                if self.__is_camera_connected(key):
                     return key
         elif mode == CameraSelectionMode.Single:
             return selection.get_key()
         elif mode == CameraSelectionMode.Multiple:
             for key in selection.get_keys():
-                if self.is_camera_connected(key):
+                if self.__is_camera_connected(key):
                     return key
         elif mode == CameraSelectionMode.Group:
             for key, value in self.__cameras.items():
-                if self.is_camera_connected(key):
+                if self.__is_camera_connected(key):
                     if value["CameraGroup"] == selection.get_group():
                         return key
         return None

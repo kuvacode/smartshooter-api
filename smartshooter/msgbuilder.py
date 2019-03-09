@@ -85,6 +85,12 @@ class MSGBuilder:
         msg["CameraPropertyValue"] = value
         return json.dumps(msg)
 
+    def build_EnableLiveview(self, selection, enable):
+        msg = self.__create_msg("EnableLiveview")
+        self.__add_selection(msg, selection)
+        msg["Enable"] = bool(enable)
+        return json.dumps(msg)
+
     def build_LiveviewFocus(self, selection, focus_step):
         msg = self.__create_msg("LiveviewFocus")
         self.__add_selection(msg, selection)
