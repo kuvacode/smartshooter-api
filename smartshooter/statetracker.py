@@ -21,7 +21,10 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 
+from .enums import CameraSelectionMode
+from .enums import PhotoSelectionMode
 from .selection import CameraSelection
+from .selection import PhotoSelection
 
 class StateTracker:
     def __init__(self):
@@ -88,6 +91,32 @@ class StateTracker:
     def get_photo_info(self, key):
         return self.__photos[key]
 
+    def get_selected_cameras(self, selection):
+        mode = selection.get_mode()
+        if mode == CameraSelectionMode.All:
+            return self.get_camera_list()
+        elif mode == CameraSelectionMode.Single:
+            return [selection.get_key()]
+        elif mode == CameraSelectionMode.Multiple:
+            return [selection.get_keys()]
+        elif mode == CameraSelectionMode.Group:
+            selected_cameras = []
+            for key, value in self.__cameras.items():
+                if value["CameraGroup"] == selection.get_group():
+                    selected_cameras.append(key)
+            return selected_cameras
+        return []
+
+    def get_selected_photos(self, selection):
+        mode = selection.get_mode()
+        if mode == PhotoSelectionMode.All:
+            return self.get_photo_list()
+        elif mode == PhotoSelectionMode.Single:
+            return [selection.get_key()]
+        elif mode == PhotoSelectionMode.Multiple:
+            return [selection.get_keys()]
+        return []
+
     def is_camera_connected(self, key):
         camera = self.__cameras[key]
         status = camera["CameraStatus"]
@@ -95,21 +124,22 @@ class StateTracker:
 
     def __get_active_camera(self, selection):
         mode = selection.get_mode()
-        if mode == "All":
+        if mode == CameraSelectionMode.All:
             for key in self.__cameras:
                 if self.is_camera_connected(key):
                     return key
-        elif mode == "Single":
+        elif mode == CameraSelectionMode.Single:
             return selection.get_key()
-        elif mode == "Group":
+        elif mode == CameraSelectionMode.Multiple:
+            for key in selection.get_keys():
+                if self.is_camera_connected(key):
+                    return key
+        elif mode == CameraSelectionMode.Group:
             for key, value in self.__cameras.items():
                 if self.is_camera_connected(key):
                     if value["CameraGroup"] == selection.get_group():
                         return key
-        elif mode == "Multiple":
-            for key in selection.get_keys():
-                if self.is_camera_connected(key):
-                    return key
+        return None
 
     def get_property(self, selection, prop):
         key = self.__get_active_camera(selection)

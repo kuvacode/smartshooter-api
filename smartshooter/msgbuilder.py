@@ -22,7 +22,10 @@
 # DEALINGS IN THE SOFTWARE.
 
 import json
+from .enums import CameraSelectionMode
+from .enums import PhotoSelectionMode
 from .selection import CameraSelection
+from .selection import PhotoSelection
 
 class MSGBuilder:
     def __init__(self):
@@ -38,13 +41,13 @@ class MSGBuilder:
 
     def __add_selection(self, msg, selection):
         mode = selection.get_mode()
-        msg["CameraSelection"] = mode
-        if mode == "Single":
+        msg["CameraSelection"] = mode.name
+        if mode == CameraSelectionMode.Single:
             msg["CameraKey"] = selection.get_key()
-        elif mode == "Group":
-            msg["CameraGroup"] = selection.get_group()
-        elif mode == "Multiple":
+        elif mode == CameraSelectionMode.Multiple:
             msg["CameraKeys"] = selection.get_keys()
+        elif mode == CameraSelectionMode.Group:
+            msg["CameraGroup"] = selection.get_group()
 
     def build_SetConfig(self, key, value):
         msg = self.__create_msg("SetConfig")

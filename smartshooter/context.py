@@ -27,7 +27,10 @@ import json
 import time
 from .msgbuilder import MSGBuilder
 from .statetracker import StateTracker
+from .enums import CameraSelectionMode
+from .enums import PhotoSelectionMode
 from .selection import CameraSelection
+from .selection import PhotoSelection
 
 def is_embedded():
     exe = os.path.basename(sys.executable)
@@ -68,7 +71,8 @@ class Context:
         self.__is_embedded = is_embedded()
         self.__msgbuilder = MSGBuilder()
         self.__tracker = StateTracker()
-        self.__selection = CameraSelection()
+        self.__camera_selection = CameraSelection()
+        self.__photo_selection = PhotoSelection()
         if self.__is_embedded:
             self.__socket = EmbeddedSocket()
         else:
@@ -132,39 +136,54 @@ class Context:
         return self.__tracker.get_photo_info(key)
 
     def select_camera(self, key):
-        self.__selection.select_camera(key)
+        self.__camera_selection.select_camera(key)
 
     def select_cameras(self, keys):
-        self.__selection.select_cameras(keys)
+        self.__camera_selection.select_cameras(keys)
 
     def select_all_cameras(self):
-        self.__selection.select_all_cameras()
+        self.__camera_selection.select_all_cameras()
 
     def select_camera_group(self, group):
-        self.__selection.select_camera_group(group)
+        self.__camera_selection.select_camera_group(group)
+
+    def get_selected_cameras(self):
+        return self.__tracker.get_selected_cameras(self.__camera_selection);
+
+    def select_photo(self, key):
+        self.__photo_selection.select_photo(key)
+
+    def select_photos(self, keys):
+        self.__photo_selection.select_photos(keys)
+
+    def select_all_photos(self):
+        self.__photo_selection.select_all_photos()
+
+    def get_selected_photos(self):
+        return self.__tracker.get_selected_photos(self.__photo_selection);
 
     def connect(self):
-        msg = self.__msgbuilder.build_Connect(self.__selection)
+        msg = self.__msgbuilder.build_Connect(self.__camera_selection)
         self.__transact(msg)
 
     def disconnect(self):
-        msg = self.__msgbuilder.build_Disconnect(self.__selection)
+        msg = self.__msgbuilder.build_Disconnect(self.__camera_selection)
         self.__transact(msg)
 
     def shoot(self, bulb_timer=None, photo_origin="api"):
-        msg = self.__msgbuilder.build_Shoot(self.__selection, bulb_timer, photo_origin)
+        msg = self.__msgbuilder.build_Shoot(self.__camera_selection, bulb_timer, photo_origin)
         self.__transact(msg)
 
     def set_property(self, prop, value):
-        msg = self.__msgbuilder.build_SetProperty(self.__selection, prop, value)
+        msg = self.__msgbuilder.build_SetProperty(self.__camera_selection, prop, value)
         self.__transact(msg)
 
     def move_focus(self, focus_step):
-        msg = self.__msgbuilder.build_LiveviewFocus(self.__selection, focus_step)
+        msg = self.__msgbuilder.build_LiveviewFocus(self.__camera_selection, focus_step)
         self.__transact(msg)
 
     def get_property(self, prop):
-        return self.__tracker.get_property(self.__selection, prop)
+        return self.__tracker.get_property(self.__camera_selection, prop)
 
     def get_property_range(self, prop):
-        return self.__tracker.get_property_range(self.__selection, prop)
+        return self.__tracker.get_property_range(self.__camera_selection, prop)

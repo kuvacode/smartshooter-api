@@ -36,3 +36,14 @@ class Property(Enum):
     WhiteBalance = 10
     Storage      = 11
     MirrorLockup = 12
+
+class CameraSelectionMode(Enum):
+    All      = 1
+    Single   = 2
+    Multiple = 3
+    Group    = 4
+
+class PhotoSelectionMode(Enum):
+    All      = 1
+    Single   = 2
+    Multiple = 3

@@ -21,33 +21,36 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 
+from .enums import PhotoSelectionMode
+from .enums import CameraSelectionMode
+
 class CameraSelection:
     def __init__(self):
-        self.__mode = "All"
+        self.__mode = CameraSelectionMode.All
         self.__key = None
         self.__keys = []
         self.__group = None
 
     def select_camera(self, key):
-        self.__mode = "Single"
+        self.__mode = CameraSelectionMode.Single
         self.__key = key
         self.__keys = None
         self.__group = None
 
     def select_cameras(self, keys):
-        self.__mode = "Multiple"
+        self.__mode = CameraSelectionMode.Multiple
         self.__key = None
         self.__keys = keys
         self.__group = None
 
     def select_all_cameras(self):
-        self.__mode = "All"
+        self.__mode = CameraSelectionMode.All
         self.__key = None
         self.__keys = None
         self.__group = None
 
     def select_camera_group(self, group):
-        self.__mode = "Group"
+        self.__mode = CameraSelectionMode.Group
         self.__key = None
         self.__keys = None
         self.__group = group
@@ -63,3 +66,33 @@ class CameraSelection:
 
     def get_group(self):
         return self.__group
+
+class PhotoSelection:
+    def __init__(self):
+        self.__mode = PhotoSelectionMode.All
+        self.__key = None
+        self.__keys = []
+
+    def select_photo(self, key):
+        self.__mode = PhotoSelectionMode.Single
+        self.__key = key
+        self.__keys = None
+
+    def select_photos(self, keys):
+        self.__mode = PhotoelectionMode.Multiple
+        self.__key = None
+        self.__keys = keys
+
+    def select_all_photos(self):
+        self.__mode = PhotoSelectionMode.All
+        self.__key = None
+        self.__keys = None
+
+    def get_mode(self):
+        return self.__mode
+
+    def get_key(self):
+        return self.__key
+
+    def get_keys(self):
+        return self.__keys
