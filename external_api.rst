@@ -287,6 +287,14 @@ List of Fields
 +----------------------------------+---------------------------------------------------------------------+
 | CameraKeys                       | Array of unique camera identifiers                                  |
 +----------------------------------+---------------------------------------------------------------------+
+| CameraLiveviewAFRegionBottom     | Bottom pixel of camera's active auto focus region                   |
++----------------------------------+---------------------------------------------------------------------+
+| CameraLiveviewAFRegionLeft       | Left pixel of camera's active auto focus region                     |
++----------------------------------+---------------------------------------------------------------------+
+| CameraLiveviewAFRegionRight      | Right pixel of camera's active auto focus region                    |
++----------------------------------+---------------------------------------------------------------------+
+| CameraLiveviewAFRegionTop        | Top pixel of camera's active auto focus region                      |
++----------------------------------+---------------------------------------------------------------------+
 | CameraLiveviewDOFIsEnabled       | Indicates whether camera live view DOF preview is enabled           |
 +----------------------------------+---------------------------------------------------------------------+
 | CameraLiveviewDOFIsSupported     | Indicates if camera live view supports DOF (depth of field) preview |
@@ -581,6 +589,22 @@ CameraKeys
   :Type:            string[]
   :Description:     Array of unique camera identifiers
 
+CameraLiveviewAFRegionBottom
+  :Type:            float
+  :Description:     Bottom pixel of camera's active auto focus region
+
+CameraLiveviewAFRegionLeft
+  :Type:            float
+  :Description:     Left pixel of camera's active auto focus region
+
+CameraLiveviewAFRegionRight
+  :Type:            float
+  :Description:     Right pixel of camera's active auto focus region
+
+CameraLiveviewAFRegionTop
+  :Type:            float
+  :Description:     Top pixel of camera's active auto focus region
+
 CameraLiveviewDOFIsEnabled
   :Type:            boolean
   :Description:     Indicates whether camera live view DOF preview is enabled
@@ -791,6 +815,10 @@ CameraUpdated
                     - "CameraLiveviewSensorRegionBottom"
                     - "CameraLiveviewSensorRegionRight"
                     - "CameraLiveviewSensorRegionTop"
+                    - "CameraLiveviewAFRegionLeft"
+                    - "CameraLiveviewAFRegionBottom"
+                    - "CameraLiveviewAFRegionRight"
+                    - "CameraLiveviewAFRegionTop"
                     - "CameraVideoIsSupported"
                     - "CameraVideoIsEnabled"
                     - "CameraVideoElapsedTime"
