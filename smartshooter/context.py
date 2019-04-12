@@ -87,11 +87,14 @@ class Context:
         self.__tracker.process_reply(reply)
         return reply
 
-    def __read_event(self):
-        self.check_status()
-        jstr = self.__socket.recv_event()
-        event = json.loads(jstr)
-        self.__tracker.process_event(event)
+    def __read_events(self):
+        while True:
+            self.check_status()
+            jstr = self.__socket.recv_event()
+            if not jstr:
+                return
+            event = json.loads(jstr)
+            self.__tracker.process_event(event)
 
     def check_status(self):
         ok = apphooks.check_status()
@@ -114,7 +117,30 @@ class Context:
         target = time.time() + secs
         self.wait_until(target)
 
-    def wait_for_liveview(self):
+    def __wait_for_liveview_enabled(self):
+        self.__read_events()
+        cameras = []
+        for camera in self.get_selected_cameras():
+            info = self.get_camera_info(camera)
+            status = info["CameraStatus"]
+            if status in ["Ready", "Busy"] and not info["CameraLiveviewIsEnabled"]:
+                cameras.append(camera)
+        num_pending = len(cameras)
+        while num_pending > 0:
+            self.__read_events()
+            for i in range(len(cameras)):
+                if cameras[i]:
+                    info = self.get_camera_info(cameras[i])
+                    status = info["CameraStatus"]
+                    if status not in ["Ready", "Busy"]:
+                        num_pending -= 1
+                        cameras[i] = None
+                    elif status == "Ready" and info["CameraLiveviewIsEnabled"]:
+                        num_pending -= 1
+                        cameras[i] = None
+
+    def __wait_for_liveview_frame(self):
+        self.__read_events()
         cameras = []
         markers = []
         for camera in self.get_selected_cameras():
@@ -125,16 +151,22 @@ class Context:
                 markers.append(info["CameraLiveviewNumFrames"] + 10)
         num_pending = len(cameras)
         while num_pending > 0:
-            self.__read_event()
+            self.__read_events()
             for i in range(len(cameras)):
-                camera = cameras[i]
-                marker = markers[i]
-                info = self.get_camera_info(camera)
-                status = info["CameraStatus"]
-                if status not in ["Ready", "Busy"] or not info["CameraLiveviewIsEnabled"]:
-                    num_pending -= 1
-                elif status == "Ready" and info["CameraLiveviewNumFrames"] > marker:
-                    num_pending -= 1
+                if cameras[i]:
+                    info = self.get_camera_info(cameras[i])
+                    status = info["CameraStatus"]
+                    if status not in ["Ready", "Busy"] or not info["CameraLiveviewIsEnabled"]:
+                        num_pending -= 1
+                        cameras[i] = None
+                    elif status == "Ready" and info["CameraLiveviewNumFrames"] > markers[i]:
+                        num_pending -= 1
+                        cameras[i] = None
+
+
+    def wait_for_liveview(self):
+        self.__wait_for_liveview_enabled()
+        self.__wait_for_liveview_frame()
 
     def set_config(self, key, value):
         msg = self.__msgbuilder.build_SetConfig(key, value)
