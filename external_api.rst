@@ -2,7 +2,7 @@
 External API Documentation
 ==========================
 
-:Version: v4.3
+:Version: v4.4
 
 Copyright 2016-2019, Kuvacode Oy. All rights reserved.
 
@@ -1040,7 +1040,7 @@ NodeSyncLocal
   :Description:     internal use
 
 NodeSyncVersion
-  :Type:            int32
+  :Type:            uint32
   :Description:     internal use
 
 NodeTransferMode

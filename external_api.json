@@ -657,7 +657,7 @@
           "description": "internal use" },
         { "name": "RemoveNode", "type": "object",
           "description": "internal use" },
-        { "name": "NodeSyncVersion", "type": "int32",
+        { "name": "NodeSyncVersion", "type": "uint32",
           "description": "internal use" },
         { "name": "NodeSyncLocal", "type": "boolean",
           "description": "internal use" },
