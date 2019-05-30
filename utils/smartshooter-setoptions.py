@@ -35,13 +35,13 @@ def send_sequence_num(socket, sequence_num):
     req["msg_type"] = "Request"
     req["msg_id"] = "SetSequenceNum"
     req["msg_ref_num"] = msg_ref_num
-    req['GridSequenceNum'] = sequence_num
+    req['PhotoSequenceNum'] = sequence_num
     msg_ref_num += 1
     socket.send_string(json.dumps(req))
     rep = socket.recv()
-    str_msg = rep.decode("utf-8-sig")
+    str_msg = rep.decode("utf-8")
     json_msg = json.loads(str_msg)
-    return json_msg["Result"]
+    return json_msg["msg_result"]
 
 def send_batch_num(socket, batch_num):
     global msg_ref_num
@@ -49,13 +49,13 @@ def send_batch_num(socket, batch_num):
     req["msg_type"] = "Request"
     req["msg_id"] = "SetBatchNum"
     req["msg_ref_num"] = msg_ref_num
-    req['GridBatchNum'] = batch_num
+    req['PhotoBatchNum'] = batch_num
     msg_ref_num += 1
     socket.send_string(json.dumps(req))
     rep = socket.recv()
-    str_msg = rep.decode("utf-8-sig")
+    str_msg = rep.decode("utf-8")
     json_msg = json.loads(str_msg)
-    return json_msg["Result"]
+    return json_msg["msg_result"]
 
 def send_options(socket, unique_tag, barcode_text, photo_path):
     global msg_ref_num
@@ -65,16 +65,16 @@ def send_options(socket, unique_tag, barcode_text, photo_path):
     req["msg_ref_num"] = msg_ref_num
     msg_ref_num += 1
     if unique_tag != None:
-        req['GridUniqueTag'] = unique_tag
+        req['UniqueTag'] = unique_tag
     if barcode_text != None:
-        req['GridBarcode'] = barcode_text
+        req['Barcode'] = barcode_text
     if photo_path != None:
-        req['GridPhotoPath'] = photo_path
+        req['DownloadPath'] = photo_path
     socket.send_string(json.dumps(req))
     rep = socket.recv()
-    str_msg = rep.decode("utf-8-sig")
+    str_msg = rep.decode("utf-8")
     json_msg = json.loads(str_msg)
-    return json_msg["Result"]
+    return json_msg["msg_result"]
 
 def main():
     parser = argparse.ArgumentParser("smartshooter-setoptions.py")

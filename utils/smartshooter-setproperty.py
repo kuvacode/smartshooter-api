@@ -52,9 +52,9 @@ def send_property(socket, property_type, property_value):
     req['CameraPropertyValue'] = property_value
     socket.send_string(json.dumps(req))
     rep = socket.recv()
-    str_msg = rep.decode("utf-8-sig")
+    str_msg = rep.decode("utf-8")
     json_msg = json.loads(str_msg)
-    return json_msg["Result"]
+    return json_msg["msg_result"]
 
 def main():
     parser = argparse.ArgumentParser("smartshooter-setproperty.py",

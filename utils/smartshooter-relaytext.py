@@ -29,15 +29,15 @@ import zmq
 
 def send_relaycustomtext(socket, text):
     req = {}
-    req["msg_type"] = "Event"
+    req["msg_type"] = "Request"
     req["msg_id"] = "RelayCustomText"
     req["msg_ref_num"] = 0
     req["CustomText"] = text
     socket.send_string(json.dumps(req))
     rep = socket.recv()
-    str_msg = rep.decode("utf-8-sig")
+    str_msg = rep.decode("utf-8")
     json_msg = json.loads(str_msg)
-    return json_msg["Result"]
+    return json_msg["msg_result"]
 
 def main():
     parser = argparse.ArgumentParser("smartshooter-trigger.py")

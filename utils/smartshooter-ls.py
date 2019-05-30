@@ -34,17 +34,15 @@ def send_synchronise(socket):
     req["msg_ref_num"] = 0
     socket.send_string(json.dumps(req))
     rep = socket.recv()
-    str_msg = rep.decode("utf-8-sig")
+    str_msg = rep.decode("utf-8")
     json_msg = json.loads(str_msg)
-    return json_msg["Result"]
-
-def print_ls(msg):
-    cameras = msg["CameraInfo"]
-    for camera in cameras:
-        print("{0} {1} {2} {3}".format(camera["CameraSerialNumber"],
-                                       camera["CameraMake"],
-                                       camera["CameraModel"],
-                                       camera["CameraName"]))
+    if json_msg["msg_result"]:
+        cameras = json_msg["CameraInfo"]
+        for camera in cameras:
+            print("{0} {1} {2} {3}".format(camera["CameraSerialNumber"],
+                                           camera["CameraMake"],
+                                           camera["CameraModel"],
+                                           camera["CameraName"]))
 
 def main():
     parser = argparse.ArgumentParser("smartshooter-ls.py")
@@ -67,17 +65,7 @@ def main():
     sub_socket.setsockopt(zmq.SUBSCRIBE, b"")
     sub_socket.connect(args.publisher)
 
-    if not send_synchronise(req_socket):
-        print("Failed to send synchronise message", file=sys.stderr)
-        exit(1)
-
-    while (True):
-        raw = sub_socket.recv()
-        str_msg = raw.decode("utf-8-sig")
-        json_msg = json.loads(str_msg)
-        if json_msg["msg_id"] == "Synchronise":
-            print_ls(json_msg)
-            return
+    send_synchronise(req_socket)
 
 if __name__ == "__main__":
     main()
