@@ -329,6 +329,7 @@
             "PhotoFocalLength",
             "PhotoFilesize",
             "PhotoIsImage",
+            "PhotoIsHidden",
             "PhotoIsScanned",
             "PhotoHash",
             "PhotoBarcode",
@@ -457,7 +458,6 @@
           "range": [
             "Orphaned",
             "Deleted",
-            "Hidden",
             "Camera",
             "Local Disk"
           ] },
@@ -512,6 +512,8 @@
           "description": "Size of photo file" },
         { "name": "PhotoIsImage", "type": "boolean",
           "description": "Indicates whether photo is image or not (possible video file)" },
+        { "name": "PhotoIsHidden", "type": "boolean",
+          "description": "Indicates whether photo is hidden" },
         { "name": "PhotoHash", "type": "string",
           "description": "Hash of photo data contents" },
         { "name": "PhotoBarcode", "type": "string",

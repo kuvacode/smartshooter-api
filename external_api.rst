@@ -2,7 +2,7 @@
 External API Documentation
 ==========================
 
-:Version: v4.4
+:Version: v4.7
 
 Copyright 2016-2019, Kuvacode Oy. All rights reserved.
 
@@ -442,6 +442,8 @@ List of Fields
 | PhotoHeight                      | Height of photo                                                        |
 +----------------------------------+------------------------------------------------------------------------+
 | PhotoISO                         | Camera ISO of photo                                                    |
++----------------------------------+------------------------------------------------------------------------+
+| PhotoIsHidden                    | Indicates whether photo is hidden                                      |
 +----------------------------------+------------------------------------------------------------------------+
 | PhotoIsImage                     | Indicates whether photo is image or not (possible video file)          |
 +----------------------------------+------------------------------------------------------------------------+
@@ -1105,6 +1107,10 @@ PhotoISO
   :Type:            string
   :Description:     Camera ISO of photo
 
+PhotoIsHidden
+  :Type:            boolean
+  :Description:     Indicates whether photo is hidden
+
 PhotoIsImage
   :Type:            boolean
   :Description:     Indicates whether photo is image or not (possible video file)
@@ -1126,7 +1132,6 @@ PhotoLocation
   :Description:     Location of photo file
   :Valid range:     - "Orphaned"
                     - "Deleted"
-                    - "Hidden"
                     - "Camera"
                     - "Local Disk"
 
@@ -1195,6 +1200,7 @@ PhotoUpdated
                     - "PhotoFocalLength"
                     - "PhotoFilesize"
                     - "PhotoIsImage"
+                    - "PhotoIsHidden"
                     - "PhotoIsScanned"
                     - "PhotoHash"
                     - "PhotoBarcode"
