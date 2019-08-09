@@ -615,6 +615,8 @@
           "description": "internal use" },
         { "name": "NodeVersion", "type": "string",
           "description": "internal use" },
+        { "name": "NodePlatform", "type": "string",
+          "description": "internal use" },
         { "name": "NodeIsMaster", "type": "boolean",
           "description": "internal use" },
         { "name": "NodeIsLiveviewConsumer", "type": "boolean",
