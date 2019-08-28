@@ -137,6 +137,8 @@ The following table lists all the valid request/response messages.
 +----------------------+---------------------------------------------------------------------------+
 | Identify             | Request specified camera identifies itself                                |
 +----------------------+---------------------------------------------------------------------------+
+| IncrementProperty    | Increment/decrement camera property on specified camera                   |
++----------------------+---------------------------------------------------------------------------+
 | License              | internal use                                                              |
 +----------------------+---------------------------------------------------------------------------+
 | LiveviewFPS          | Set desired live view FPS for specified camera                            |
@@ -355,6 +357,8 @@ List of Fields
 +----------------------------------+------------------------------------------------------------------------+
 | CameraPropertyRange              | Array of valid values for a camera property                            |
 +----------------------------------+------------------------------------------------------------------------+
+| CameraPropertyStep               | Contains range step for IncrementProperty message                      |
++----------------------------------+------------------------------------------------------------------------+
 | CameraPropertyType               | Specifies a camera property                                            |
 +----------------------------------+------------------------------------------------------------------------+
 | CameraPropertyValue              | Contains value for the camera property                                 |
@@ -415,6 +419,8 @@ List of Fields
 +----------------------------------+------------------------------------------------------------------------+
 | Identify                         | Contains fields for the Identify request                               |
 +----------------------------------+------------------------------------------------------------------------+
+| IncrementProperty                | Contains fields for the IncrementProperty request                      |
++----------------------------------+------------------------------------------------------------------------+
 | LiveviewFPS                      | Contains fields for the LiveviewFPS request                            |
 +----------------------------------+------------------------------------------------------------------------+
 | LiveviewFocus                    | Contains fields for the LiveviewFocus request                          |
@@ -467,6 +473,10 @@ List of Fields
 +----------------------------------+------------------------------------------------------------------------+
 | PhotoSequenceNum                 | Contains the [S] sequence number                                       |
 +----------------------------------+------------------------------------------------------------------------+
+| PhotoSessionName                 | Contains the [N] session name                                          |
++----------------------------------+------------------------------------------------------------------------+
+| PhotoSessionNum                  | Contains the [I] session number                                        |
++----------------------------------+------------------------------------------------------------------------+
 | PhotoShutterSpeed                | Camera shutter speed of photo                                          |
 +----------------------------------+------------------------------------------------------------------------+
 | PhotoUUID                        | Internal UUID of photo                                                 |
@@ -486,10 +496,6 @@ List of Fields
 | RenamePhoto                      | Contains fields for the RenamePhoto request                            |
 +----------------------------------+------------------------------------------------------------------------+
 | Reshoot                          | Contains fields for the Reshoot request                                |
-+----------------------------------+------------------------------------------------------------------------+
-| SessionName                      | Contains the [N] session name                                          |
-+----------------------------------+------------------------------------------------------------------------+
-| SessionNum                       | Contains the [I] session number                                        |
 +----------------------------------+------------------------------------------------------------------------+
 | SetBatchNum                      | Contains fields for the SetBatchNum request                            |
 +----------------------------------+------------------------------------------------------------------------+
@@ -742,6 +748,10 @@ CameraPropertyRange
   :Type:            string[]
   :Description:     Array of valid values for a camera property
 
+CameraPropertyStep
+  :Type:            string
+  :Description:     Contains range step for IncrementProperty message
+
 CameraPropertyType
   :Type:            string
   :Description:     Specifies a camera property
@@ -953,6 +963,13 @@ Identify
   :Description:     Contains fields for the Identify request
   :Request fields:  - "[CAMERA SELECTION FIELDS]"
 
+IncrementProperty
+  :Type:            object
+  :Description:     Contains fields for the IncrementProperty request
+  :Request fields:  - "[CAMERA SELECTION FIELDS]"
+                    - "CameraPropertyType"
+                    - "CameraPropertyStep"
+
 License
   :Type:            object
   :Description:     internal use
@@ -1034,6 +1051,10 @@ NodeKey
   :Description:     internal use
 
 NodeName
+  :Type:            string
+  :Description:     internal use
+
+NodePlatform
   :Type:            string
   :Description:     internal use
 
@@ -1171,6 +1192,14 @@ PhotoSequenceNum
   :Type:            int32
   :Description:     Contains the [S] sequence number
 
+PhotoSessionName
+  :Type:            string
+  :Description:     Contains the [N] session name
+
+PhotoSessionNum
+  :Type:            int32
+  :Description:     Contains the [I] session number
+
 PhotoShutterSpeed
   :Type:            string
   :Description:     Camera shutter speed of photo
@@ -1206,6 +1235,8 @@ PhotoUpdated
                     - "PhotoBarcode"
                     - "PhotoSequenceNum"
                     - "PhotoBatchNum"
+                    - "PhotoSessionNum"
+                    - "PhotoSessionName"
                     - "CameraKey"
                     - "NodeKey"
 
@@ -1257,14 +1288,6 @@ Reshoot
   :Description:     Contains fields for the Reshoot request
   :Request fields:  - "[PHOTO SELECTION FIELDS]"
 
-SessionName
-  :Type:            string
-  :Description:     Contains the [N] session name
-
-SessionNum
-  :Type:            int32
-  :Description:     Contains the [I] session number
-
 SetBatchNum
   :Type:            object
   :Description:     Contains fields for the SetBatchNum request
@@ -1280,8 +1303,8 @@ SetOptions
   :Type:            object
   :Description:     Contains fields for SetOptions request
   :Request fields:  - "FilenameExpression"
-                    - "SessionName"
-                    - "SessionNum"
+                    - "PhotoSessionName"
+                    - "PhotoSessionNum"
                     - "UniqueTag"
                     - "Barcode"
                     - "DefaultStorage"
