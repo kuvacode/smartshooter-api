@@ -44,6 +44,8 @@
           "description": "Start/stop video recording on specified camera" },
         { "msg_id": "SetProperty", "msg_type": "request",
           "description": "Set camera property on specified camera" },
+        { "msg_id": "IncrementProperty", "msg_type": "request",
+          "description": "Increment/decrement camera property on specified camera" },
         { "msg_id": "Download", "msg_type": "request",
           "description": "Download specified photo from camera to computer" },
         { "msg_id": "Reshoot", "msg_type": "request",
@@ -230,6 +232,13 @@
             "[CAMERA SELECTION FIELDS]",
             "CameraPropertyType",
             "CameraPropertyValue"
+          ] },
+        { "name": "IncrementProperty", "type": "object",
+          "description": "Contains fields for the IncrementProperty request",
+          "request_fields": [
+            "[CAMERA SELECTION FIELDS]",
+            "CameraPropertyType",
+            "CameraPropertyStep"
           ] },
         { "name": "Download", "type": "object",
           "description": "Contains fields for the Download request",
@@ -546,6 +555,8 @@
           "description": "Array of valid values for a camera property" },
         { "name": "CameraPropertyIsWriteable", "type": "boolean",
           "description": "Indicates whether a camera property can be changed" },
+        { "name": "CameraPropertyStep", "type": "string",
+          "description": "Contains range step for IncrementProperty message" },
         { "name": "CameraAutofocusIsSupported", "type": "boolean",
           "description": "Indicates if camera supports auto focus" },
         { "name": "CameraIsFocused", "type": "boolean",
