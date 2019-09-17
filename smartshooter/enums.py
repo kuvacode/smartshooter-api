@@ -47,3 +47,8 @@ class PhotoSelectionMode(Enum):
     All      = 1
     Single   = 2
     Multiple = 3
+
+class ShutterButton(Enum):
+    Off  = 1
+    Half = 2
+    Full = 3

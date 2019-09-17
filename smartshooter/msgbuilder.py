@@ -85,6 +85,12 @@ class MSGBuilder:
         msg["CameraPropertyValue"] = value
         return json.dumps(msg)
 
+    def build_SetShutterButton(self, selection, button):
+        msg = self.__create_msg("SetShutterButton")
+        self.__add_selection(msg, selection)
+        msg["CameraShutterButton"] = button.name
+        return json.dumps(msg)
+
     def build_EnableLiveview(self, selection, enable):
         msg = self.__create_msg("EnableLiveview")
         self.__add_selection(msg, selection)

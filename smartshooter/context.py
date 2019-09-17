@@ -232,6 +232,10 @@ class Context:
         msg = self.__msgbuilder.build_SetProperty(self.__camera_selection, prop, value)
         self.__transact(msg)
 
+    def set_shutter_button(self, button):
+        msg = self.__msgbuilder.build_SetShutterButton(self.__camera_selection, button)
+        self.__transact(msg)
+
     def enable_liveview(self, enable):
         msg = self.__msgbuilder.build_EnableLiveview(self.__camera_selection, enable)
         self.__transact(msg)
