@@ -2,7 +2,7 @@
 External API Documentation
 ==========================
 
-:Version: v4.7
+:Version: v4.8
 
 Copyright 2016-2019, Kuvacode Oy. All rights reserved.
 
@@ -302,6 +302,8 @@ List of Fields
 | CameraLiveviewDOFIsSupported     | Indicates if camera live view supports DOF (depth of field) preview    |
 +----------------------------------+------------------------------------------------------------------------+
 | CameraLiveviewFPS                | Desired FPS of camera live view stream                                 |
++----------------------------------+------------------------------------------------------------------------+
+| CameraLiveviewFocusIsSupported   | Indicates if camera live view supports moving focus                    |
 +----------------------------------+------------------------------------------------------------------------+
 | CameraLiveviewFocusStep          | Specifies camera live view focus motor movement                        |
 +----------------------------------+------------------------------------------------------------------------+
@@ -627,6 +629,10 @@ CameraLiveviewFPS
   :Type:            int32
   :Description:     Desired FPS of camera live view stream
 
+CameraLiveviewFocusIsSupported
+  :Type:            boolean
+  :Description:     Indicates if camera live view supports moving focus
+
 CameraLiveviewFocusStep
   :Type:            string
   :Description:     Specifies camera live view focus motor movement
@@ -819,6 +825,7 @@ CameraUpdated
                     - "CameraLiveviewIsSupported"
                     - "CameraLiveviewZoomIsSupported"
                     - "CameraLiveviewDOFIsSupported"
+                    - "CameraLiveviewFocusIsSupported"
                     - "CameraLiveviewIsEnabled"
                     - "CameraLiveviewZoomIsEnabled"
                     - "CameraLiveviewDOFIsEnabled"
