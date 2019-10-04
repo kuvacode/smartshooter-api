@@ -2,11 +2,11 @@ Smart Shooter External API
 ==========================
 
 This repository contains documentation, example code and utility scripts for
-using the External API that is exposed by Smart Shooter. More information about
-Smart Shooter can be found at:
+using the External API that is exposed by Smart Shooter and CaptureGRID. More
+information about can be found at:
 
 * `<http://kuvacode.com>`_
-* `<http://kuvacode.com/smart-shooter/documentation/external-api>`_
+* `<https://capturegrid.com/external_api.html>`_
 
 The External API itself does not impose any restrictions on what programming
 language can be used. The API operates by communicating over a socket managed by
