@@ -2,7 +2,7 @@
 External API Documentation
 ==========================
 
-:Version: v4.8
+:Version: v4.9
 
 Copyright 2016-2019, Kuvacode Oy. All rights reserved.
 
@@ -1057,11 +1057,19 @@ NodeKey
   :Type:            string
   :Description:     internal use
 
+NodeKeys
+  :Type:            string[]
+  :Description:     internal use
+
 NodeName
   :Type:            string
   :Description:     internal use
 
 NodePlatform
+  :Type:            string
+  :Description:     internal use
+
+NodeSelection
   :Type:            string
   :Description:     internal use
 
