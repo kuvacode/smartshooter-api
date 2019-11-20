@@ -66,8 +66,6 @@
           "description": "Information about photo status" },
         { "msg_id": "LiveviewUpdated", "msg_type": "event",
           "description": "internal use" },
-        { "msg_id": "PropertyUpdated", "msg_type": "event",
-          "description": "Information about camera property" },
         { "msg_id": "Synchronise", "msg_type": "request",
           "description": "Request latest information about cameras/photos" },
         { "msg_id": "TransferPhoto", "msg_type": "request",
@@ -113,9 +111,9 @@
           "description": "internal use" },
         { "name": "NetworkVersion", "type": "string",
           "description": "internal use" },
-        { "name": "SetOptions", "type": "object",
-          "description": "Contains fields for SetOptions request",
-          "request_fields": [
+        { "name": "OptionsInfo", "type": "object",
+          "description": "Contains fields for OptionsInfo object",
+          "fields": [
             "FilenameExpression",
             "PhotoSessionName",
             "PhotoSessionNum",
@@ -127,6 +125,11 @@
             "AutoSynchroniseTime",
             "DownloadPath",
             "FallbackPath"
+          ] },
+        { "name": "SetOptions", "type": "object",
+          "description": "Contains fields for SetOptions request",
+          "request_fields": [
+            "[OptionsInfo FIELDS]"
           ] },
         { "name": "SetSequenceNum", "type": "object",
           "description": "Contains fields for SetSequenceNum request",
@@ -268,9 +271,9 @@
           "description": "Contains fields for the CheckClocks request",
           "request_fields": [
           ] },
-        { "name": "CameraUpdated", "type": "object",
-          "description": "Contains fields for the CameraUpdated event",
-          "event_fields": [
+        { "name": "CameraInfo", "type": "object",
+          "description": "Contains fields for the CameraInfo object",
+          "fields": [
             "[CAMERA SELECTION FIELDS]",
             "CameraStatus",
             "CameraName",
@@ -314,13 +317,21 @@
             "CameraNumDownloadsComplete",
             "CameraNumDownloadsFailed",
             "CameraNumAutofocus",
+            "CameraPropertyInfo[]",
             "NodeKey"
           ] },
+        { "name": "CameraUpdated", "type": "object",
+          "description": "Contains fields for the CameraUpdated event",
+          "event_fields": [
+            "[CameraInfo FIELDS]"
+          ] },
+        { "name": "NodeInfo", "type": "object",
+          "description": "internal use" },
         { "name": "NodeUpdated", "type": "object",
           "description": "internal use" },
-        { "name": "PhotoUpdated", "type": "object",
-          "description": "Contains fields for the PhotoUpdated event",
-          "event_fields": [
+        { "name": "PhotoInfo", "type": "object",
+          "description": "Contains fields for the PhotoInfo object",
+          "fields": [
             "[PHOTO SELECTION FIELDS]",
             "PhotoLocation",
             "PhotoUUID",
@@ -350,17 +361,16 @@
             "CameraKey",
             "NodeKey"
           ] },
+        { "name": "PhotoUpdated", "type": "object",
+          "description": "Contains fields for the PhotoUpdated event",
+          "event_fields": [
+            "[PhotoInfo FIELDS]"
+          ] },
         { "name": "LiveviewUpdated", "type": "object",
           "description": "internal use" },
-        { "name": "PropertyUpdated", "type": "object",
-          "description": "Contains fields for the PropertyUpdated event",
-          "event_fields": [
-            "[CAMERA SELECTION FIELDS]",
-            "PropertyInfo[]"
-          ] },
-        { "name": "PropertyInfo", "type": "object",
-          "description": "Contains fields for the PropertyInfo object",
-          "event_fields": [
+        { "name": "CameraPropertyInfo", "type": "object",
+          "description": "Contains fields for the CameraPropertyInfo object",
+          "fields": [
             "CameraPropertyType",
             "CameraPropertyValue",
             "CameraPropertyIsWriteable",
@@ -371,12 +381,10 @@
           "request_fields": [
           ],
           "response_fields": [
-            "NodeUpdatedEvent",
-            "SetOptions",
-            "License",
-            "CameraUpdated[]",
-            "PhotoUpdated[]",
-            "PropertyUpdated[]"
+            "OptionsInfo",
+            "NodeInfo[]",
+            "CameraInfo[]",
+            "PhotoInfo[]"
           ] },
         { "name": "TransferPhoto", "type": "object",
           "description": "internal use" },

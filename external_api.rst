@@ -2,7 +2,7 @@
 External API Documentation
 ==========================
 
-:Version: v4.9
+:Version: v4.11
 
 Copyright 2016-2019, Kuvacode Oy. All rights reserved.
 
@@ -94,8 +94,6 @@ The following table lists all the valid event messages.
 | NodeUpdated     | Information about GRID node status             |
 +-----------------+------------------------------------------------+
 | PhotoUpdated    | Information about photo status                 |
-+-----------------+------------------------------------------------+
-| PropertyUpdated | Information about camera property              |
 +-----------------+------------------------------------------------+
 | RelayCustomText | Send custom text to all External API listeners |
 +-----------------+------------------------------------------------+
@@ -283,6 +281,8 @@ List of Fields
 +----------------------------------+------------------------------------------------------------------------+
 | CameraGroup                      | Group that camera belongs to                                           |
 +----------------------------------+------------------------------------------------------------------------+
+| CameraInfo                       | Contains fields for the CameraInfo object                              |
++----------------------------------+------------------------------------------------------------------------+
 | CameraIsFocused                  | Indicates of camera auto focus action was successful                   |
 +----------------------------------+------------------------------------------------------------------------+
 | CameraKey                        | Unique identfier for a camera                                          |
@@ -354,6 +354,8 @@ List of Fields
 | CameraNumPhotosTaken             | Number of photos taken by camera                                       |
 +----------------------------------+------------------------------------------------------------------------+
 | CameraPowersource                | Indicates camera power source                                          |
++----------------------------------+------------------------------------------------------------------------+
+| CameraPropertyInfo               | Contains fields for the CameraPropertyInfo object                      |
 +----------------------------------+------------------------------------------------------------------------+
 | CameraPropertyIsWriteable        | Indicates whether a camera property can be changed                     |
 +----------------------------------+------------------------------------------------------------------------+
@@ -429,6 +431,8 @@ List of Fields
 +----------------------------------+------------------------------------------------------------------------+
 | LiveviewPosition                 | Contains fields for the LiveviewPosition request                       |
 +----------------------------------+------------------------------------------------------------------------+
+| OptionsInfo                      | Contains fields for OptionsInfo object                                 |
++----------------------------------+------------------------------------------------------------------------+
 | PhotoAperture                    | Lens aperture of photo                                                 |
 +----------------------------------+------------------------------------------------------------------------+
 | PhotoBarcode                     | Contains barcode text scanned from photo                               |
@@ -450,6 +454,8 @@ List of Fields
 | PhotoHeight                      | Height of photo                                                        |
 +----------------------------------+------------------------------------------------------------------------+
 | PhotoISO                         | Camera ISO of photo                                                    |
++----------------------------------+------------------------------------------------------------------------+
+| PhotoInfo                        | Contains fields for the PhotoInfo object                               |
 +----------------------------------+------------------------------------------------------------------------+
 | PhotoIsHidden                    | Indicates whether photo is hidden                                      |
 +----------------------------------+------------------------------------------------------------------------+
@@ -486,10 +492,6 @@ List of Fields
 | PhotoUpdated                     | Contains fields for the PhotoUpdated event                             |
 +----------------------------------+------------------------------------------------------------------------+
 | PhotoWidth                       | Width of photo                                                         |
-+----------------------------------+------------------------------------------------------------------------+
-| PropertyInfo                     | Contains fields for the PropertyInfo object                            |
-+----------------------------------+------------------------------------------------------------------------+
-| PropertyUpdated                  | Contains fields for the PropertyUpdated event                          |
 +----------------------------------+------------------------------------------------------------------------+
 | RelayCustomText                  | Contains fields for the RelayCustomText event                          |
 +----------------------------------+------------------------------------------------------------------------+
@@ -588,6 +590,55 @@ CameraDownloadRate
 CameraGroup
   :Type:            string
   :Description:     Group that camera belongs to
+
+CameraInfo
+  :Type:            object
+  :Description:     Contains fields for the CameraInfo object
+  :Fields:          - "[CAMERA SELECTION FIELDS]"
+                    - "CameraStatus"
+                    - "CameraName"
+                    - "CameraGroup"
+                    - "CameraSerialNumber"
+                    - "CameraMake"
+                    - "CameraModel"
+                    - "CameraNumCards"
+                    - "PhotoBatchNum"
+                    - "CameraDateTimeOffset"
+                    - "CameraAutofocusIsSupported"
+                    - "CameraIsFocused"
+                    - "CameraLiveviewIsSupported"
+                    - "CameraLiveviewZoomIsSupported"
+                    - "CameraLiveviewDOFIsSupported"
+                    - "CameraLiveviewFocusIsSupported"
+                    - "CameraLiveviewIsEnabled"
+                    - "CameraLiveviewZoomIsEnabled"
+                    - "CameraLiveviewDOFIsEnabled"
+                    - "CameraLiveviewNumFrames"
+                    - "CameraLiveviewSensorWidth"
+                    - "CameraLiveviewSensorHeight"
+                    - "CameraLiveviewSensorRegionLeft"
+                    - "CameraLiveviewSensorRegionBottom"
+                    - "CameraLiveviewSensorRegionRight"
+                    - "CameraLiveviewSensorRegionTop"
+                    - "CameraLiveviewAFRegionLeft"
+                    - "CameraLiveviewAFRegionBottom"
+                    - "CameraLiveviewAFRegionRight"
+                    - "CameraLiveviewAFRegionTop"
+                    - "CameraVideoIsSupported"
+                    - "CameraVideoIsEnabled"
+                    - "CameraVideoElapsedTime"
+                    - "CameraBulbIsSupported"
+                    - "CameraBulbIsEnabled"
+                    - "CameraPowersource"
+                    - "CameraBatterylevel"
+                    - "CameraDownloadRate"
+                    - "CameraNumPhotosTaken"
+                    - "CameraNumPhotosFailed"
+                    - "CameraNumDownloadsComplete"
+                    - "CameraNumDownloadsFailed"
+                    - "CameraNumAutofocus"
+                    - "CameraPropertyInfo[]"
+                    - "NodeKey"
 
 CameraIsFocused
   :Type:            boolean
@@ -746,6 +797,14 @@ CameraPowersource
                     - "Battery"
                     - "Unknown"
 
+CameraPropertyInfo
+  :Type:            object
+  :Description:     Contains fields for the CameraPropertyInfo object
+  :Fields:          - "CameraPropertyType"
+                    - "CameraPropertyValue"
+                    - "CameraPropertyIsWriteable"
+                    - "CameraPropertyRange"
+
 CameraPropertyIsWriteable
   :Type:            boolean
   :Description:     Indicates whether a camera property can be changed
@@ -810,50 +869,7 @@ CameraStatus
 CameraUpdated
   :Type:            object
   :Description:     Contains fields for the CameraUpdated event
-  :Event fields:    - "[CAMERA SELECTION FIELDS]"
-                    - "CameraStatus"
-                    - "CameraName"
-                    - "CameraGroup"
-                    - "CameraSerialNumber"
-                    - "CameraMake"
-                    - "CameraModel"
-                    - "CameraNumCards"
-                    - "PhotoBatchNum"
-                    - "CameraDateTimeOffset"
-                    - "CameraAutofocusIsSupported"
-                    - "CameraIsFocused"
-                    - "CameraLiveviewIsSupported"
-                    - "CameraLiveviewZoomIsSupported"
-                    - "CameraLiveviewDOFIsSupported"
-                    - "CameraLiveviewFocusIsSupported"
-                    - "CameraLiveviewIsEnabled"
-                    - "CameraLiveviewZoomIsEnabled"
-                    - "CameraLiveviewDOFIsEnabled"
-                    - "CameraLiveviewNumFrames"
-                    - "CameraLiveviewSensorWidth"
-                    - "CameraLiveviewSensorHeight"
-                    - "CameraLiveviewSensorRegionLeft"
-                    - "CameraLiveviewSensorRegionBottom"
-                    - "CameraLiveviewSensorRegionRight"
-                    - "CameraLiveviewSensorRegionTop"
-                    - "CameraLiveviewAFRegionLeft"
-                    - "CameraLiveviewAFRegionBottom"
-                    - "CameraLiveviewAFRegionRight"
-                    - "CameraLiveviewAFRegionTop"
-                    - "CameraVideoIsSupported"
-                    - "CameraVideoIsEnabled"
-                    - "CameraVideoElapsedTime"
-                    - "CameraBulbIsSupported"
-                    - "CameraBulbIsEnabled"
-                    - "CameraPowersource"
-                    - "CameraBatterylevel"
-                    - "CameraDownloadRate"
-                    - "CameraNumPhotosTaken"
-                    - "CameraNumPhotosFailed"
-                    - "CameraNumDownloadsComplete"
-                    - "CameraNumDownloadsFailed"
-                    - "CameraNumAutofocus"
-                    - "NodeKey"
+  :Event fields:    - "[CameraInfo FIELDS]"
 
 CameraVideoElapsedTime
   :Type:            int64
@@ -1045,6 +1061,10 @@ NodeEndpoint
   :Type:            object
   :Description:     internal use
 
+NodeInfo
+  :Type:            object
+  :Description:     internal use
+
 NodeIsLiveviewConsumer
   :Type:            boolean
   :Description:     internal use
@@ -1092,6 +1112,21 @@ NodeUpdated
 NodeVersion
   :Type:            string
   :Description:     internal use
+
+OptionsInfo
+  :Type:            object
+  :Description:     Contains fields for OptionsInfo object
+  :Fields:          - "FilenameExpression"
+                    - "PhotoSessionName"
+                    - "PhotoSessionNum"
+                    - "UniqueTag"
+                    - "Barcode"
+                    - "DefaultStorage"
+                    - "DefaultFocusMode"
+                    - "AutoConnect"
+                    - "AutoSynchroniseTime"
+                    - "DownloadPath"
+                    - "FallbackPath"
 
 PhotoAperture
   :Type:            string
@@ -1142,6 +1177,38 @@ PhotoHeight
 PhotoISO
   :Type:            string
   :Description:     Camera ISO of photo
+
+PhotoInfo
+  :Type:            object
+  :Description:     Contains fields for the PhotoInfo object
+  :Fields:          - "[PHOTO SELECTION FIELDS]"
+                    - "PhotoLocation"
+                    - "PhotoUUID"
+                    - "PhotoName"
+                    - "PhotoOriginalName"
+                    - "PhotoComputedName"
+                    - "PhotoDateCaptured"
+                    - "PhotoOrigin"
+                    - "PhotoFormat"
+                    - "PhotoOrientation"
+                    - "PhotoWidth"
+                    - "PhotoHeight"
+                    - "PhotoAperture"
+                    - "PhotoShutterSpeed"
+                    - "PhotoISO"
+                    - "PhotoFocalLength"
+                    - "PhotoFilesize"
+                    - "PhotoIsImage"
+                    - "PhotoIsHidden"
+                    - "PhotoIsScanned"
+                    - "PhotoHash"
+                    - "PhotoBarcode"
+                    - "PhotoSequenceNum"
+                    - "PhotoBatchNum"
+                    - "PhotoSessionNum"
+                    - "PhotoSessionName"
+                    - "CameraKey"
+                    - "NodeKey"
 
 PhotoIsHidden
   :Type:            boolean
@@ -1226,52 +1293,11 @@ PhotoUUID
 PhotoUpdated
   :Type:            object
   :Description:     Contains fields for the PhotoUpdated event
-  :Event fields:    - "[PHOTO SELECTION FIELDS]"
-                    - "PhotoLocation"
-                    - "PhotoUUID"
-                    - "PhotoName"
-                    - "PhotoOriginalName"
-                    - "PhotoComputedName"
-                    - "PhotoDateCaptured"
-                    - "PhotoOrigin"
-                    - "PhotoFormat"
-                    - "PhotoOrientation"
-                    - "PhotoWidth"
-                    - "PhotoHeight"
-                    - "PhotoAperture"
-                    - "PhotoShutterSpeed"
-                    - "PhotoISO"
-                    - "PhotoFocalLength"
-                    - "PhotoFilesize"
-                    - "PhotoIsImage"
-                    - "PhotoIsHidden"
-                    - "PhotoIsScanned"
-                    - "PhotoHash"
-                    - "PhotoBarcode"
-                    - "PhotoSequenceNum"
-                    - "PhotoBatchNum"
-                    - "PhotoSessionNum"
-                    - "PhotoSessionName"
-                    - "CameraKey"
-                    - "NodeKey"
+  :Event fields:    - "[PhotoInfo FIELDS]"
 
 PhotoWidth
   :Type:            int32
   :Description:     Width of photo
-
-PropertyInfo
-  :Type:            object
-  :Description:     Contains fields for the PropertyInfo object
-  :Event fields:    - "CameraPropertyType"
-                    - "CameraPropertyValue"
-                    - "CameraPropertyIsWriteable"
-                    - "CameraPropertyRange"
-
-PropertyUpdated
-  :Type:            object
-  :Description:     Contains fields for the PropertyUpdated event
-  :Event fields:    - "[CAMERA SELECTION FIELDS]"
-                    - "PropertyInfo[]"
 
 RelayCustomText
   :Type:            object
@@ -1317,17 +1343,7 @@ SetCameraGroup
 SetOptions
   :Type:            object
   :Description:     Contains fields for SetOptions request
-  :Request fields:  - "FilenameExpression"
-                    - "PhotoSessionName"
-                    - "PhotoSessionNum"
-                    - "UniqueTag"
-                    - "Barcode"
-                    - "DefaultStorage"
-                    - "DefaultFocusMode"
-                    - "AutoConnect"
-                    - "AutoSynchroniseTime"
-                    - "DownloadPath"
-                    - "FallbackPath"
+  :Request fields:  - "[OptionsInfo FIELDS]"
 
 SetProperty
   :Type:            object
@@ -1366,12 +1382,10 @@ SyncClocks
 Synchronise
   :Type:            object
   :Description:     Contains fields for the Synchronise request
-  :Response fields: - "NodeUpdatedEvent"
-                    - "SetOptions"
-                    - "License"
-                    - "CameraUpdated[]"
-                    - "PhotoUpdated[]"
-                    - "PropertyUpdated[]"
+  :Response fields: - "OptionsInfo"
+                    - "NodeInfo[]"
+                    - "CameraInfo[]"
+                    - "PhotoInfo[]"
 
 TransferData
   :Type:            data
