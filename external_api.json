@@ -58,6 +58,8 @@
           "description": "Synchronise clocks on all cameras" },
         { "msg_id": "CheckClocks", "msg_type": "request",
           "description": "Retrieve current date/time from all cameras" },
+        { "msg_id": "OptionsUpdated", "msg_type": "event",
+          "description": "Information about app options" },
         { "msg_id": "CameraUpdated", "msg_type": "event",
           "description": "Information about camera status" },
         { "msg_id": "NodeUpdated", "msg_type": "event",
@@ -125,6 +127,11 @@
             "AutoSynchroniseTime",
             "DownloadPath",
             "FallbackPath"
+          ] },
+        { "name": "OptionsUpdated", "type": "object",
+          "description": "Contains fields for the OptionsUpdated event",
+          "event_fields": [
+            "[OptionsInfo FIELDS]"
           ] },
         { "name": "SetOptions", "type": "object",
           "description": "Contains fields for SetOptions request",

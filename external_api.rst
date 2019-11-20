@@ -93,6 +93,8 @@ The following table lists all the valid event messages.
 +-----------------+------------------------------------------------+
 | NodeUpdated     | Information about GRID node status             |
 +-----------------+------------------------------------------------+
+| OptionsUpdated  | Information about app options                  |
++-----------------+------------------------------------------------+
 | PhotoUpdated    | Information about photo status                 |
 +-----------------+------------------------------------------------+
 | RelayCustomText | Send custom text to all External API listeners |
@@ -432,6 +434,8 @@ List of Fields
 | LiveviewPosition                 | Contains fields for the LiveviewPosition request                       |
 +----------------------------------+------------------------------------------------------------------------+
 | OptionsInfo                      | Contains fields for OptionsInfo object                                 |
++----------------------------------+------------------------------------------------------------------------+
+| OptionsUpdated                   | Contains fields for the OptionsUpdated event                           |
 +----------------------------------+------------------------------------------------------------------------+
 | PhotoAperture                    | Lens aperture of photo                                                 |
 +----------------------------------+------------------------------------------------------------------------+
@@ -1127,6 +1131,11 @@ OptionsInfo
                     - "AutoSynchroniseTime"
                     - "DownloadPath"
                     - "FallbackPath"
+
+OptionsUpdated
+  :Type:            object
+  :Description:     Contains fields for the OptionsUpdated event
+  :Event fields:    - "[OptionsInfo FIELDS]"
 
 PhotoAperture
   :Type:            string
