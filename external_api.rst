@@ -393,7 +393,11 @@ List of Fields
 +----------------------------------+------------------------------------------------------------------------+
 | DefaultFocusMode                 | Contains the default camera focus mode                                 |
 +----------------------------------+------------------------------------------------------------------------+
+| DefaultLiveviewFPS               | Contains the value for the 'Live View FPS' option                      |
++----------------------------------+------------------------------------------------------------------------+
 | DefaultStorage                   | Contains the default camera storage mode                               |
++----------------------------------+------------------------------------------------------------------------+
+| DefaultVideoFPS                  | Contains the value for the 'Live View Video FPS' option                |
 +----------------------------------+------------------------------------------------------------------------+
 | Delete                           | Contains fields for the Delete request                                 |
 +----------------------------------+------------------------------------------------------------------------+
@@ -909,12 +913,20 @@ DefaultFocusMode
                     - "AF Auto"
                     - "MF"
 
+DefaultLiveviewFPS
+  :Type:            int32
+  :Description:     Contains the value for the 'Live View FPS' option
+
 DefaultStorage
   :Type:            string
   :Description:     Contains the default camera storage mode
   :Valid range:     - "Disk"
                     - "Card"
                     - "Both"
+
+DefaultVideoFPS
+  :Type:            int32
+  :Description:     Contains the value for the 'Live View Video FPS' option
 
 Delete
   :Type:            object
@@ -1127,6 +1139,8 @@ OptionsInfo
                     - "Barcode"
                     - "DefaultStorage"
                     - "DefaultFocusMode"
+                    - "DefaultLiveviewFPS"
+                    - "DefaultVideoFPS"
                     - "AutoConnect"
                     - "AutoSynchroniseTime"
                     - "DownloadPath"
