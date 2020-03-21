@@ -86,6 +86,10 @@
           "description": "Force batch numbers back in sync for all cameras" },
         { "msg_id": "SetCameraGroup", "msg_type": "request",
           "description": "Set group for camera" },
+        { "msg_id": "ActivateLicense", "msg_type": "request",
+          "description": "Activate application license" },
+        { "msg_id": "DeactivateLicense", "msg_type": "request",
+          "description": "Deactivate application license" },
         { "msg_id": "RelayCustomText", "msg_type": "event",
           "description": "Send custom text to all External API listeners" }
     ],
@@ -742,6 +746,13 @@
           ] },
         { "name": "BulbTimer", "type": "int64",
           "description": "Bulb timer interval for bulb mode capture" },
+        { "name": "ActivationCode", "type": "string",
+          "description": "License activation code" },
+        { "name": "ActivateLicense", "type": "object",
+          "description": "Contains fields for the ActivateLicense request",
+          "request_fields": [
+            "Activation Code"
+          ] },
         { "name": "CustomText", "type": "string",
           "description": "Field that can contain arbitrary text" },
         { "name": "RelayCustomText", "type": "object",

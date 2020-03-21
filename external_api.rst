@@ -2,9 +2,9 @@
 External API Documentation
 ==========================
 
-:Version: v4.11
+:Version: v4.14
 
-Copyright 2016-2019, Kuvacode Oy. All rights reserved.
+Copyright 2016-2020, Kuvacode Oy. All rights reserved.
 
 
 Smart Shooter can be integrated with an external system by using the External
@@ -109,11 +109,15 @@ The following table lists all the valid request/response messages.
 +----------------------+---------------------------------------------------------------------------+
 | msg_id               | Description                                                               |
 +======================+===========================================================================+
+| ActivateLicense      | Activate application license                                              |
++----------------------+---------------------------------------------------------------------------+
 | Autofocus            | Do auto focus with specified camera                                       |
 +----------------------+---------------------------------------------------------------------------+
 | CheckClocks          | Retrieve current date/time from all cameras                               |
 +----------------------+---------------------------------------------------------------------------+
 | Connect              | Connect specified camera                                                  |
++----------------------+---------------------------------------------------------------------------+
+| DeactivateLicense    | Deactivate application license                                            |
 +----------------------+---------------------------------------------------------------------------+
 | Delete               | Delete specified photo from computer                                      |
 +----------------------+---------------------------------------------------------------------------+
@@ -259,6 +263,10 @@ List of Fields
 +----------------------------------+------------------------------------------------------------------------+
 | Name                             | Description                                                            |
 +==================================+========================================================================+
+| ActivateLicense                  | Contains fields for the ActivateLicense request                        |
++----------------------------------+------------------------------------------------------------------------+
+| ActivationCode                   | License activation code                                                |
++----------------------------------+------------------------------------------------------------------------+
 | AutoConnect                      | Contains the value for the 'Auto Connect' option                       |
 +----------------------------------+------------------------------------------------------------------------+
 | AutoSynchroniseTime              | Contains the value for the 'Auto Synchronise Time' option              |
@@ -549,6 +557,15 @@ Field Definitions
 The following sections defines all the valid fields, along with associated data
 type. The fields that are JSON objects, it lists the valid sub-fields that may
 be contained within that object.
+
+ActivateLicense
+  :Type:            object
+  :Description:     Contains fields for the ActivateLicense request
+  :Request fields:  - "Activation Code"
+
+ActivationCode
+  :Type:            string
+  :Description:     License activation code
 
 AutoConnect
   :Type:            boolean
