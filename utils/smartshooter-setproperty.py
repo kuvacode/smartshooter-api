@@ -46,7 +46,7 @@ def send_property(socket, property_type, property_value):
     req = {}
     req["msg_type"] = "Request"
     req["msg_id"] = "SetProperty"
-    req["msg_ref_num"] = 0
+    req["msg_seq_num"] = 0
     req["CameraSelection"] = "All"
     req['CameraPropertyType'] = property_type
     req['CameraPropertyValue'] = property_value

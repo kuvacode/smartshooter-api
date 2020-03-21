@@ -27,16 +27,16 @@ import json
 import argparse
 import zmq
 
-msg_ref_num = 0
+msg_seq_num = 0
 
 def send_sequence_num(socket, sequence_num):
-    global msg_ref_num
+    global msg_seq_num
     req = {}
     req["msg_type"] = "Request"
     req["msg_id"] = "SetSequenceNum"
-    req["msg_ref_num"] = msg_ref_num
+    req["msg_seq_num"] = msg_seq_num
     req['PhotoSequenceNum'] = sequence_num
-    msg_ref_num += 1
+    msg_seq_num += 1
     socket.send_string(json.dumps(req))
     rep = socket.recv()
     str_msg = rep.decode("utf-8")
@@ -44,13 +44,13 @@ def send_sequence_num(socket, sequence_num):
     return json_msg["msg_result"]
 
 def send_batch_num(socket, batch_num):
-    global msg_ref_num
+    global msg_seq_num
     req = {}
     req["msg_type"] = "Request"
     req["msg_id"] = "SetBatchNum"
-    req["msg_ref_num"] = msg_ref_num
+    req["msg_seq_num"] = msg_seq_num
     req['PhotoBatchNum'] = batch_num
-    msg_ref_num += 1
+    msg_seq_num += 1
     socket.send_string(json.dumps(req))
     rep = socket.recv()
     str_msg = rep.decode("utf-8")
@@ -58,12 +58,12 @@ def send_batch_num(socket, batch_num):
     return json_msg["msg_result"]
 
 def send_options(socket, unique_tag, barcode_text, photo_path):
-    global msg_ref_num
+    global msg_seq_num
     req = {}
     req["msg_type"] = "Request"
     req["msg_id"] = "SetOptions"
-    req["msg_ref_num"] = msg_ref_num
-    msg_ref_num += 1
+    req["msg_seq_num"] = msg_seq_num
+    msg_seq_num += 1
     if unique_tag != None:
         req['UniqueTag'] = unique_tag
     if barcode_text != None:

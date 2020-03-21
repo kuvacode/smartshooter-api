@@ -31,7 +31,7 @@ def send_synchronise(socket):
     req = {}
     req["msg_type"] = "Request"
     req["msg_id"] = "Synchronise"
-    req["msg_ref_num"] = 0
+    req["msg_seq_num"] = 0
     socket.send_string(json.dumps(req))
     rep = socket.recv()
     str_msg = rep.decode("utf-8")

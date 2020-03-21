@@ -31,7 +31,7 @@ def send_relaycustomtext(socket, text):
     req = {}
     req["msg_type"] = "Request"
     req["msg_id"] = "RelayCustomText"
-    req["msg_ref_num"] = 0
+    req["msg_seq_num"] = 0
     req["CustomText"] = text
     socket.send_string(json.dumps(req))
     rep = socket.recv()

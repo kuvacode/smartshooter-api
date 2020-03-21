@@ -71,7 +71,7 @@ msg_type
 msg_id
   Indicates the contents of the message.
 
-msg_ref_num
+msg_seq_num
   Number associated with the message. For event messages, this is a unique and
   incremented number. For requests, the sender should set it to a unique number,
   and the same number will be sent back in the response message.

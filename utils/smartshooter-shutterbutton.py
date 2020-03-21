@@ -31,7 +31,7 @@ def send_shutterbutton(socket, state):
     req = {}
     req["msg_type"] = "Request"
     req["msg_id"] = "SetShutterButton"
-    req["msg_ref_num"] = 0
+    req["msg_seq_num"] = 0
     req["CameraSelection"] = "All"
     req["CameraShutterButton"] = state
     socket.send_string(json.dumps(req))
