@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Copyright (c) 2015-2019, Kuvacode Oy. All rights reserved.
+# Copyright (c) 2015-2020, Kuvacode Oy. All rights reserved.
 #
 # The MIT License (MIT)
 #
@@ -30,8 +30,9 @@ import zmq
 def send_synchronise(socket):
     req = {}
     req["msg_type"] = "Request"
-    req["msg_id"] = "Synchronise"
+    req["msg_id"] = "GetCamera"
     req["msg_seq_num"] = 0
+    req["CameraSelection"] = "All"
     socket.send_string(json.dumps(req))
     rep = socket.recv()
     str_msg = rep.decode("utf-8")
@@ -39,10 +40,11 @@ def send_synchronise(socket):
     if json_msg["msg_result"]:
         cameras = json_msg["CameraInfo"]
         for camera in cameras:
-            print("{0} {1} {2} {3}".format(camera["CameraSerialNumber"],
-                                           camera["CameraMake"],
-                                           camera["CameraModel"],
-                                           camera["CameraName"]))
+            print("{}, {}, {}, {}, {}".format(camera["CameraSerialNumber"],
+                                              camera["CameraMake"],
+                                              camera["CameraModel"],
+                                              camera["CameraName"],
+                                              camera["CameraStatus"]))
 
 def main():
     parser = argparse.ArgumentParser("smartshooter-ls.py")
