@@ -591,7 +591,7 @@
           "description": "Array of valid values for a camera property" },
         { "name": "CameraPropertyIsWriteable", "type": "boolean",
           "description": "Indicates whether a camera property can be changed" },
-        { "name": "CameraPropertyStep", "type": "string",
+        { "name": "CameraPropertyStep", "type": "int32",
           "description": "Contains range step for IncrementProperty message" },
         { "name": "CameraAutofocusIsSupported", "type": "boolean",
           "description": "Indicates if camera supports auto focus" },
