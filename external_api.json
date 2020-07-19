@@ -70,6 +70,8 @@
           "description": "internal use" },
         { "msg_id": "Synchronise", "msg_type": "request",
           "description": "Request latest information about cameras/photos" },
+        { "msg_id": "GetCamera", "msg_type": "request",
+          "description": "Request latest information about specific camera(s)" },
         { "msg_id": "TransferPhoto", "msg_type": "request",
           "description": "internal use" },
         { "msg_id": "License", "msg_type": "request",
@@ -398,6 +400,14 @@
             "NodeInfo[]",
             "CameraInfo[]",
             "PhotoInfo[]"
+          ] },
+        { "name": "GetCamera", "type": "object",
+          "description": "Contains fields for the GetCamera request",
+          "request_fields": [
+            "[CAMERA SELECTION FIELDS]"
+          ],
+          "response_fields": [
+            "CameraInfo[]"
           ] },
         { "name": "TransferPhoto", "type": "object",
           "description": "internal use" },
