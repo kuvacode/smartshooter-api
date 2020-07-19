@@ -2,7 +2,7 @@
 External API Documentation
 ==========================
 
-:Version: v4.14
+:Version: v4.17
 
 Copyright 2016-2020, Kuvacode Oy. All rights reserved.
 
@@ -138,6 +138,8 @@ The following table lists all the valid request/response messages.
 | EnableVideo          | Start/stop video recording on specified camera                            |
 +----------------------+---------------------------------------------------------------------------+
 | FormatAll            | Format memory cards on all cameras                                        |
++----------------------+---------------------------------------------------------------------------+
+| GetCamera            | Request latest information about specific camera(s)                       |
 +----------------------+---------------------------------------------------------------------------+
 | Identify             | Request specified camera identifies itself                                |
 +----------------------+---------------------------------------------------------------------------+
@@ -434,6 +436,8 @@ List of Fields
 | FilenameExpression               | Contains the filename expression option                                |
 +----------------------------------+------------------------------------------------------------------------+
 | FormatAll                        | Contains fields for the FormatAll request                              |
++----------------------------------+------------------------------------------------------------------------+
+| GetCamera                        | Contains fields for the GetCamera request                              |
 +----------------------------------+------------------------------------------------------------------------+
 | Identify                         | Contains fields for the Identify request                               |
 +----------------------------------+------------------------------------------------------------------------+
@@ -839,7 +843,7 @@ CameraPropertyRange
   :Description:     Array of valid values for a camera property
 
 CameraPropertyStep
-  :Type:            string
+  :Type:            int32
   :Description:     Contains range step for IncrementProperty message
 
 CameraPropertyType
@@ -1013,6 +1017,12 @@ FilenameExpression
 FormatAll
   :Type:            object
   :Description:     Contains fields for the FormatAll request
+
+GetCamera
+  :Type:            object
+  :Description:     Contains fields for the GetCamera request
+  :Request fields:  - "[CAMERA SELECTION FIELDS]"
+  :Response fields: - "CameraInfo[]"
 
 Identify
   :Type:            object
