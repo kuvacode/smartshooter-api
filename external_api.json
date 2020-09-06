@@ -93,7 +93,9 @@
         { "msg_id": "DeactivateLicense", "msg_type": "request",
           "description": "Deactivate application license" },
         { "msg_id": "RelayCustomText", "msg_type": "event",
-          "description": "Send custom text to all External API listeners" }
+          "description": "Send custom text to all External API listeners" },
+        { "msg_id": "Shutdown", "msg_type": "request",
+          "description": "Shutdown application" }
     ],
     "fields": [
         { "name": "msg_type", "type": "string",
