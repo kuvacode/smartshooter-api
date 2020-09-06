@@ -2,7 +2,7 @@
 External API Documentation
 ==========================
 
-:Version: v4.17
+:Version: v4.18
 
 Copyright 2016-2020, Kuvacode Oy. All rights reserved.
 
@@ -181,6 +181,8 @@ The following table lists all the valid request/response messages.
 +----------------------+---------------------------------------------------------------------------+
 | Shoot                | Take photo with specified camera                                          |
 +----------------------+---------------------------------------------------------------------------+
+| Shutdown             | Shutdown application                                                      |
++----------------------+---------------------------------------------------------------------------+
 | SyncBatchNum         | Force batch numbers back in sync for all cameras                          |
 +----------------------+---------------------------------------------------------------------------+
 | SyncClocks           | Synchronise clocks on all cameras                                         |
@@ -270,6 +272,8 @@ List of Fields
 | ActivationCode                   | License activation code                                                |
 +----------------------------------+------------------------------------------------------------------------+
 | AutoConnect                      | Contains the value for the 'Auto Connect' option                       |
++----------------------------------+------------------------------------------------------------------------+
+| AutoScanBarcode                  | Contains the value for the 'Auto Scan Barcodes' option                 |
 +----------------------------------+------------------------------------------------------------------------+
 | AutoSynchroniseTime              | Contains the value for the 'Auto Synchronise Time' option              |
 +----------------------------------+------------------------------------------------------------------------+
@@ -574,6 +578,10 @@ ActivationCode
 AutoConnect
   :Type:            boolean
   :Description:     Contains the value for the 'Auto Connect' option
+
+AutoScanBarcode
+  :Type:            boolean
+  :Description:     Contains the value for the 'Auto Scan Barcodes' option
 
 AutoSynchroniseTime
   :Type:            boolean
@@ -1170,6 +1178,11 @@ OptionsInfo
                     - "DefaultVideoFPS"
                     - "AutoConnect"
                     - "AutoSynchroniseTime"
+                    - "AutoScanBarcode"
+                    - "FilterBarcodeScanning"
+                    - "BarcodeCameraFilter"
+                    - "ResetSequenceNumOnEdit"
+                    - "ResetBatchNumOnEdit"
                     - "DownloadPath"
                     - "FallbackPath"
 
