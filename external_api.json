@@ -591,6 +591,7 @@
             "FocusMode",
             "DriveMode",
             "WhiteBalance",
+            "ColourTemperature",
             "Storage",
             "MirrorLockup"
           ] },

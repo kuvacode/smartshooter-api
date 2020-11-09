@@ -867,6 +867,7 @@ CameraPropertyType
                     - "FocusMode"
                     - "DriveMode"
                     - "WhiteBalance"
+                    - "ColourTemperature"
                     - "Storage"
                     - "MirrorLockup"
 
