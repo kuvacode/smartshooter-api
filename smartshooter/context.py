@@ -228,6 +228,10 @@ class Context:
         msg = self.__msgbuilder.build_Shoot(self.__camera_selection, bulb_timer, photo_origin)
         self.__transact(msg)
 
+    def autofocus(self):
+        msg = self.__msgbuilder.build_Autofocus(self.__camera_selection)
+        self.__transact(msg)
+
     def set_property(self, prop, value):
         msg = self.__msgbuilder.build_SetProperty(self.__camera_selection, prop, value)
         self.__transact(msg)
@@ -242,6 +246,10 @@ class Context:
 
     def move_focus(self, focus_step):
         msg = self.__msgbuilder.build_LiveviewFocus(self.__camera_selection, focus_step)
+        self.__transact(msg)
+
+    def position_power_zoom(self, position):
+        msg = self.__msgbuilder.build_PowerZoomPosition(self.__camera_selection, position)
         self.__transact(msg)
 
     def get_property(self, prop):

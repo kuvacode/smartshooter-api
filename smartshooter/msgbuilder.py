@@ -78,6 +78,11 @@ class MSGBuilder:
             msg["PhotoOrigin"] = photo_origin
         return json.dumps(msg)
 
+    def build_Autofocus(self, selection):
+        msg = self.__create_msg("Autofocus")
+        self.__add_selection(msg, selection)
+        return json.dumps(msg)
+
     def build_SetProperty(self, selection, prop, value):
         msg = self.__create_msg("SetProperty")
         self.__add_selection(msg, selection)
@@ -101,4 +106,10 @@ class MSGBuilder:
         msg = self.__create_msg("LiveviewFocus")
         self.__add_selection(msg, selection)
         msg["CameraLiveviewFocusStep"] = focus_step
+        return json.dumps(msg)
+
+    def build_PowerZoomPosition(self, selection, position):
+        msg = self.__create_msg("PowerZoomPosition")
+        self.__add_selection(msg, selection)
+        msg["CameraPowerZoomPosition"] = position
         return json.dumps(msg)
