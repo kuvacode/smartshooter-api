@@ -46,6 +46,8 @@
           "description": "Increment/decrement camera property on specified camera" },
         { "msg_id": "Download", "msg_type": "request",
           "description": "Download specified photo from camera to computer" },
+        { "msg_id": "Transfer", "msg_type": "request",
+          "description": "Transfer specified photo from remote node to local computer" },
         { "msg_id": "Reshoot", "msg_type": "request",
           "description": "Reshoot photo using same filename on specified camera" },
         { "msg_id": "Delete", "msg_type": "request",
@@ -259,6 +261,11 @@
           ] },
         { "name": "Download", "type": "object",
           "description": "Contains fields for the Download request",
+          "request_fields": [
+            "[PHOTO SELECTION FIELDS]"
+          ] },
+        { "name": "Transfer", "type": "object",
+          "description": "Contains fields for the Transfer request",
           "request_fields": [
             "[PHOTO SELECTION FIELDS]"
           ] },
