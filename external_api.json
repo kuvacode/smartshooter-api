@@ -38,8 +38,6 @@
           "description": "Enable/disable live view zoom region on specified camera" },
         { "msg_id": "EnableLiveviewDOF", "msg_type": "request",
           "description": "Enable/disable live view DOF (depth of field) preview on specified camera" },
-        { "msg_id": "EnableLiveviewRecord", "msg_type": "request",
-          "description": "Enable/disable recording of live view images on specified camera" },
         { "msg_id": "EnableVideo", "msg_type": "request",
           "description": "Start/stop video recording on specified camera" },
         { "msg_id": "SetProperty", "msg_type": "request",
@@ -235,12 +233,6 @@
           ] },
         { "name": "EnableLiveviewDOF", "type": "object",
           "description": "Contains fields for the EnableLiveviewDOF request",
-          "request_fields": [
-            "[CAMERA SELECTION FIELDS]",
-            "Enable"
-          ] },
-        { "name": "EnableLiveviewRecord", "type": "object",
-          "description": "Contains fields for the EnableLiveviewRecord request",
           "request_fields": [
             "[CAMERA SELECTION FIELDS]",
             "Enable"
