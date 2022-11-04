@@ -153,6 +153,10 @@ The following table lists all the valid request/response messages.
 +--------------------+---------------------------------------------------------------------------+
 | NetworkPing        | internal use                                                              |
 +--------------------+---------------------------------------------------------------------------+
+| PowerZoomDirection | Move camera power zoom in a relative direction                            |
++--------------------+---------------------------------------------------------------------------+
+| PowerZoomPosition  | Move camera power zoom to an absolute position                            |
++--------------------+---------------------------------------------------------------------------+
 | RemoveNode         | internal use                                                              |
 +--------------------+---------------------------------------------------------------------------+
 | RenameCamera       | Set name for camera                                                       |
@@ -262,299 +266,307 @@ the list of sub-fields that can be contained in a JSON ``object``.
 List of Fields
 ~~~~~~~~~~~~~~
 
-+----------------------------------+------------------------------------------------------------------------+
-| Name                             | Description                                                            |
-+==================================+========================================================================+
-| ActivateLicense                  | Contains fields for the ActivateLicense request                        |
-+----------------------------------+------------------------------------------------------------------------+
-| ActivationCode                   | License activation code                                                |
-+----------------------------------+------------------------------------------------------------------------+
-| AutoConnect                      | Contains the value for the 'Auto Connect' option                       |
-+----------------------------------+------------------------------------------------------------------------+
-| AutoScanBarcode                  | Contains the value for the 'Auto Scan Barcodes' option                 |
-+----------------------------------+------------------------------------------------------------------------+
-| AutoSynchroniseTime              | Contains the value for the 'Auto Synchronise Time' option              |
-+----------------------------------+------------------------------------------------------------------------+
-| Autofocus                        | Contains fields for the Autofocus request                              |
-+----------------------------------+------------------------------------------------------------------------+
-| Barcode                          | Contains the [Z] barcode text                                          |
-+----------------------------------+------------------------------------------------------------------------+
-| BulbTimer                        | Bulb timer interval for bulb mode capture                              |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraAutofocusIsSupported       | Indicates if camera supports auto focus                                |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraBatterylevel               | Indicates camera battery level in range 0 to 100                       |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraBulbIsEnabled              | Indicates whether buld shooting mode is enabled                        |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraBulbIsSupported            | Indicates whether buld shooting mode is supported                      |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraDateTimeOffset             | Contains offset from local time for when syncing date/time             |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraDownloadRate               | Transfer rate for last photo download in mbytes/sec                    |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraGroup                      | Group that camera belongs to                                           |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraInfo                       | Contains fields for the CameraInfo object                              |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraIsFocused                  | Indicates of camera auto focus action was successful                   |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraKey                        | Unique identfier for a camera                                          |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraKeys                       | Array of unique camera identifiers                                     |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraLiveviewAFRegionBottom     | Bottom pixel of camera's active auto focus region                      |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraLiveviewAFRegionLeft       | Left pixel of camera's active auto focus region                        |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraLiveviewAFRegionRight      | Right pixel of camera's active auto focus region                       |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraLiveviewAFRegionTop        | Top pixel of camera's active auto focus region                         |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraLiveviewDOFIsEnabled       | Indicates whether camera live view DOF preview is enabled              |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraLiveviewDOFIsSupported     | Indicates if camera live view supports DOF (depth of field) preview    |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraLiveviewFPS                | Desired FPS of camera live view stream                                 |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraLiveviewFocusIsSupported   | Indicates if camera live view supports moving focus                    |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraLiveviewFocusStep          | Specifies camera live view focus motor movement                        |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraLiveviewIsEnabled          | Indicates whether camera live view is enabled                          |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraLiveviewIsSupported        | Indicates if camera supports live view                                 |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraLiveviewNumFrames          | The number of liveview frames since liveview was enabled               |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraLiveviewSensorHeight       | Height of camera's sensor in pixels                                    |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraLiveviewSensorRegionBottom | Bottom pixel of camera's active live view region                       |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraLiveviewSensorRegionLeft   | Left pixel of camera's active live view region                         |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraLiveviewSensorRegionRight  | Right pixel of camera's active live view region                        |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraLiveviewSensorRegionTop    | Top pixel of camera's active live view region                          |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraLiveviewSensorWidth        | Width of camera's sensor in pixels                                     |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraLiveviewVideoFPS           | Desired FPS of camera live view stream during video recording          |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraLiveviewZoomIsEnabled      | Indicates whether camera live view zoom region is enabled              |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraLiveviewZoomIsSupported    | Indicates if camera live view supports a zoom region                   |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraMake                       | Make of camera                                                         |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraMirrorLockupIsEnabled      | Indicates whether mirror lockup is enabled                             |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraMirrorLockupIsSupported    | Indicates whether mirror lockup (MLU) is supported                     |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraModel                      | Model of camera                                                        |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraName                       | Name of camera                                                         |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraNumAutofocus               | Number of camera auto focus attempts                                   |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraNumCards                   | Number of memory cards in camera                                       |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraNumDownloadsComplete       | Number of photos downloaded from camera                                |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraNumDownloadsFailed         | Number of failed photo download attempts                               |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraNumPhotosFailed            | Number of failed photo attempts                                        |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraNumPhotosTaken             | Number of photos taken by camera                                       |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraPowersource                | Indicates camera power source                                          |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraPropertyInfo               | Contains fields for the CameraPropertyInfo object                      |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraPropertyIsWriteable        | Indicates whether a camera property can be changed                     |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraPropertyRange              | Array of valid values for a camera property                            |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraPropertyStep               | Contains range step for IncrementProperty message                      |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraPropertyType               | Specifies a camera property                                            |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraPropertyValue              | Contains value for the camera property                                 |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraSelection                  | Determines the camera selection                                        |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraSerialNumber               | Serial number of camera                                                |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraShutterButton              | Virtual state of camera's shutter button                               |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraStatus                     | Status of camera                                                       |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraUpdated                    | Contains fields for the CameraUpdated event                            |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraVideoElapsedTime           | Elapsed time of video recording in milliseconds                        |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraVideoIsEnabled             | Indicates whether video is being recorded                              |
-+----------------------------------+------------------------------------------------------------------------+
-| CameraVideoIsSupported           | Indicates whether video recording is supported                         |
-+----------------------------------+------------------------------------------------------------------------+
-| CheckClocks                      | Contains fields for the CheckClocks request                            |
-+----------------------------------+------------------------------------------------------------------------+
-| Connect                          | Contains fields for the Connect request                                |
-+----------------------------------+------------------------------------------------------------------------+
-| CustomText                       | Field that can contain arbitrary text                                  |
-+----------------------------------+------------------------------------------------------------------------+
-| DefaultFocusMode                 | Contains the default camera focus mode                                 |
-+----------------------------------+------------------------------------------------------------------------+
-| DefaultLiveviewFPS               | Contains the value for the 'Live View FPS' option                      |
-+----------------------------------+------------------------------------------------------------------------+
-| DefaultStorage                   | Contains the default camera storage mode                               |
-+----------------------------------+------------------------------------------------------------------------+
-| DefaultVideoFPS                  | Contains the value for the 'Live View Video FPS' option                |
-+----------------------------------+------------------------------------------------------------------------+
-| Delete                           | Contains fields for the Delete request                                 |
-+----------------------------------+------------------------------------------------------------------------+
-| DetectCameras                    | Contains fields for the DetectCameras request                          |
-+----------------------------------+------------------------------------------------------------------------+
-| Disconnect                       | Contains fields for the Disconnect request                             |
-+----------------------------------+------------------------------------------------------------------------+
-| Download                         | Contains fields for the Download request                               |
-+----------------------------------+------------------------------------------------------------------------+
-| DownloadPath                     | Contains value for the 'Photo Download Directory' option               |
-+----------------------------------+------------------------------------------------------------------------+
-| Enable                           | Generic indicator for enabling/disabling some state                    |
-+----------------------------------+------------------------------------------------------------------------+
-| EnableLiveview                   | Contains fields for the EnableLiveview request                         |
-+----------------------------------+------------------------------------------------------------------------+
-| EnableLiveviewDOF                | Contains fields for the EnableLiveviewDOF request                      |
-+----------------------------------+------------------------------------------------------------------------+
-| EnableLiveviewZoom               | Contains fields for the EnableLiveviewZoom request                     |
-+----------------------------------+------------------------------------------------------------------------+
-| EnableVideo                      | Contains fields for the EnableVideo request                            |
-+----------------------------------+------------------------------------------------------------------------+
-| FallbackPath                     | Contains value for the fallback photo download path                    |
-+----------------------------------+------------------------------------------------------------------------+
-| FilenameExpression               | Contains the filename expression option                                |
-+----------------------------------+------------------------------------------------------------------------+
-| Format                           | Contains fields for the Format request                                 |
-+----------------------------------+------------------------------------------------------------------------+
-| GetCamera                        | Contains fields for the GetCamera request                              |
-+----------------------------------+------------------------------------------------------------------------+
-| Identify                         | Contains fields for the Identify request                               |
-+----------------------------------+------------------------------------------------------------------------+
-| IncrementProperty                | Contains fields for the IncrementProperty request                      |
-+----------------------------------+------------------------------------------------------------------------+
-| LiveviewFPS                      | Contains fields for the LiveviewFPS request                            |
-+----------------------------------+------------------------------------------------------------------------+
-| LiveviewFocus                    | Contains fields for the LiveviewFocus request                          |
-+----------------------------------+------------------------------------------------------------------------+
-| LiveviewPosition                 | Contains fields for the LiveviewPosition request                       |
-+----------------------------------+------------------------------------------------------------------------+
-| OptionsInfo                      | Contains fields for OptionsInfo object                                 |
-+----------------------------------+------------------------------------------------------------------------+
-| OptionsUpdated                   | Contains fields for the OptionsUpdated event                           |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoAperture                    | Lens aperture of photo                                                 |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoBarcode                     | Contains barcode text scanned from photo                               |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoBatchNum                    | Contains the [B] batch number                                          |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoComputedName                | Photo name generated by Smart Shooter, before filename collision check |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoDateCaptured                | Data/time that photo was captured by camera                            |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoFilesize                    | Size of photo file                                                     |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoFocalLength                 | Lens focal length of photo                                             |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoFormat                      | Format of photo image file                                             |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoHash                        | Hash of photo data contents                                            |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoHeight                      | Height of photo                                                        |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoISO                         | Camera ISO of photo                                                    |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoInfo                        | Contains fields for the PhotoInfo object                               |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoIsHidden                    | Indicates whether photo is hidden                                      |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoIsImage                     | Indicates whether photo is image or not (possible video file)          |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoIsScanned                   | Indicates if barcode has been scanned from photo                       |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoKey                         | Unique identifier for a photo                                          |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoKeys                        | Array of unique photo identifiers                                      |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoLocation                    | Location of photo file                                                 |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoName                        | Photo name once finally saved to disk                                  |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoOrientation                 | Orientation of photo                                                   |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoOrigin                      | Identifier for origin of photo                                         |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoOriginalName                | Original name of photo on camera                                       |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoSelection                   | Determines the photo selection                                         |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoSequenceNum                 | Contains the [S] sequence number                                       |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoSessionName                 | Contains the [N] session name                                          |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoSessionNum                  | Contains the [I] session number                                        |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoShutterSpeed                | Camera shutter speed of photo                                          |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoUUID                        | Internal UUID of photo                                                 |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoUpdated                     | Contains fields for the PhotoUpdated event                             |
-+----------------------------------+------------------------------------------------------------------------+
-| PhotoWidth                       | Width of photo                                                         |
-+----------------------------------+------------------------------------------------------------------------+
-| RelayCustomText                  | Contains fields for the RelayCustomText event                          |
-+----------------------------------+------------------------------------------------------------------------+
-| RenameCamera                     | Contains fields for the RenameCamera request                           |
-+----------------------------------+------------------------------------------------------------------------+
-| RenamePhoto                      | Contains fields for the RenamePhoto request                            |
-+----------------------------------+------------------------------------------------------------------------+
-| Reshoot                          | Contains fields for the Reshoot request                                |
-+----------------------------------+------------------------------------------------------------------------+
-| SetBatchNum                      | Contains fields for the SetBatchNum request                            |
-+----------------------------------+------------------------------------------------------------------------+
-| SetCameraGroup                   | Contains fields for the SetCameraGroup request                         |
-+----------------------------------+------------------------------------------------------------------------+
-| SetOptions                       | Contains fields for SetOptions request                                 |
-+----------------------------------+------------------------------------------------------------------------+
-| SetProperty                      | Contains fields for the SetProperty request                            |
-+----------------------------------+------------------------------------------------------------------------+
-| SetSequenceNum                   | Contains fields for SetSequenceNum request                             |
-+----------------------------------+------------------------------------------------------------------------+
-| SetShutterButton                 | Contains fields for the SetShutterButton request                       |
-+----------------------------------+------------------------------------------------------------------------+
-| Shoot                            | Contains fields for the Shoot request                                  |
-+----------------------------------+------------------------------------------------------------------------+
-| SyncBatchNum                     | Contains fields for the SyncBatchNum request                           |
-+----------------------------------+------------------------------------------------------------------------+
-| SyncClocks                       | Contains fields for the SyncClocks request                             |
-+----------------------------------+------------------------------------------------------------------------+
-| Synchronise                      | Contains fields for the Synchronise request                            |
-+----------------------------------+------------------------------------------------------------------------+
-| Transfer                         | Contains fields for the Transfer request                               |
-+----------------------------------+------------------------------------------------------------------------+
-| UniqueTag                        | Contains the [U] unique tag                                            |
-+----------------------------------+------------------------------------------------------------------------+
-| msg_id                           | Identifier string for message type                                     |
-+----------------------------------+------------------------------------------------------------------------+
-| msg_result                       | Generic result field indicating success or failure                     |
-+----------------------------------+------------------------------------------------------------------------+
-| msg_seq_num                      | Message sequence number                                                |
-+----------------------------------+------------------------------------------------------------------------+
-| msg_type                         | Indicates whether message is request/response or event                 |
-+----------------------------------+------------------------------------------------------------------------+
-| msg_user_id                      | Custom user ID number                                                  |
-+----------------------------------+------------------------------------------------------------------------+
++----------------------------------+-------------------------------------------------------------------------+
+| Name                             | Description                                                             |
++==================================+=========================================================================+
+| ActivateLicense                  | Contains fields for the ActivateLicense request                         |
++----------------------------------+-------------------------------------------------------------------------+
+| ActivationCode                   | License activation code                                                 |
++----------------------------------+-------------------------------------------------------------------------+
+| AutoConnect                      | Contains the value for the 'Auto Connect' option                        |
++----------------------------------+-------------------------------------------------------------------------+
+| AutoScanBarcode                  | Contains the value for the 'Auto Scan Barcodes' option                  |
++----------------------------------+-------------------------------------------------------------------------+
+| AutoSynchroniseTime              | Contains the value for the 'Auto Synchronise Time' option               |
++----------------------------------+-------------------------------------------------------------------------+
+| Autofocus                        | Contains fields for the Autofocus request                               |
++----------------------------------+-------------------------------------------------------------------------+
+| Barcode                          | Contains the [Z] barcode text                                           |
++----------------------------------+-------------------------------------------------------------------------+
+| BulbTimer                        | Bulb timer interval for bulb mode capture                               |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraAutofocusIsSupported       | Indicates if camera supports auto focus                                 |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraBatterylevel               | Indicates camera battery level in range 0 to 100                        |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraBulbIsEnabled              | Indicates whether buld shooting mode is enabled                         |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraBulbIsSupported            | Indicates whether buld shooting mode is supported                       |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraDateTimeOffset             | Contains offset from local time for when syncing date/time              |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraDownloadRate               | Transfer rate for last photo download in mbytes/sec                     |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraGroup                      | Group that camera belongs to                                            |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraInfo                       | Contains fields for the CameraInfo object                               |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraIsFocused                  | Indicates of camera auto focus action was successful                    |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraKey                        | Unique identfier for a camera                                           |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraKeys                       | Array of unique camera identifiers                                      |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraLiveviewAFRegionBottom     | Bottom pixel of camera's active auto focus region                       |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraLiveviewAFRegionLeft       | Left pixel of camera's active auto focus region                         |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraLiveviewAFRegionRight      | Right pixel of camera's active auto focus region                        |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraLiveviewAFRegionTop        | Top pixel of camera's active auto focus region                          |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraLiveviewDOFIsEnabled       | Indicates whether camera live view DOF preview is enabled               |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraLiveviewDOFIsSupported     | Indicates if camera live view supports DOF (depth of field) preview     |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraLiveviewFPS                | Desired FPS of camera live view stream                                  |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraLiveviewFocusIsSupported   | Indicates if camera live view supports moving focus                     |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraLiveviewFocusStep          | Specifies camera live view focus motor movement                         |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraLiveviewIsEnabled          | Indicates whether camera live view is enabled                           |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraLiveviewIsSupported        | Indicates if camera supports live view                                  |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraLiveviewNumFrames          | The number of liveview frames since liveview was enabled                |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraLiveviewSensorHeight       | Height of camera's sensor in pixels                                     |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraLiveviewSensorRegionBottom | Bottom pixel of camera's active live view region                        |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraLiveviewSensorRegionLeft   | Left pixel of camera's active live view region                          |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraLiveviewSensorRegionRight  | Right pixel of camera's active live view region                         |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraLiveviewSensorRegionTop    | Top pixel of camera's active live view region                           |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraLiveviewSensorWidth        | Width of camera's sensor in pixels                                      |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraLiveviewVideoFPS           | Desired FPS of camera live view stream during video recording           |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraLiveviewZoomIsEnabled      | Indicates whether camera live view zoom region is enabled               |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraLiveviewZoomIsSupported    | Indicates if camera live view supports a zoom region                    |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraMake                       | Make of camera                                                          |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraMirrorLockupIsEnabled      | Indicates whether mirror lockup is enabled                              |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraMirrorLockupIsSupported    | Indicates whether mirror lockup (MLU) is supported                      |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraModel                      | Model of camera                                                         |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraName                       | Name of camera                                                          |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraNumAutofocus               | Number of camera auto focus attempts                                    |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraNumCards                   | Number of memory cards in camera                                        |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraNumDownloadsComplete       | Number of photos downloaded from camera                                 |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraNumDownloadsFailed         | Number of failed photo download attempts                                |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraNumPhotosFailed            | Number of failed photo attempts                                         |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraNumPhotosTaken             | Number of photos taken by camera                                        |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraPowerZoomDirection         | Specifies camera power zoom movement                                    |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraPowerZoomPosition          | Absolute position for camera lens power zoom, in range between 0 to 100 |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraPowersource                | Indicates camera power source                                           |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraPropertyInfo               | Contains fields for the CameraPropertyInfo object                       |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraPropertyIsWriteable        | Indicates whether a camera property can be changed                      |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraPropertyRange              | Array of valid values for a camera property                             |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraPropertyStep               | Contains range step for IncrementProperty message                       |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraPropertyType               | Specifies a camera property                                             |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraPropertyValue              | Contains value for the camera property                                  |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraSelection                  | Determines the camera selection                                         |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraSerialNumber               | Serial number of camera                                                 |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraShutterButton              | Virtual state of camera's shutter button                                |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraStatus                     | Status of camera                                                        |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraUpdated                    | Contains fields for the CameraUpdated event                             |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraVideoElapsedTime           | Elapsed time of video recording in milliseconds                         |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraVideoIsEnabled             | Indicates whether video is being recorded                               |
++----------------------------------+-------------------------------------------------------------------------+
+| CameraVideoIsSupported           | Indicates whether video recording is supported                          |
++----------------------------------+-------------------------------------------------------------------------+
+| CheckClocks                      | Contains fields for the CheckClocks request                             |
++----------------------------------+-------------------------------------------------------------------------+
+| Connect                          | Contains fields for the Connect request                                 |
++----------------------------------+-------------------------------------------------------------------------+
+| CustomText                       | Field that can contain arbitrary text                                   |
++----------------------------------+-------------------------------------------------------------------------+
+| DefaultFocusMode                 | Contains the default camera focus mode                                  |
++----------------------------------+-------------------------------------------------------------------------+
+| DefaultLiveviewFPS               | Contains the value for the 'Live View FPS' option                       |
++----------------------------------+-------------------------------------------------------------------------+
+| DefaultStorage                   | Contains the default camera storage mode                                |
++----------------------------------+-------------------------------------------------------------------------+
+| DefaultVideoFPS                  | Contains the value for the 'Live View Video FPS' option                 |
++----------------------------------+-------------------------------------------------------------------------+
+| Delete                           | Contains fields for the Delete request                                  |
++----------------------------------+-------------------------------------------------------------------------+
+| DetectCameras                    | Contains fields for the DetectCameras request                           |
++----------------------------------+-------------------------------------------------------------------------+
+| Disconnect                       | Contains fields for the Disconnect request                              |
++----------------------------------+-------------------------------------------------------------------------+
+| Download                         | Contains fields for the Download request                                |
++----------------------------------+-------------------------------------------------------------------------+
+| DownloadPath                     | Contains value for the 'Photo Download Directory' option                |
++----------------------------------+-------------------------------------------------------------------------+
+| Enable                           | Generic indicator for enabling/disabling some state                     |
++----------------------------------+-------------------------------------------------------------------------+
+| EnableLiveview                   | Contains fields for the EnableLiveview request                          |
++----------------------------------+-------------------------------------------------------------------------+
+| EnableLiveviewDOF                | Contains fields for the EnableLiveviewDOF request                       |
++----------------------------------+-------------------------------------------------------------------------+
+| EnableLiveviewZoom               | Contains fields for the EnableLiveviewZoom request                      |
++----------------------------------+-------------------------------------------------------------------------+
+| EnableVideo                      | Contains fields for the EnableVideo request                             |
++----------------------------------+-------------------------------------------------------------------------+
+| FallbackPath                     | Contains value for the fallback photo download path                     |
++----------------------------------+-------------------------------------------------------------------------+
+| FilenameExpression               | Contains the filename expression option                                 |
++----------------------------------+-------------------------------------------------------------------------+
+| Format                           | Contains fields for the Format request                                  |
++----------------------------------+-------------------------------------------------------------------------+
+| GetCamera                        | Contains fields for the GetCamera request                               |
++----------------------------------+-------------------------------------------------------------------------+
+| Identify                         | Contains fields for the Identify request                                |
++----------------------------------+-------------------------------------------------------------------------+
+| IncrementProperty                | Contains fields for the IncrementProperty request                       |
++----------------------------------+-------------------------------------------------------------------------+
+| LiveviewFPS                      | Contains fields for the LiveviewFPS request                             |
++----------------------------------+-------------------------------------------------------------------------+
+| LiveviewFocus                    | Contains fields for the LiveviewFocus request                           |
++----------------------------------+-------------------------------------------------------------------------+
+| LiveviewPosition                 | Contains fields for the LiveviewPosition request                        |
++----------------------------------+-------------------------------------------------------------------------+
+| OptionsInfo                      | Contains fields for OptionsInfo object                                  |
++----------------------------------+-------------------------------------------------------------------------+
+| OptionsUpdated                   | Contains fields for the OptionsUpdated event                            |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoAperture                    | Lens aperture of photo                                                  |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoBarcode                     | Contains barcode text scanned from photo                                |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoBatchNum                    | Contains the [B] batch number                                           |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoComputedName                | Photo name generated by Smart Shooter, before filename collision check  |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoDateCaptured                | Data/time that photo was captured by camera                             |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoFilesize                    | Size of photo file                                                      |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoFocalLength                 | Lens focal length of photo                                              |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoFormat                      | Format of photo image file                                              |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoHash                        | Hash of photo data contents                                             |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoHeight                      | Height of photo                                                         |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoISO                         | Camera ISO of photo                                                     |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoInfo                        | Contains fields for the PhotoInfo object                                |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoIsHidden                    | Indicates whether photo is hidden                                       |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoIsImage                     | Indicates whether photo is image or not (possible video file)           |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoIsScanned                   | Indicates if barcode has been scanned from photo                        |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoKey                         | Unique identifier for a photo                                           |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoKeys                        | Array of unique photo identifiers                                       |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoLocation                    | Location of photo file                                                  |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoName                        | Photo name once finally saved to disk                                   |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoOrientation                 | Orientation of photo                                                    |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoOrigin                      | Identifier for origin of photo                                          |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoOriginalName                | Original name of photo on camera                                        |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoSelection                   | Determines the photo selection                                          |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoSequenceNum                 | Contains the [S] sequence number                                        |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoSessionName                 | Contains the [N] session name                                           |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoSessionNum                  | Contains the [I] session number                                         |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoShutterSpeed                | Camera shutter speed of photo                                           |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoUUID                        | Internal UUID of photo                                                  |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoUpdated                     | Contains fields for the PhotoUpdated event                              |
++----------------------------------+-------------------------------------------------------------------------+
+| PhotoWidth                       | Width of photo                                                          |
++----------------------------------+-------------------------------------------------------------------------+
+| PowerZoomDirection               | Contains fields for the PowerZoomPosition request                       |
++----------------------------------+-------------------------------------------------------------------------+
+| PowerZoomPosition                | Contains fields for the PowerZoomPosition request                       |
++----------------------------------+-------------------------------------------------------------------------+
+| RelayCustomText                  | Contains fields for the RelayCustomText event                           |
++----------------------------------+-------------------------------------------------------------------------+
+| RenameCamera                     | Contains fields for the RenameCamera request                            |
++----------------------------------+-------------------------------------------------------------------------+
+| RenamePhoto                      | Contains fields for the RenamePhoto request                             |
++----------------------------------+-------------------------------------------------------------------------+
+| Reshoot                          | Contains fields for the Reshoot request                                 |
++----------------------------------+-------------------------------------------------------------------------+
+| SetBatchNum                      | Contains fields for the SetBatchNum request                             |
++----------------------------------+-------------------------------------------------------------------------+
+| SetCameraGroup                   | Contains fields for the SetCameraGroup request                          |
++----------------------------------+-------------------------------------------------------------------------+
+| SetOptions                       | Contains fields for SetOptions request                                  |
++----------------------------------+-------------------------------------------------------------------------+
+| SetProperty                      | Contains fields for the SetProperty request                             |
++----------------------------------+-------------------------------------------------------------------------+
+| SetSequenceNum                   | Contains fields for SetSequenceNum request                              |
++----------------------------------+-------------------------------------------------------------------------+
+| SetShutterButton                 | Contains fields for the SetShutterButton request                        |
++----------------------------------+-------------------------------------------------------------------------+
+| Shoot                            | Contains fields for the Shoot request                                   |
++----------------------------------+-------------------------------------------------------------------------+
+| SyncBatchNum                     | Contains fields for the SyncBatchNum request                            |
++----------------------------------+-------------------------------------------------------------------------+
+| SyncClocks                       | Contains fields for the SyncClocks request                              |
++----------------------------------+-------------------------------------------------------------------------+
+| Synchronise                      | Contains fields for the Synchronise request                             |
++----------------------------------+-------------------------------------------------------------------------+
+| Transfer                         | Contains fields for the Transfer request                                |
++----------------------------------+-------------------------------------------------------------------------+
+| UniqueTag                        | Contains the [U] unique tag                                             |
++----------------------------------+-------------------------------------------------------------------------+
+| msg_id                           | Identifier string for message type                                      |
++----------------------------------+-------------------------------------------------------------------------+
+| msg_result                       | Generic result field indicating success or failure                      |
++----------------------------------+-------------------------------------------------------------------------+
+| msg_seq_num                      | Message sequence number                                                 |
++----------------------------------+-------------------------------------------------------------------------+
+| msg_type                         | Indicates whether message is request/response or event                  |
++----------------------------------+-------------------------------------------------------------------------+
+| msg_user_id                      | Custom user ID number                                                   |
++----------------------------------+-------------------------------------------------------------------------+
 
 
 Field Definitions
@@ -672,6 +684,7 @@ CameraInfo
                     - "CameraNumDownloadsComplete"
                     - "CameraNumDownloadsFailed"
                     - "CameraNumAutofocus"
+                    - "CameraPowerZoomPosition"
                     - "CameraPropertyInfo[]"
                     - "NodeKey"
 
@@ -824,6 +837,20 @@ CameraNumPhotosFailed
 CameraNumPhotosTaken
   :Type:            int32
   :Description:     Number of photos taken by camera
+
+CameraPowerZoomDirection
+  :Type:            string
+  :Description:     Specifies camera power zoom movement
+  :Valid range:     - "Tele1"
+                    - "Tele2"
+                    - "Tele3"
+                    - "Wide1"
+                    - "Wide2"
+                    - "Wide3"
+
+CameraPowerZoomPosition
+  :Type:            int32
+  :Description:     Absolute position for camera lens power zoom, in range between 0 to 100
 
 CameraPowersource
   :Type:            string
@@ -1350,6 +1377,18 @@ PhotoUpdated
 PhotoWidth
   :Type:            int32
   :Description:     Width of photo
+
+PowerZoomDirection
+  :Type:            object
+  :Description:     Contains fields for the PowerZoomPosition request
+  :Request fields:  - "[CAMERA SELECTION FIELDS]"
+                    - "CameraPowerZoomDirection"
+
+PowerZoomPosition
+  :Type:            object
+  :Description:     Contains fields for the PowerZoomPosition request
+  :Request fields:  - "[CAMERA SELECTION FIELDS]"
+                    - "CameraPowerZoomPosition"
 
 RelayCustomText
   :Type:            object

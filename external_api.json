@@ -93,7 +93,12 @@
         { "msg_id": "RelayCustomText", "msg_type": "event",
           "description": "Send custom text to all External API listeners" },
         { "msg_id": "Shutdown", "msg_type": "request",
-          "description": "Shutdown application" }
+          "description": "Shutdown application" },
+        { "msg_id": "PowerZoomPosition", "msg_type": "request",
+          "description": "Move camera power zoom to an absolute position" },
+        { "msg_id": "PowerZoomDirection", "msg_type": "request",
+          "description": "Move camera power zoom in a relative direction" }
+
     ],
     "fields": [
         { "name": "msg_type", "type": "string",
@@ -336,6 +341,7 @@
             "CameraNumDownloadsComplete",
             "CameraNumDownloadsFailed",
             "CameraNumAutofocus",
+            "CameraPowerZoomPosition",
             "CameraPropertyInfo[]",
             "NodeKey"
           ] },
@@ -774,6 +780,30 @@
           "description": "Contains fields for the RelayCustomText event",
           "request_fields": [
             "CustomText"
+          ] },
+        { "name": "CameraPowerZoomPosition", "type": "int32",
+          "description": "Absolute position for camera lens power zoom, in range between 0 to 100" },
+        { "name": "PowerZoomPosition", "type": "object",
+          "description": "Contains fields for the PowerZoomPosition request",
+          "request_fields": [
+            "[CAMERA SELECTION FIELDS]",
+            "CameraPowerZoomPosition"
+          ] },
+        { "name": "CameraPowerZoomDirection", "type": "string",
+          "description": "Specifies camera power zoom movement",
+          "range": [
+            "Tele1",
+            "Tele2",
+            "Tele3",
+            "Wide1",
+            "Wide2",
+            "Wide3"
+          ] },
+        { "name": "PowerZoomDirection", "type": "object",
+          "description": "Contains fields for the PowerZoomPosition request",
+          "request_fields": [
+            "[CAMERA SELECTION FIELDS]",
+            "CameraPowerZoomDirection"
           ] }
     ]
 }
