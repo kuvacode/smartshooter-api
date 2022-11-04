@@ -52,7 +52,7 @@
           "description": "Reshoot photo using same filename on specified camera" },
         { "msg_id": "Delete", "msg_type": "request",
           "description": "Delete specified photo from computer" },
-        { "msg_id": "FormatAll", "msg_type": "request",
+        { "msg_id": "Format", "msg_type": "request",
           "description": "Format memory cards on all cameras" },
         { "msg_id": "SyncClocks", "msg_type": "request",
           "description": "Synchronise clocks on all cameras" },
@@ -80,8 +80,6 @@
           "description": "Set desired live view FPS for specified camera" },
         { "msg_id": "SetShutterButton", "msg_type": "request",
           "description": "Set shutter button state for specified camera" },
-        { "msg_id": "NodeEndpoint", "msg_type": "request",
-          "description": "internal use" },
         { "msg_id": "RemoveNode", "msg_type": "request",
           "description": "internal use" },
         { "msg_id": "SyncBatchNum", "msg_type": "request",
@@ -279,8 +277,8 @@
           "request_fields": [
             "[PHOTO SELECTION FIELDS]"
           ] },
-        { "name": "FormatAll", "type": "object",
-          "description": "Contains fields for the FormatAll request",
+        { "name": "Format", "type": "object",
+          "description": "Contains fields for the Format request",
           "request_fields": [
           ] },
         { "name": "SyncClocks", "type": "object",
@@ -720,8 +718,6 @@
         { "name": "NetworkEndpoint", "type": "string",
           "description": "internal use" },
         { "name": "NodeEndpoint", "type": "string",
-          "description": "internal use" },
-        { "name": "NodeEndpoint", "type": "object",
           "description": "internal use" },
         { "name": "RemoveNode", "type": "object",
           "description": "internal use" },

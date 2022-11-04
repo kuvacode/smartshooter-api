@@ -2,9 +2,9 @@
 External API Documentation
 ==========================
 
-:Version: v4.18
+:Version: v4.25
 
-Copyright 2016-2020, Kuvacode Oy. All rights reserved.
+Copyright 2016-2022, Kuvacode Oy. All rights reserved.
 
 
 Smart Shooter can be integrated with an external system by using the External
@@ -106,91 +106,89 @@ Request/Response Messages
 
 The following table lists all the valid request/response messages.
 
-+----------------------+---------------------------------------------------------------------------+
-| msg_id               | Description                                                               |
-+======================+===========================================================================+
-| ActivateLicense      | Activate application license                                              |
-+----------------------+---------------------------------------------------------------------------+
-| Autofocus            | Do auto focus with specified camera                                       |
-+----------------------+---------------------------------------------------------------------------+
-| CheckClocks          | Retrieve current date/time from all cameras                               |
-+----------------------+---------------------------------------------------------------------------+
-| Connect              | Connect specified camera                                                  |
-+----------------------+---------------------------------------------------------------------------+
-| DeactivateLicense    | Deactivate application license                                            |
-+----------------------+---------------------------------------------------------------------------+
-| Delete               | Delete specified photo from computer                                      |
-+----------------------+---------------------------------------------------------------------------+
-| DetectCameras        | Request Smart Shooter to detect connected cameras                         |
-+----------------------+---------------------------------------------------------------------------+
-| Disconnect           | Disconnect specified camera                                               |
-+----------------------+---------------------------------------------------------------------------+
-| Download             | Download specified photo from camera to computer                          |
-+----------------------+---------------------------------------------------------------------------+
-| EnableLiveview       | Enable/disable live view on specified camera                              |
-+----------------------+---------------------------------------------------------------------------+
-| EnableLiveviewDOF    | Enable/disable live view DOF (depth of field) preview on specified camera |
-+----------------------+---------------------------------------------------------------------------+
-| EnableLiveviewRecord | Enable/disable recording of live view images on specified camera          |
-+----------------------+---------------------------------------------------------------------------+
-| EnableLiveviewZoom   | Enable/disable live view zoom region on specified camera                  |
-+----------------------+---------------------------------------------------------------------------+
-| EnableVideo          | Start/stop video recording on specified camera                            |
-+----------------------+---------------------------------------------------------------------------+
-| FormatAll            | Format memory cards on all cameras                                        |
-+----------------------+---------------------------------------------------------------------------+
-| GetCamera            | Request latest information about specific camera(s)                       |
-+----------------------+---------------------------------------------------------------------------+
-| Identify             | Request specified camera identifies itself                                |
-+----------------------+---------------------------------------------------------------------------+
-| IncrementProperty    | Increment/decrement camera property on specified camera                   |
-+----------------------+---------------------------------------------------------------------------+
-| License              | internal use                                                              |
-+----------------------+---------------------------------------------------------------------------+
-| LiveviewFPS          | Set desired live view FPS for specified camera                            |
-+----------------------+---------------------------------------------------------------------------+
-| LiveviewFocus        | Drive live view focus motor for specified camera                          |
-+----------------------+---------------------------------------------------------------------------+
-| LiveviewPosition     | Change live view zoom region for specified camera                         |
-+----------------------+---------------------------------------------------------------------------+
-| NetworkPing          | internal use                                                              |
-+----------------------+---------------------------------------------------------------------------+
-| NodeEndpoint         | internal use                                                              |
-+----------------------+---------------------------------------------------------------------------+
-| RemoveNode           | internal use                                                              |
-+----------------------+---------------------------------------------------------------------------+
-| RenameCamera         | Set name for camera                                                       |
-+----------------------+---------------------------------------------------------------------------+
-| RenameNode           | Set name for GRID node                                                    |
-+----------------------+---------------------------------------------------------------------------+
-| RenamePhoto          | Set filename for photo                                                    |
-+----------------------+---------------------------------------------------------------------------+
-| Reshoot              | Reshoot photo using same filename on specified camera                     |
-+----------------------+---------------------------------------------------------------------------+
-| SetBatchNum          | Set the [B] batch number used when generating filenames                   |
-+----------------------+---------------------------------------------------------------------------+
-| SetCameraGroup       | Set group for camera                                                      |
-+----------------------+---------------------------------------------------------------------------+
-| SetOptions           | Set Smart Shooter options                                                 |
-+----------------------+---------------------------------------------------------------------------+
-| SetProperty          | Set camera property on specified camera                                   |
-+----------------------+---------------------------------------------------------------------------+
-| SetSequenceNum       | Set the [S] sequence number used when generating filenames                |
-+----------------------+---------------------------------------------------------------------------+
-| SetShutterButton     | Set shutter button state for specified camera                             |
-+----------------------+---------------------------------------------------------------------------+
-| Shoot                | Take photo with specified camera                                          |
-+----------------------+---------------------------------------------------------------------------+
-| Shutdown             | Shutdown application                                                      |
-+----------------------+---------------------------------------------------------------------------+
-| SyncBatchNum         | Force batch numbers back in sync for all cameras                          |
-+----------------------+---------------------------------------------------------------------------+
-| SyncClocks           | Synchronise clocks on all cameras                                         |
-+----------------------+---------------------------------------------------------------------------+
-| Synchronise          | Request latest information about cameras/photos                           |
-+----------------------+---------------------------------------------------------------------------+
-| TransferPhoto        | internal use                                                              |
-+----------------------+---------------------------------------------------------------------------+
++--------------------+---------------------------------------------------------------------------+
+| msg_id             | Description                                                               |
++====================+===========================================================================+
+| ActivateLicense    | Activate application license                                              |
++--------------------+---------------------------------------------------------------------------+
+| Autofocus          | Do auto focus with specified camera                                       |
++--------------------+---------------------------------------------------------------------------+
+| CheckClocks        | Retrieve current date/time from all cameras                               |
++--------------------+---------------------------------------------------------------------------+
+| Connect            | Connect specified camera                                                  |
++--------------------+---------------------------------------------------------------------------+
+| DeactivateLicense  | Deactivate application license                                            |
++--------------------+---------------------------------------------------------------------------+
+| Delete             | Delete specified photo from computer                                      |
++--------------------+---------------------------------------------------------------------------+
+| DetectCameras      | Request Smart Shooter to detect connected cameras                         |
++--------------------+---------------------------------------------------------------------------+
+| Disconnect         | Disconnect specified camera                                               |
++--------------------+---------------------------------------------------------------------------+
+| Download           | Download specified photo from camera to computer                          |
++--------------------+---------------------------------------------------------------------------+
+| EnableLiveview     | Enable/disable live view on specified camera                              |
++--------------------+---------------------------------------------------------------------------+
+| EnableLiveviewDOF  | Enable/disable live view DOF (depth of field) preview on specified camera |
++--------------------+---------------------------------------------------------------------------+
+| EnableLiveviewZoom | Enable/disable live view zoom region on specified camera                  |
++--------------------+---------------------------------------------------------------------------+
+| EnableVideo        | Start/stop video recording on specified camera                            |
++--------------------+---------------------------------------------------------------------------+
+| Format             | Format memory cards on all cameras                                        |
++--------------------+---------------------------------------------------------------------------+
+| GetCamera          | Request latest information about specific camera(s)                       |
++--------------------+---------------------------------------------------------------------------+
+| Identify           | Request specified camera identifies itself                                |
++--------------------+---------------------------------------------------------------------------+
+| IncrementProperty  | Increment/decrement camera property on specified camera                   |
++--------------------+---------------------------------------------------------------------------+
+| License            | internal use                                                              |
++--------------------+---------------------------------------------------------------------------+
+| LiveviewFPS        | Set desired live view FPS for specified camera                            |
++--------------------+---------------------------------------------------------------------------+
+| LiveviewFocus      | Drive live view focus motor for specified camera                          |
++--------------------+---------------------------------------------------------------------------+
+| LiveviewPosition   | Change live view zoom region for specified camera                         |
++--------------------+---------------------------------------------------------------------------+
+| NetworkPing        | internal use                                                              |
++--------------------+---------------------------------------------------------------------------+
+| RemoveNode         | internal use                                                              |
++--------------------+---------------------------------------------------------------------------+
+| RenameCamera       | Set name for camera                                                       |
++--------------------+---------------------------------------------------------------------------+
+| RenameNode         | Set name for GRID node                                                    |
++--------------------+---------------------------------------------------------------------------+
+| RenamePhoto        | Set filename for photo                                                    |
++--------------------+---------------------------------------------------------------------------+
+| Reshoot            | Reshoot photo using same filename on specified camera                     |
++--------------------+---------------------------------------------------------------------------+
+| SetBatchNum        | Set the [B] batch number used when generating filenames                   |
++--------------------+---------------------------------------------------------------------------+
+| SetCameraGroup     | Set group for camera                                                      |
++--------------------+---------------------------------------------------------------------------+
+| SetOptions         | Set Smart Shooter options                                                 |
++--------------------+---------------------------------------------------------------------------+
+| SetProperty        | Set camera property on specified camera                                   |
++--------------------+---------------------------------------------------------------------------+
+| SetSequenceNum     | Set the [S] sequence number used when generating filenames                |
++--------------------+---------------------------------------------------------------------------+
+| SetShutterButton   | Set shutter button state for specified camera                             |
++--------------------+---------------------------------------------------------------------------+
+| Shoot              | Take photo with specified camera                                          |
++--------------------+---------------------------------------------------------------------------+
+| Shutdown           | Shutdown application                                                      |
++--------------------+---------------------------------------------------------------------------+
+| SyncBatchNum       | Force batch numbers back in sync for all cameras                          |
++--------------------+---------------------------------------------------------------------------+
+| SyncClocks         | Synchronise clocks on all cameras                                         |
++--------------------+---------------------------------------------------------------------------+
+| Synchronise        | Request latest information about cameras/photos                           |
++--------------------+---------------------------------------------------------------------------+
+| Transfer           | Transfer specified photo from remote node to local computer               |
++--------------------+---------------------------------------------------------------------------+
+| TransferPhoto      | internal use                                                              |
++--------------------+---------------------------------------------------------------------------+
 
 
 Fields
@@ -429,8 +427,6 @@ List of Fields
 +----------------------------------+------------------------------------------------------------------------+
 | EnableLiveviewDOF                | Contains fields for the EnableLiveviewDOF request                      |
 +----------------------------------+------------------------------------------------------------------------+
-| EnableLiveviewRecord             | Contains fields for the EnableLiveviewRecord request                   |
-+----------------------------------+------------------------------------------------------------------------+
 | EnableLiveviewZoom               | Contains fields for the EnableLiveviewZoom request                     |
 +----------------------------------+------------------------------------------------------------------------+
 | EnableVideo                      | Contains fields for the EnableVideo request                            |
@@ -439,7 +435,7 @@ List of Fields
 +----------------------------------+------------------------------------------------------------------------+
 | FilenameExpression               | Contains the filename expression option                                |
 +----------------------------------+------------------------------------------------------------------------+
-| FormatAll                        | Contains fields for the FormatAll request                              |
+| Format                           | Contains fields for the Format request                                 |
 +----------------------------------+------------------------------------------------------------------------+
 | GetCamera                        | Contains fields for the GetCamera request                              |
 +----------------------------------+------------------------------------------------------------------------+
@@ -544,6 +540,8 @@ List of Fields
 | SyncClocks                       | Contains fields for the SyncClocks request                             |
 +----------------------------------+------------------------------------------------------------------------+
 | Synchronise                      | Contains fields for the Synchronise request                            |
++----------------------------------+------------------------------------------------------------------------+
+| Transfer                         | Contains fields for the Transfer request                               |
 +----------------------------------+------------------------------------------------------------------------+
 | UniqueTag                        | Contains the [U] unique tag                                            |
 +----------------------------------+------------------------------------------------------------------------+
@@ -997,12 +995,6 @@ EnableLiveviewDOF
   :Request fields:  - "[CAMERA SELECTION FIELDS]"
                     - "Enable"
 
-EnableLiveviewRecord
-  :Type:            object
-  :Description:     Contains fields for the EnableLiveviewRecord request
-  :Request fields:  - "[CAMERA SELECTION FIELDS]"
-                    - "Enable"
-
 EnableLiveviewZoom
   :Type:            object
   :Description:     Contains fields for the EnableLiveviewZoom request
@@ -1023,9 +1015,9 @@ FilenameExpression
   :Type:            string
   :Description:     Contains the filename expression option
 
-FormatAll
+Format
   :Type:            object
-  :Description:     Contains fields for the FormatAll request
+  :Description:     Contains fields for the Format request
 
 GetCamera
   :Type:            object
@@ -1107,10 +1099,6 @@ NetworkVersion
 
 NodeEndpoint
   :Type:            string
-  :Description:     internal use
-
-NodeEndpoint
-  :Type:            object
   :Description:     internal use
 
 NodeInfo
@@ -1450,6 +1438,11 @@ Synchronise
                     - "NodeInfo[]"
                     - "CameraInfo[]"
                     - "PhotoInfo[]"
+
+Transfer
+  :Type:            object
+  :Description:     Contains fields for the Transfer request
+  :Request fields:  - "[PHOTO SELECTION FIELDS]"
 
 TransferData
   :Type:            data
