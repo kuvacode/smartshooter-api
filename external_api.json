@@ -344,6 +344,7 @@
             "CameraNumDownloadsFailed",
             "CameraNumAutofocus",
             "CameraPowerZoomPosition",
+            "CameraPowerZoomTarget",
             "CameraPropertyInfo[]",
             "NodeKey"
           ] },
@@ -785,6 +786,8 @@
           ] },
         { "name": "CameraPowerZoomPosition", "type": "int32",
           "description": "Absolute position for camera lens power zoom, in range between 0 to 100" },
+        { "name": "CameraPowerZoomTarget", "type": "int32",
+          "description": "Target for power zoom position, in range between 0 to 100, or -1 if power zoom is not moving" },
         { "name": "PowerZoomPosition", "type": "object",
           "description": "Contains fields for the PowerZoomPosition request",
           "request_fields": [
