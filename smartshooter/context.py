@@ -252,6 +252,10 @@ class Context:
         msg = self.__msgbuilder.build_PowerZoomPosition(self.__camera_selection, position)
         self.__transact(msg)
 
+    def stop_power_zoom(self, position):
+        msg = self.__msgbuilder.build_PowerZoomStop(self.__camera_selection)
+        self.__transact(msg)
+
     def get_property(self, prop):
         return self.__tracker.get_property(self.__camera_selection, prop)
 

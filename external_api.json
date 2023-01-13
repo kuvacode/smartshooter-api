@@ -97,7 +97,9 @@
         { "msg_id": "PowerZoomPosition", "msg_type": "request",
           "description": "Move camera power zoom to an absolute position" },
         { "msg_id": "PowerZoomDirection", "msg_type": "request",
-          "description": "Move camera power zoom in a relative direction" }
+          "description": "Move camera power zoom in a relative direction" },
+        { "msg_id": "PowerZoomStop", "msg_type": "request",
+          "description": "Stop camera power zoom movement" }
 
     ],
     "fields": [
@@ -804,6 +806,11 @@
           "request_fields": [
             "[CAMERA SELECTION FIELDS]",
             "CameraPowerZoomDirection"
+          ] },
+        { "name": "PowerZoomStop", "type": "object",
+          "description": "Contains fields for the PowerZoomStop request",
+          "request_fields": [
+            "[CAMERA SELECTION FIELDS]"
           ] }
     ]
 }

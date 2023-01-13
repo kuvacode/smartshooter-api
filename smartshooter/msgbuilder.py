@@ -113,3 +113,8 @@ class MSGBuilder:
         self.__add_selection(msg, selection)
         msg["CameraPowerZoomPosition"] = position
         return json.dumps(msg)
+
+    def build_PowerZoomStop(self, selection):
+        msg = self.__create_msg("PowerZoomStop")
+        self.__add_selection(msg, selection)
+        return json.dumps(msg)
