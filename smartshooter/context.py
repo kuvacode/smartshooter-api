@@ -256,6 +256,18 @@ class Context:
         msg = self.__msgbuilder.build_PowerZoomStop(self.__camera_selection)
         self.__transact(msg)
 
+    def engage_latch(self, latch_index):
+        msg = self.__msgbuilder.build_EngageLatch(self.__camera_selection, latch_index)
+        self.__transact(msg)
+
+    def release_latch(self, latch_index):
+        msg = self.__msgbuilder.build_ReleaseLatch(latch_index)
+        self.__transact(msg)
+
+    def cancel_latch(self, latch_index):
+        msg = self.__msgbuilder.build_CancelLatch(latch_index)
+        self.__transact(msg)
+
     def get_property(self, prop):
         return self.__tracker.get_property(self.__camera_selection, prop)
 

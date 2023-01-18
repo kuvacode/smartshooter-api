@@ -99,7 +99,13 @@
         { "msg_id": "PowerZoomDirection", "msg_type": "request",
           "description": "Move camera power zoom in a relative direction" },
         { "msg_id": "PowerZoomStop", "msg_type": "request",
-          "description": "Stop camera power zoom movement" }
+          "description": "Stop camera power zoom movement" },
+        { "msg_id": "EngageLatch", "msg_type": "request",
+          "description": "Engage camera trigger latch" },
+        { "msg_id": "ReleaseLatch", "msg_type": "request",
+          "description": "Release camera trigger latch" },
+        { "msg_id": "CancelLatch", "msg_type": "request",
+          "description": "Cancel camera trigger latch" }
 
     ],
     "fields": [
@@ -814,6 +820,24 @@
           "description": "Contains fields for the PowerZoomStop request",
           "request_fields": [
             "[CAMERA SELECTION FIELDS]"
+          ] },
+        { "name": "CameraLatchIndex", "type": "int32",
+          "description": "Trigger latch index, between 0 and 9" },
+        { "name": "EngageLatch", "type": "object",
+          "description": "Contains fields for the EngageLatch request",
+          "request_fields": [
+            "[CAMERA SELECTION FIELDS]",
+            "CameraLatchIndex"
+          ] },
+        { "name": "ReleaseLatch", "type": "object",
+          "description": "Contains fields for the ReleaseLatch request",
+          "request_fields": [
+            "CameraLatchIndex"
+          ] },
+        { "name": "CancelLatch", "type": "object",
+          "description": "Contains fields for the CancelLatch request",
+          "request_fields": [
+            "CameraLatchIndex"
           ] }
     ]
 }

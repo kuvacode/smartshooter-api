@@ -118,3 +118,19 @@ class MSGBuilder:
         msg = self.__create_msg("PowerZoomStop")
         self.__add_selection(msg, selection)
         return json.dumps(msg)
+
+    def build_EngageLatch(self, selection, latch_index):
+        msg = self.__create_msg("EngageLatch")
+        self.__add_selection(msg, selection)
+        msg["CameraLatchIndex"] = latch_index
+        return json.dumps(msg)
+
+    def build_ReleaseLatch(self, selection, latch_index):
+        msg = self.__create_msg("ReleaseLatch")
+        msg["CameraLatchIndex"] = latch_index
+        return json.dumps(msg)
+
+    def build_CancelLatch(self, selection, latch_index):
+        msg = self.__create_msg("CancelLatch")
+        msg["CameraLatchIndex"] = latch_index
+        return json.dumps(msg)
