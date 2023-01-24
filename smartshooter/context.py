@@ -268,6 +268,18 @@ class Context:
         msg = self.__msgbuilder.build_CancelLatch(latch_index)
         self.__transact(msg)
 
+    def engage_trigger(self):
+        msg = self.__msgbuilder.build_EngageTrigger(self.__camera_selection)
+        self.__transact(msg)
+
+    def release_trigger(self, trigger_interval):
+        msg = self.__msgbuilder.build_ReleaseTrigger(trigger_interval)
+        self.__transact(msg)
+
+    def cancel_trigger(self):
+        msg = self.__msgbuilder.build_CancelTrigger()
+        self.__transact(msg)
+
     def get_property(self, prop):
         return self.__tracker.get_property(self.__camera_selection, prop)
 

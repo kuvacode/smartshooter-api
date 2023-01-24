@@ -105,7 +105,13 @@
         { "msg_id": "ReleaseLatch", "msg_type": "request",
           "description": "Release camera trigger latch" },
         { "msg_id": "CancelLatch", "msg_type": "request",
-          "description": "Cancel camera trigger latch" }
+          "description": "Cancel camera trigger latch" },
+        { "msg_id": "EngageTrigger", "msg_type": "request",
+          "description": "Engage synchronised camera trigger" },
+        { "msg_id": "ReleaseTrigger", "msg_type": "request",
+          "description": "Release synchronised camera trigger" },
+        { "msg_id": "CancelTrigger", "msg_type": "request",
+          "description": "Cancel synchronised camera trigger" }
 
     ],
     "fields": [
@@ -823,6 +829,8 @@
           ] },
         { "name": "CameraLatchIndex", "type": "int32",
           "description": "Trigger latch index, between 0 and 9" },
+        { "name": "CameraTriggerInterval", "type": "int32",
+          "description": "Delay between trigger release in ms" },
         { "name": "EngageLatch", "type": "object",
           "description": "Contains fields for the EngageLatch request",
           "request_fields": [
@@ -838,6 +846,20 @@
           "description": "Contains fields for the CancelLatch request",
           "request_fields": [
             "CameraLatchIndex"
+          ] },
+        { "name": "EngageTrigger", "type": "object",
+          "description": "Contains fields for the EngageTrigger request",
+          "request_fields": [
+            "[CAMERA SELECTION FIELDS]"
+          ] },
+        { "name": "ReleaseTrigger", "type": "object",
+          "description": "Contains fields for the ReleaseTrigger request",
+          "request_fields": [
+            "CameraTriggerDelay"
+          ] },
+        { "name": "CancelTrigger", "type": "object",
+          "description": "Contains fields for the CancelTrigger request",
+          "request_fields": [
           ] }
     ]
 }

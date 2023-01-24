@@ -125,12 +125,26 @@ class MSGBuilder:
         msg["CameraLatchIndex"] = latch_index
         return json.dumps(msg)
 
-    def build_ReleaseLatch(self, selection, latch_index):
+    def build_ReleaseLatch(self, latch_index):
         msg = self.__create_msg("ReleaseLatch")
         msg["CameraLatchIndex"] = latch_index
         return json.dumps(msg)
 
-    def build_CancelLatch(self, selection, latch_index):
+    def build_CancelLatch(self, latch_index):
         msg = self.__create_msg("CancelLatch")
         msg["CameraLatchIndex"] = latch_index
+        return json.dumps(msg)
+
+    def build_EngageTrigger(self, selection):
+        msg = self.__create_msg("EngageTrigger")
+        self.__add_selection(msg, selection)
+        return json.dumps(msg)
+
+    def build_ReleaseTrigger(self, trigger_interval):
+        msg = self.__create_msg("ReleaseTrigger")
+        msg["CameraTriggerInterval"] = trigger_interval
+        return json.dumps(msg)
+
+    def build_CancelTrigger(self):
+        msg = self.__create_msg("CancelTrigger")
         return json.dumps(msg)
