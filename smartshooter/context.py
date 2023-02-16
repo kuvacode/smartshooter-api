@@ -34,7 +34,7 @@ from .selection import PhotoSelection
 
 def is_embedded():
     exe = os.path.basename(sys.executable)
-    return exe.startswith("SmartShooter") or exe.startswith("CaptureGRID")
+    return exe.startswith("SmartShooter") or exe.startswith("Smart Shooter") or exe.startswith("CaptureGRID")
 
 if is_embedded():
     import apphooks
