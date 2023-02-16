@@ -828,7 +828,7 @@
             "[CAMERA SELECTION FIELDS]"
           ] },
         { "name": "CameraLatchIndex", "type": "int32",
-          "description": "Trigger latch index, between 0 and 9" },
+          "description": "Trigger latch index, between 0 and 100" },
         { "name": "CameraTriggerInterval", "type": "int32",
           "description": "Delay between trigger release in ms" },
         { "name": "EngageLatch", "type": "object",
