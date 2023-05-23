@@ -82,6 +82,7 @@ class Context:
     def __transact(self, msg):
         self.check_status()
         self.__socket.send_request(msg)
+        self.__read_events()
         jstr = self.__socket.recv_reply()
         reply = json.loads(jstr)
         self.__tracker.process_reply(reply)
@@ -104,6 +105,7 @@ class Context:
     def wait_until(self, target):
         while True:
             self.check_status()
+            self.__read_events()
             now = time.time()
             if now >= target:
                 return
