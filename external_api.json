@@ -866,7 +866,7 @@
         { "name": "ReleaseTrigger", "type": "object",
           "description": "Contains fields for the ReleaseTrigger request",
           "request_fields": [
-            "CameraTriggerDelay"
+            "CameraTriggerInterval"
           ] },
         { "name": "CancelTrigger", "type": "object",
           "description": "Contains fields for the CancelTrigger request",

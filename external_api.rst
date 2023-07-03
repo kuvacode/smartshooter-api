@@ -1486,7 +1486,7 @@ ReleaseLatch
 ReleaseTrigger
   :Type:            object
   :Description:     Contains fields for the ReleaseTrigger request
-  :Request fields:  - "CameraTriggerDelay"
+  :Request fields:  - "CameraTriggerInterval"
 
 RemoveNode
   :Type:            object
