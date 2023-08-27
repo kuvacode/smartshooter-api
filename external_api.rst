@@ -2,9 +2,9 @@
 External API Documentation
 ==========================
 
-:Version: v4.27
+:Version: v5.0
 
-Copyright 2016-2022, Kuvacode Oy. All rights reserved.
+Copyright 2016-2023 Kuvacode Oy. All rights reserved.
 
 
 Smart Shooter can be integrated with an external system by using the External
@@ -89,7 +89,7 @@ The following table lists all the valid event messages.
 +=================+================================================+
 | CameraUpdated   | Information about camera status                |
 +-----------------+------------------------------------------------+
-| LiveviewUpdated | internal use                                   |
+| LiveviewUpdated | Information about camera liveview image        |
 +-----------------+------------------------------------------------+
 | NodeUpdated     | Information about GRID node status             |
 +-----------------+------------------------------------------------+
@@ -343,6 +343,8 @@ List of Fields
 +----------------------------------+----------------------------------------------------------------------------------------------+
 | CameraLiveviewFocusStep          | Specifies camera live view focus motor movement                                              |
 +----------------------------------+----------------------------------------------------------------------------------------------+
+| CameraLiveviewImage              | JPEG liveview image data encoded in base64                                                   |
++----------------------------------+----------------------------------------------------------------------------------------------+
 | CameraLiveviewIsEnabled          | Indicates whether camera live view is enabled                                                |
 +----------------------------------+----------------------------------------------------------------------------------------------+
 | CameraLiveviewIsSupported        | Indicates if camera supports live view                                                       |
@@ -488,6 +490,8 @@ List of Fields
 | LiveviewFocus                    | Contains fields for the LiveviewFocus request                                                |
 +----------------------------------+----------------------------------------------------------------------------------------------+
 | LiveviewPosition                 | Contains fields for the LiveviewPosition request                                             |
++----------------------------------+----------------------------------------------------------------------------------------------+
+| LiveviewUpdated                  | Contains fields for the LiveviewUpdated event                                                |
 +----------------------------------+----------------------------------------------------------------------------------------------+
 | OptionsInfo                      | Contains fields for OptionsInfo object                                                       |
 +----------------------------------+----------------------------------------------------------------------------------------------+
@@ -791,6 +795,10 @@ CameraLiveviewFocusStep
 CameraLiveviewImage
   :Type:            data
   :Description:     internal use
+
+CameraLiveviewImage
+  :Type:            string
+  :Description:     JPEG liveview image data encoded in base64
 
 CameraLiveviewIsEnabled
   :Type:            boolean
@@ -1172,7 +1180,9 @@ LiveviewPosition
 
 LiveviewUpdated
   :Type:            object
-  :Description:     internal use
+  :Description:     Contains fields for the LiveviewUpdated event
+  :Fields:          - "[CAMERA SELECTION FIELDS]"
+                    - "CameraLiveviewImage"
 
 NetworkAddress
   :Type:            string

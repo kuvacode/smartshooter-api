@@ -67,7 +67,7 @@
         { "msg_id": "PhotoUpdated", "msg_type": "event",
           "description": "Information about photo status" },
         { "msg_id": "LiveviewUpdated", "msg_type": "event",
-          "description": "internal use" },
+          "description": "Information about camera liveview image" },
         { "msg_id": "Synchronise", "msg_type": "request",
           "description": "Request latest information about cameras/photos" },
         { "msg_id": "GetCamera", "msg_type": "request",
@@ -410,7 +410,11 @@
             "[PhotoInfo FIELDS]"
           ] },
         { "name": "LiveviewUpdated", "type": "object",
-          "description": "internal use" },
+          "description": "Contains fields for the LiveviewUpdated event",
+          "fields": [
+            "[CAMERA SELECTION FIELDS]",
+            "CameraLiveviewImage"
+          ] },
         { "name": "CameraPropertyInfo", "type": "object",
           "description": "Contains fields for the CameraPropertyInfo object",
           "fields": [
@@ -871,6 +875,8 @@
         { "name": "CancelTrigger", "type": "object",
           "description": "Contains fields for the CancelTrigger request",
           "request_fields": [
-          ] }
+          ] },
+        { "name": "CameraLiveviewImage", "type": "string",
+          "description": "JPEG liveview image data encoded in base64" }
     ]
 }
