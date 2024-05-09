@@ -2,9 +2,9 @@
 External API Documentation
 ==========================
 
-:Version: v5.0
+:Version: v5.3
 
-Copyright 2016-2023 Kuvacode Oy. All rights reserved.
+Copyright 2016-2024 Kuvacode Oy. All rights reserved.
 
 
 Smart Shooter can be integrated with an external system by using the External
@@ -507,6 +507,8 @@ List of Fields
 +----------------------------------+----------------------------------------------------------------------------------------------+
 | PhotoDateCaptured                | Data/time that photo was captured by camera                                                  |
 +----------------------------------+----------------------------------------------------------------------------------------------+
+| PhotoFilename                    | Full path of photo file                                                                      |
++----------------------------------+----------------------------------------------------------------------------------------------+
 | PhotoFilesize                    | Size of photo file                                                                           |
 +----------------------------------+----------------------------------------------------------------------------------------------+
 | PhotoFocalLength                 | Lens focal length of photo                                                                   |
@@ -533,7 +535,7 @@ List of Fields
 +----------------------------------+----------------------------------------------------------------------------------------------+
 | PhotoLocation                    | Location of photo file                                                                       |
 +----------------------------------+----------------------------------------------------------------------------------------------+
-| PhotoName                        | Photo name once finally saved to disk                                                        |
+| PhotoName                        | Name of file once finally saved to disk                                                      |
 +----------------------------------+----------------------------------------------------------------------------------------------+
 | PhotoOrientation                 | Orientation of photo                                                                         |
 +----------------------------------+----------------------------------------------------------------------------------------------+
@@ -1315,6 +1317,10 @@ PhotoDateCaptured
   :Type:            string
   :Description:     Data/time that photo was captured by camera
 
+PhotoFilename
+  :Type:            string
+  :Description:     Full path of photo file
+
 PhotoFilesize
   :Type:            uint64
   :Description:     Size of photo file
@@ -1352,6 +1358,7 @@ PhotoInfo
                     - "PhotoLocation"
                     - "PhotoUUID"
                     - "PhotoName"
+                    - "PhotoFilename"
                     - "PhotoOriginalName"
                     - "PhotoComputedName"
                     - "PhotoDateCaptured"
@@ -1407,7 +1414,7 @@ PhotoLocation
 
 PhotoName
   :Type:            string
-  :Description:     Photo name once finally saved to disk
+  :Description:     Name of file once finally saved to disk
 
 PhotoOrientation
   :Type:            string
