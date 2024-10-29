@@ -2,7 +2,7 @@
 External API Documentation
 ==========================
 
-:Version: v5.3
+:Version: v5.6
 
 Copyright 2016-2024 Kuvacode Oy. All rights reserved.
 
@@ -440,6 +440,8 @@ List of Fields
 | Connect                          | Contains fields for the Connect request                                                      |
 +----------------------------------+----------------------------------------------------------------------------------------------+
 | CustomText                       | Field that can contain arbitrary text                                                        |
++----------------------------------+----------------------------------------------------------------------------------------------+
+| DefaultControlMode               | Contains the default camera control mode                                                     |
 +----------------------------------+----------------------------------------------------------------------------------------------+
 | DefaultFocusMode                 | Contains the default camera focus mode                                                       |
 +----------------------------------+----------------------------------------------------------------------------------------------+
@@ -955,6 +957,8 @@ CameraPropertyType
                     - "ColourTemperature"
                     - "Storage"
                     - "MirrorLockup"
+                    - "PixelShiftMode"
+                    - "ControlMode"
 
 CameraPropertyValue
   :Type:            string
@@ -1035,6 +1039,13 @@ Connect
 CustomText
   :Type:            string
   :Description:     Field that can contain arbitrary text
+
+DefaultControlMode
+  :Type:            string
+  :Description:     Contains the default camera control mode
+  :Valid range:     - "Camera"
+                    - "App"
+                    - "Both"
 
 DefaultFocusMode
   :Type:            string
@@ -1279,6 +1290,7 @@ OptionsInfo
                     - "UniqueTag"
                     - "Barcode"
                     - "DefaultStorage"
+                    - "DefaultControlMode"
                     - "DefaultFocusMode"
                     - "DefaultLiveviewFPS"
                     - "DefaultVideoFPS"

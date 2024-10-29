@@ -149,6 +149,7 @@
             "UniqueTag",
             "Barcode",
             "DefaultStorage",
+            "DefaultControlMode",
             "DefaultFocusMode",
             "DefaultLiveviewFPS",
             "DefaultVideoFPS",
@@ -467,6 +468,13 @@
             "Card",
             "Both"
           ] },
+        { "name": "DefaultControlMode", "type": "string",
+          "description": "Contains the default camera control mode",
+          "range": [
+            "Camera",
+            "App",
+            "Both"
+          ] },
         { "name": "DefaultFocusMode", "type": "string",
           "description": "Contains the default camera focus mode",
           "range": [
@@ -621,7 +629,9 @@
             "WhiteBalance",
             "ColourTemperature",
             "Storage",
-            "MirrorLockup"
+            "MirrorLockup",
+            "PixelShiftMode",
+            "ControlMode"
           ] },
         { "name": "CameraPropertyValue", "type": "string",
           "description": "Contains value for the camera property" },
