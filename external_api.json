@@ -296,7 +296,8 @@
         { "name": "Delete", "type": "object",
           "description": "Contains fields for the Delete request",
           "request_fields": [
-            "[PHOTO SELECTION FIELDS]"
+            "[PHOTO SELECTION FIELDS]",
+            "DeleteFiles"
           ] },
         { "name": "Format", "type": "object",
           "description": "Contains fields for the Format request",
@@ -871,6 +872,8 @@
         { "name": "CancelTrigger", "type": "object",
           "description": "Contains fields for the CancelTrigger request",
           "request_fields": [
-          ] }
+          ] },
+        { "name": "DeleteFiles", "type": "boolean",
+          "description": "Indicates whether to delete files when processing the Delete photo request" }
     ]
 }
