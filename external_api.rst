@@ -4,7 +4,7 @@ External API Documentation
 
 :Version: v5.6
 
-Copyright 2016-2024 Kuvacode Oy. All rights reserved.
+Copyright 2016-2025 Kuvacode Oy. All rights reserved.
 
 
 Smart Shooter can be integrated with an external system by using the External
@@ -452,6 +452,8 @@ List of Fields
 | DefaultVideoFPS                  | Contains the value for the 'Live View Video FPS' option                                      |
 +----------------------------------+----------------------------------------------------------------------------------------------+
 | Delete                           | Contains fields for the Delete request                                                       |
++----------------------------------+----------------------------------------------------------------------------------------------+
+| DeleteFiles                      | Indicates whether to delete files when processing the Delete photo request                   |
 +----------------------------------+----------------------------------------------------------------------------------------------+
 | DetectCameras                    | Contains fields for the DetectCameras request                                                |
 +----------------------------------+----------------------------------------------------------------------------------------------+
@@ -1075,6 +1077,11 @@ Delete
   :Type:            object
   :Description:     Contains fields for the Delete request
   :Request fields:  - "[PHOTO SELECTION FIELDS]"
+                    - "DeleteFiles"
+
+DeleteFiles
+  :Type:            boolean
+  :Description:     Indicates whether to delete files when processing the Delete photo request
 
 DetectCameras
   :Type:            object

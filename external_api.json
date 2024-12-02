@@ -297,7 +297,8 @@
         { "name": "Delete", "type": "object",
           "description": "Contains fields for the Delete request",
           "request_fields": [
-            "[PHOTO SELECTION FIELDS]"
+            "[PHOTO SELECTION FIELDS]",
+            "DeleteFiles"
           ] },
         { "name": "Format", "type": "object",
           "description": "Contains fields for the Format request",
@@ -890,6 +891,8 @@
           "request_fields": [
           ] },
         { "name": "CameraLiveviewImage", "type": "string",
-          "description": "JPEG liveview image data encoded in base64" }
+          "description": "JPEG liveview image data encoded in base64" },
+        { "name": "DeleteFiles", "type": "boolean",
+          "description": "Indicates whether to delete files when processing the Delete photo request" }
     ]
 }
