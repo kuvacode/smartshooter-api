@@ -2,7 +2,7 @@
 External API Documentation
 ==========================
 
-:Version: v5.6
+:Version: v5.9
 
 Copyright 2016-2025 Kuvacode Oy. All rights reserved.
 
@@ -288,6 +288,8 @@ List of Fields
 | ActivateLicense                  | Contains fields for the ActivateLicense request                                              |
 +----------------------------------+----------------------------------------------------------------------------------------------+
 | ActivationCode                   | License activation code                                                                      |
++----------------------------------+----------------------------------------------------------------------------------------------+
+| AllowSpacesInFilename            | Contains the value for the 'Allow spaces in filename' option                                 |
 +----------------------------------+----------------------------------------------------------------------------------------------+
 | AutoConnect                      | Contains the value for the 'Auto Connect' option                                             |
 +----------------------------------+----------------------------------------------------------------------------------------------+
@@ -634,6 +636,10 @@ ActivateLicense
 ActivationCode
   :Type:            string
   :Description:     License activation code
+
+AllowSpacesInFilename
+  :Type:            boolean
+  :Description:     Contains the value for the 'Allow spaces in filename' option
 
 AutoConnect
   :Type:            boolean
@@ -1310,6 +1316,7 @@ OptionsInfo
                     - "ResetBatchNumOnEdit"
                     - "DownloadPath"
                     - "FallbackPath"
+                    - "AllowSpacesInFilename"
 
 OptionsUpdated
   :Type:            object

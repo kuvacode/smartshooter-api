@@ -161,7 +161,8 @@
             "ResetSequenceNumOnEdit",
             "ResetBatchNumOnEdit",
             "DownloadPath",
-            "FallbackPath"
+            "FallbackPath",
+            "AllowSpacesInFilename"
           ] },
         { "name": "OptionsUpdated", "type": "object",
           "description": "Contains fields for the OptionsUpdated event",
@@ -893,6 +894,8 @@
         { "name": "CameraLiveviewImage", "type": "string",
           "description": "JPEG liveview image data encoded in base64" },
         { "name": "DeleteFiles", "type": "boolean",
-          "description": "Indicates whether to delete files when processing the Delete photo request" }
+          "description": "Indicates whether to delete files when processing the Delete photo request" },
+        { "name": "AllowSpacesInFilename", "type": "boolean",
+          "description": "Contains the value for the 'Allow spaces in filename' option" }
     ]
 }
