@@ -4,7 +4,7 @@ External API Documentation
 
 :Version: v5.9
 
-Copyright 2016-2025 Kuvacode Oy. All rights reserved.
+Copyright 2016-2026 Kuvacode Oy. All rights reserved.
 
 
 Smart Shooter can be integrated with an external system by using the External

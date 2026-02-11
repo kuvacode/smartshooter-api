@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2019, Kuvacode Oy. All rights reserved.
+# Copyright (c) 2019-2026, Kuvacode Oy. All rights reserved.
 #
 # The MIT License (MIT)
 #

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Copyright (c) 2015-2019, Kuvacode Oy. All rights reserved.
+# Copyright (c) 2015-2026, Kuvacode Oy. All rights reserved.
 #
 # The MIT License (MIT)
 #
