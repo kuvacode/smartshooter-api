@@ -96,6 +96,8 @@
           "description": "Send custom text to all External API listeners" },
         { "msg_id": "Shutdown", "msg_type": "request",
           "description": "Shutdown application" },
+        { "msg_id": "SetActiveCamera", "msg_type": "request",
+          "description": "Set the active camera in the Camera Controls panel" },
         { "msg_id": "PowerZoomPosition", "msg_type": "request",
           "description": "Move camera power zoom to an absolute position" },
         { "msg_id": "PowerZoomDirection", "msg_type": "request",
@@ -750,6 +752,11 @@
           "request_fields": [
             "[CAMERA SELECTION FIELDS]",
             "CameraShutterButton"
+          ] },
+        { "name": "SetActiveCamera", "type": "object",
+          "description": "Contains fields for the SetActiveCamera request",
+          "request_fields": [
+            "CameraKey"
           ] },
         { "name": "CameraShutterButton", "type": "string",
           "description": "Virtual state of camera's shutter button",

@@ -2,7 +2,7 @@
 External API Documentation
 ==========================
 
-:Version: v5.9
+:Version: v6.0
 
 Copyright 2016-2026 Kuvacode Oy. All rights reserved.
 
@@ -180,6 +180,8 @@ The following table lists all the valid request/response messages.
 | RenamePhoto           | Set filename for photo                                                    |
 +-----------------------+---------------------------------------------------------------------------+
 | Reshoot               | Reshoot photo using same filename on specified camera                     |
++-----------------------+---------------------------------------------------------------------------+
+| SetActiveCamera       | Set the active camera in the Camera Controls panel                        |
 +-----------------------+---------------------------------------------------------------------------+
 | SetBatchNum           | Set the [B] batch number used when generating filenames                   |
 +-----------------------+---------------------------------------------------------------------------+
@@ -582,6 +584,8 @@ List of Fields
 | RenamePhoto                      | Contains fields for the RenamePhoto request                                                  |
 +----------------------------------+----------------------------------------------------------------------------------------------+
 | Reshoot                          | Contains fields for the Reshoot request                                                      |
++----------------------------------+----------------------------------------------------------------------------------------------+
+| SetActiveCamera                  | Contains fields for the SetActiveCamera request                                              |
 +----------------------------------+----------------------------------------------------------------------------------------------+
 | SetBatchNum                      | Contains fields for the SetBatchNum request                                                  |
 +----------------------------------+----------------------------------------------------------------------------------------------+
@@ -1555,6 +1559,11 @@ Reshoot
   :Type:            object
   :Description:     Contains fields for the Reshoot request
   :Request fields:  - "[PHOTO SELECTION FIELDS]"
+
+SetActiveCamera
+  :Type:            object
+  :Description:     Contains fields for the SetActiveCamera request
+  :Request fields:  - "CameraKey"
 
 SetBatchNum
   :Type:            object

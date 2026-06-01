@@ -27,32 +27,24 @@ import json
 import argparse
 import zmq
 
-def send_synchronise(socket):
+def send_setactivecamera(socket, camera_key):
     req = {}
     req["msg_type"] = "Request"
-    req["msg_id"] = "GetCamera"
+    req["msg_id"] = "SetActiveCamera"
     req["msg_seq_num"] = 0
-    req["CameraSelection"] = "All"
+    req["CameraKey"] = camera_key
     socket.send_string(json.dumps(req))
     rep = socket.recv()
     str_msg = rep.decode("utf-8")
     json_msg = json.loads(str_msg)
-    if json_msg["msg_result"]:
-        cameras = json_msg["CameraInfo"]
-        for camera in cameras:
-            print("{}: {}, {}, {}, {}, {}".format(camera["CameraKey"],
-                                                  camera["CameraSerialNumber"],
-                                                  camera["CameraMake"],
-                                                  camera["CameraModel"],
-                                                  camera["CameraName"],
-                                                  camera["CameraStatus"]))
+    return json_msg["msg_result"]
 
 def main():
-    parser = argparse.ArgumentParser("smartshooter-ls.py")
-    parser.add_argument("-p", "--publisher",
-                        default="tcp://127.0.0.1:54543",
-                        metavar="ENDPOINT",
-                        help="specify ZMQ address of Smart Shooter publisher")
+    parser = argparse.ArgumentParser("smartshooter-setactivecamera.py")
+    parser.add_argument("-k", "--camera-key",
+                        required=True,
+                        metavar="KEY",
+                        help="key (serial number / UUID) of the camera to make active")
     parser.add_argument("-r", "--reqrep",
                         default="tcp://127.0.0.1:54544",
                         metavar="ENDPOINT",
@@ -64,11 +56,9 @@ def main():
     req_socket = context.socket(zmq.REQ)
     req_socket.connect(args.reqrep)
 
-    sub_socket = context.socket(zmq.SUB)
-    sub_socket.setsockopt(zmq.SUBSCRIBE, b"")
-    sub_socket.connect(args.publisher)
-
-    send_synchronise(req_socket)
+    if not send_setactivecamera(req_socket, args.camera_key):
+        print("Failed to set active camera", file=sys.stderr)
+        exit(1)
 
 if __name__ == "__main__":
     main()
